@@ -1,0 +1,34 @@
+name: SpeedrunShowdown
+version: 1.0
+author: KaiNakamura
+main: com.company.speedrunshowdown.SpeedrunShowdown
+api-version: 1.16
+commands:
+  start:
+    description: Starts the game
+    permission: speedrunshowdown
+    usage: /start
+  stop:
+    description: Stops the game
+    permission: speedrunshowdown
+    usage: /stop
+  suddendeath:
+    description: Begins sudden death
+    permission: speedrunshowdown
+    usage: /suddendeath
+  givecompass:
+    description: Gives a tracking compass
+    permission: speedrunshowdown
+    usage: /givecompass [player]
+  settime:
+    description: Sets the time until sudden death
+    permission: speedrunshowdown
+    usage: /settime [seconds]
+  win:
+    description: Makes a team win the game
+    permission: speedrunshowdown
+    usage: /win [team | player]
+permissions:
+  speedrunshowdown:
+    description: Allows speedrunshowdown commands
+    default: op
