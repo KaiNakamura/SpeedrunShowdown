@@ -1,5 +1,7 @@
-<p alight="center">
-	<img src="logo.png" alt="logo" width="250" height="250"/>
+<p align="center">
+	<a href="https://github.com/KaiNakamura/SpeedrunShowdown">
+		<img src="logo.png" alt="logo" width="250" height="250"/>
+	</a>
 </p>
 
 ## Table of Contents
