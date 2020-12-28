@@ -1,6 +1,6 @@
 <p alight="center">
 	<a href="https://github.com/KaiNakamura/SpeedrunShowdown">
-		<img src="logo.png" alt="logo" width="500" height="500"/>
+		<img src="logo.png" alt="logo" width="250" height="250">
 	</a>
 </p>
 
@@ -23,7 +23,7 @@ Download the latest version from [releases](https://github.com/KaiNakamura/Speed
 
 ## Setup
 
-#### Teams
+### Teams
 
 Before you begin the game you will want to create teams
 
@@ -42,7 +42,7 @@ The default team names are but can be edited in the [config](#config):
 * Purpur
 * Iron
 
-#### Commands
+### Commands
 
 To start the game run
 ```
@@ -65,16 +65,16 @@ To set the time until sudden death run
 ```
 
 To give a player a tracking compass run
-All players will automatically be given a compass at the start of the game, but this command can be run in case a player doesn't receive a compass
 ```
 /speedrunshowdown:givecompass <player>
 ```
+*All players will automatically be given a compass at the start of the game, but this command can be run in case a player doesn't receive a compass*
 
 To declare the winning team early run
-The winning team will be declared automatically when the Ender dragon is killed, but this command can be run in case something goes wrong, such as the dragon being killed by an entity other than a player
 ```
 /speedrunshowdown:win <team | player>
 ```
+*The winning team will be declared automatically when the Ender dragon is killed, but this command can be run in case something goes wrong, such as the dragon being killed by an entity other than a player*
 
 ## Config
 
