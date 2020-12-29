@@ -18,6 +18,6 @@ teams:
   slime: "DARK_GREEN"
   glowstone: "GOLD"
   prismarine: "DARK_AQUA"
-  obsidian: "BLACK"
-  chorus: "DARK_PURPLE"
   netherite: "DARK_GRAY"
+  chorus: "DARK_PURPLE"
+  obsidian: "BLACK"

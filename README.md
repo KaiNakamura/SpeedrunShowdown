@@ -49,9 +49,9 @@ The default team names are the following, but can be edited in the [config](#con
 * Slime
 * Glowstone
 * Prismarine
-* Obsidian
-* Chorus
 * Netherite
+* Chorus
+* Obsidian
 
 ### Commands
 
