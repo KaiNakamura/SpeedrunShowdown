@@ -1,3 +1,5 @@
+![AppVeyor](https://img.shields.io/appveyor/build/KaiNakamura/SpeedrunShowdown)
+
 <p align="center">
 	<a href="https://github.com/KaiNakamura/SpeedrunShowdown">
 		<img src="logo.png" alt="logo" width="250" height="250"/>
@@ -12,6 +14,7 @@
 	* [Teams](#teams)
 	* [Commands](#commands)
 * [Config](#config)
+* [Issues](#issues)
 
 ## About
 
@@ -79,3 +82,7 @@ To declare the winning team early run
 ## Config
 
 To edit the default configuration of the game edit the [config.yml](https://github.com/KaiNakamura/SpeedrunShowdown/blob/master/src/main/resources/config.yml) file created by the plugin located in plugins\SpeedrunShowdown\config.yml
+
+## Issues
+
+To report a bug or to request a feature go [here](https://github.com/KaiNakamura/SpeedrunShowdown/issues)
