@@ -40,6 +40,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scoreboard.Team;
 
+// TODO: give players invincibility when entering a portal
 public class SpeedrunShowdown extends JavaPlugin implements Runnable {
     private boolean running = false;
     private boolean suddenDeath = false;
@@ -147,12 +148,9 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
                 }
             }
 
-            // Give saturation
-            player.addPotionEffect(new PotionEffect(
-                PotionEffectType.SATURATION,
-                100, // ticks
-                255
-            ));
+            // Give players full health and food
+            player.setHealth(20);
+            player.setFoodLevel(20);
 
             // TODO: spawn in random locations
         }
