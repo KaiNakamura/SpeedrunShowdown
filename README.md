@@ -1,4 +1,4 @@
-![maven](https://github.com/KaiNakamura/SpeedrunShowdown/workflows/.github/workflows/maven.yml/badge.svg)
+![maven](https://github.com/KaiNakamura/SpeedrunShowdown/workflows/maven/badge.svg)
 
 <p align="center">
 	<a href="https://github.com/KaiNakamura/SpeedrunShowdown">
