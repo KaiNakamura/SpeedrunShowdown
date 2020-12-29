@@ -35,7 +35,7 @@ To add players to a team run
 /team join <team> [<members>]
 ```
 
-The default team names are but can be edited in the [config](#config):
+The default team names are the following, but can be edited in the [config](#config):
 * Redstone
 * Lapis
 * Emerald
@@ -44,6 +44,14 @@ The default team names are but can be edited in the [config](#config):
 * Quartz
 * Purpur
 * Iron
+* Crimson
+* Ice
+* Slime
+* Glowstone
+* Prismarine
+* Obsidian
+* Chorus
+* Netherite
 
 ### Commands
 
@@ -61,11 +69,13 @@ To begin sudden death early run
 ```
 /speedrunshowdown:suddendeath
 ```
+*Sudden death begins automatically in 1 hour but can be started early with this command*
 
 To set the time until sudden death run
 ```
 /speedrunshowdown:settime <seconds>
 ```
+*Sudden death time is automatically set to whatever value is set in the [config](#config) but this command can manually change it should something go wrong, such as the server crashing unexpectedly*
 
 To give a player a tracking compass run
 ```
