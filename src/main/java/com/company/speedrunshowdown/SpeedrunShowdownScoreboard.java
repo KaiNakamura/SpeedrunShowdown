@@ -57,7 +57,6 @@ public class SpeedrunShowdownScoreboard {
         }
     }
 
-    // TODO: show most recent advancement
     public void update() {
         // Update the sidebar
         ArrayList<String> scores = new ArrayList<>();
