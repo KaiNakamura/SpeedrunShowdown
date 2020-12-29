@@ -1,4 +1,4 @@
-![AppVeyor](https://img.shields.io/appveyor/build/KaiNakamura/SpeedrunShowdown)
+![maven](https://github.com/KaiNakamura/SpeedrunShowdown/workflows/.github/workflows/maven.yml/badge.svg)
 
 <p align="center">
 	<a href="https://github.com/KaiNakamura/SpeedrunShowdown">
