@@ -5,9 +5,6 @@ prevent-bed-explosions: true
 prevent-respawn-anchor-explosions: true
 must-kill-dragon-to-win: true
 teams:
-  # BLACK, DARK_BLUE, DARK_GREEN, DARK_AQUA,
-  # DARK_RED, DARK_PURPLE, GOLD, GRAY, DARK_GRAY, BLUE,
-  # GREEN, AQUA, RED, LIGHT_PURPLE, YELLOW, WHITE
   redstone: "RED"
   lapis: "BLUE"
   emerald: "GREEN"
@@ -15,4 +12,12 @@ teams:
   diamond: "AQUA"
   quartz: "WHITE"
   purpur: "LIGHT_PURPLE"
-  iron: "DARK_GRAY"
+  iron: "GRAY"
+  crimson: "DARK_RED"
+  ice: "DARK_BLUE"
+  slime: "DARK_GREEN"
+  glowstone: "GOLD"
+  prismarine: "DARK_AQUA"
+  obsidian: "BLACK"
+  chorus: "DARK_PURPLE"
+  netherite: "DARK_GRAY"
