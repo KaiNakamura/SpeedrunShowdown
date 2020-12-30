@@ -1,4 +1,5 @@
-![maven](https://github.com/KaiNakamura/SpeedrunShowdown/workflows/maven/badge.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/KaiNakamura/SpeedrunShowdown/blob/master/LICENSE)
+[![maven](https://github.com/KaiNakamura/SpeedrunShowdown/workflows/maven/badge.svg)](https://github.com/KaiNakamura/SpeedrunShowdown/actions)
 
 <p align="center">
 	<a href="https://github.com/KaiNakamura/SpeedrunShowdown">
