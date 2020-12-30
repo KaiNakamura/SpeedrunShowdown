@@ -35,6 +35,7 @@ To add players to a team run
 ```
 /team join <team> [<members>]
 ```
+For more team commands see the [minecraft wiki](https://minecraft.gamepedia.com/Commands/team)
 
 The default team names are the following, but can be edited in the [config](#config):
 * Redstone
