@@ -3,7 +3,7 @@
 
 <p align="center">
 	<a href="https://github.com/KaiNakamura/SpeedrunShowdown">
-		<img src="logo.png" alt="logo" width="250" height="250"/>
+		<img src="logo.png" alt="logo" width="300" height="300"/>
 	</a>
 </p>
 
@@ -41,7 +41,7 @@ To add players to a team run
 ```
 /team join <team> [<members>]
 ```
-*For more team commands see the [minecraft wiki](https://minecraft.gamepedia.com/Commands/team)*
+*For more team commands see the [Minecraft Wiki](https://minecraft.gamepedia.com/Commands/team)*
 
 The default team names are the following, but can be edited in the [config](#config):
 * Redstone
@@ -86,7 +86,7 @@ To edit the default configuration of the game navigate to the [config.yml](https
 | `prevent-bed-explosions` | true | Prevent players from exploding beds | Beds can still be used in the Overworld |
 | `prevent-respawn-anchor-explosions` | true | Prevent players from exploding respawn anchors | Respawn anchors can still be used in the Nether |
 | `must-kill-dragon-to-win` | true | Players must kill the dragon to win | If set to false, the last remaining team will be declared the winner, otherwise if all teams are dead players will be respawned |
-| `teams` | See [teams](#teams) | The team names and colors | A team requires a name and a color, `name: "COLOR"`, the color must be a [minecraft chat color](https://minecraft.gamepedia.com/Formatting_codes): BLACK, DARK_BLUE, DARK_GREEN, DARK_AQUA, DARK_RED, DARK_PURPLE, GOLD, GRAY, DARK_GRAY, BLUE, GREEN, AQUA, RED, LIGHT_PURPLE, YELLOW, WHITE |
+| `teams` | See [teams](#teams) | The team names and colors | A team requires a name and a color, `name: "COLOR"`, the color must be a [Minecraft color code](https://minecraft.gamepedia.com/Formatting_codes#Color_codes): BLACK, DARK_BLUE, DARK_GREEN, DARK_AQUA, DARK_RED, DARK_PURPLE, GOLD, GRAY, DARK_GRAY, BLUE, GREEN, AQUA, RED, LIGHT_PURPLE, YELLOW, WHITE |
 
 ## Issues
 
