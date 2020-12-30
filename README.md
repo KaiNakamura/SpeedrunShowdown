@@ -70,25 +70,25 @@ To begin sudden death early run
 ```
 /speedrunshowdown:suddendeath
 ```
-*Sudden death begins automatically in 1 hour but can be started early with this command*
+> Sudden death begins automatically in 1 hour but can be started early with this command
 
 To set the time until sudden death run
 ```
 /speedrunshowdown:settime <seconds>
 ```
-*Sudden death time is automatically set to whatever value is set in the [config](#config) but this command can manually change it should something go wrong, such as the server crashing unexpectedly*
+> Sudden death time is automatically set to whatever value is set in the [config](#config) but this command can manually change it should something go wrong, such as the server crashing unexpectedly
 
 To give a player a tracking compass run
 ```
 /speedrunshowdown:givecompass <player>
 ```
-*All players will automatically be given a compass at the start of the game, but this command can be run in case a player doesn't receive a compass*
+> All players will automatically be given a compass at the start of the game, but this command can be run in case a player doesn't receive a compass
 
 To declare the winning team early run
 ```
 /speedrunshowdown:win <team | player>
 ```
-*The winning team will be declared automatically when the Ender dragon is killed, but this command can be run in case something goes wrong, such as the dragon being killed by an entity other than a player*
+> The winning team will be declared automatically when the Ender dragon is killed, but this command can be run in case something goes wrong, such as the dragon being killed by an entity other than a player
 
 ## Config
 
