@@ -56,39 +56,16 @@ The default team names are the following, but can be edited in the [config](#con
 
 ### Commands
 
-To start the game run
-```
-/speedrunshowdown:start
-```
+| Command | Description |
+| --- | --- |
+| `/start` | Start the game |
+| `/stop` | Stop the game |
+| `/suddendeath` | Begin sudden death immediately |
+| `/settime <seconds>` | Set the time until sudden death (change the default time in the [config](#config)) |
+| `/givecompass <player>` | Give a player a tracking compass (all players are given a compass at the start of the game, to be used if player doesn't receive a compass) |
+| `/win <team \| player>` | Declare the winning team (winning team automatically declared when dragon is killed, to be used if something goes wrong such as the dragon being killed by an entity other than a player) |
 
-To stop the game run
-```
-/speedrunshowdown:stop
-```
-
-To begin sudden death early run
-```
-/speedrunshowdown:suddendeath
-```
-> Sudden death begins automatically in 1 hour but can be started early with this command
-
-To set the time until sudden death run
-```
-/speedrunshowdown:settime <seconds>
-```
-> Sudden death time is automatically set to whatever value is set in the [config](#config) but this command can manually change it should something go wrong, such as the server crashing unexpectedly
-
-To give a player a tracking compass run
-```
-/speedrunshowdown:givecompass <player>
-```
-> All players will automatically be given a compass at the start of the game, but this command can be run in case a player doesn't receive a compass
-
-To declare the winning team early run
-```
-/speedrunshowdown:win <team | player>
-```
-> The winning team will be declared automatically when the Ender dragon is killed, but this command can be run in case something goes wrong, such as the dragon being killed by an entity other than a player
+*If a command from this plugin conflicts with a command from another plugin use the prefix `/speedrunshowdown:<command>`*
 
 ## Config
 
