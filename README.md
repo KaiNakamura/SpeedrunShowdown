@@ -23,7 +23,7 @@ This project is a Minecraft PvP and speedrunning plugin. Teams of players race t
 
 ## Installation
 
-Download the latest version from [releases](https://github.com/KaiNakamura/SpeedrunShowdown/releases) and place the JAR file in the plugins folder of your server.
+Download the latest version from [releases](https://github.com/KaiNakamura/SpeedrunShowdown/releases) and place the JAR file in the plugins folder of your server
 
 ## Setup
 
