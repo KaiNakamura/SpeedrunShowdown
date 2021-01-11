@@ -40,6 +40,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scoreboard.Team;
 
+// TODO: tab decoration
 public class SpeedrunShowdown extends JavaPlugin implements Runnable {
     private boolean running = false;
     private boolean suddenDeath = false;
@@ -193,7 +194,8 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
             }
 
             // Teleport to the end
-            player.teleport(new Location(getServer().getWorld("world_the_end"), 0.5, 70, 0.5));
+            World end = getServer().getWorld("world_the_end");
+            player.teleport(new Location(end, 0.5, end.getHighestBlockYAt(0, 0) + 1, 0.5));
 
             // Give resistance
             player.addPotionEffect(new PotionEffect(
@@ -203,7 +205,7 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
             ));
 
             // Play sound
-            player.playSound(player.getLocation(), Sound.ENTITY_ENDER_DRAGON_GROWL, 1, 1);
+            player.playSound(player.getLocation(), Sound.ENTITY_LIGHTNING_BOLT_THUNDER, 1, 1);
 
             // Send title
             player.sendTitle(

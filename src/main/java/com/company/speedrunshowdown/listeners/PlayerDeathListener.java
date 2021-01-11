@@ -51,6 +51,10 @@ public class PlayerDeathListener implements Listener {
             event.setDeathMessage("");
             plugin.getServer().broadcastMessage(deathMessage + ChatColor.AQUA + ChatColor.BOLD + "FINAL KILL!");
 
+            // Play death sound to all players
+            for (Player player : plugin.getServer().getOnlinePlayers()) {
+                player.playSound(player.getLocation(), Sound.ENTITY_LIGHTNING_BOLT_THUNDER, 1, 1);
+            }
 
             // Check which teams are living
             ArrayList<Team> livingTeams = new ArrayList<>();
@@ -73,11 +77,6 @@ public class PlayerDeathListener implements Listener {
                             plugin.getSpeedrunShowdownScoreboard().getTeam(event.getEntity()).getName()
                         )
                     ) {
-                        // Play death sound to all players
-                        for (Player player : plugin.getServer().getOnlinePlayers()) {
-                            player.playSound(player.getLocation(), Sound.ENTITY_ENDER_DRAGON_GROWL, 1, 1);
-                        }
-
                         // Broadcast team elimination
                         plugin.getServer().broadcastMessage("");
                         plugin.getServer().broadcastMessage(
@@ -94,19 +93,22 @@ public class PlayerDeathListener implements Listener {
                 }
             }
 
-            // If players don't need to kill the dragon to win and there's one team left, make team winner
+            // If players need to kill the dragon to win and there's no teams left, respawn players
             if (
+                plugin.getConfig().getBoolean("must-kill-dragon-to-win") &&
+                livingTeams.size() == 0
+            ){
+                plugin.suddenDeath();
+            }
+            // Else if players don't need to kill the dragon and there's one team left, make team win
+            else if (
                 !plugin.getConfig().getBoolean("must-kill-dragon-to-win") &&
                 livingTeams.size() == 1
-            ){
+            ) {
                 plugin.win(
                     livingTeams.get(0),
                     deathMessage
                 );
-            }
-            // Else if no living teams remain, respawn all players that have a team and begin sudden death
-            else if (livingTeams.size() == 0) {
-                plugin.suddenDeath();
             }
         }
     }
