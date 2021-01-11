@@ -3,7 +3,7 @@
 
 <p align="center">
 	<a href="https://github.com/KaiNakamura/SpeedrunShowdown">
-		<img src="logo.png" alt="logo" width="250" height="250"/>
+		<img src="logo.png" alt="logo" width="300" height="300"/>
 	</a>
 </p>
 
@@ -19,11 +19,17 @@
 
 ## About
 
-This project is a Minecraft PvP and speedrunning plugin. Teams of players race to be the first to kill the Ender dragon. All players are equipped with a tracking compass that will point to the nearest enemy or teammate.
+This project is a Minecraft speedrunning and PvP plugin. Teams of players race to be the first to kill the Ender dragon. All players are equipped with a tracking compass that can point to the nearest enemy or teammate.
+
+In 60 minutes sudden death begins, all players will be teleported to the end and players can no longer respawn. The timer will not count down if a player is in the End.
+
+Bed and respawn anchor explosions are disabled, spawners are unbreakable, and portal trapping is not allowed (see [config](#config) for more details).
+
+The team that deals the final blow to the dragon is the winner, may the best team win!
 
 ## Installation
 
-Download the latest version from [releases](https://github.com/KaiNakamura/SpeedrunShowdown/releases) and place the JAR file in the plugins folder of your server.
+Download the latest version from [releases](https://github.com/KaiNakamura/SpeedrunShowdown/releases) and place the JAR file in the plugins folder of your server
 
 ## Setup
 
@@ -35,6 +41,7 @@ To add players to a team run
 ```
 /team join <team> [<members>]
 ```
+*For more team commands see the [Minecraft Wiki](https://minecraft.gamepedia.com/Commands/team)*
 
 The default team names are the following, but can be edited in the [config](#config):
 * Redstone
@@ -58,7 +65,7 @@ The default team names are the following, but can be edited in the [config](#con
 
 | Command | Description | Notes |
 | --- | --- | --- |
-| `/start` | Start the game | |
+| `/start` | Start the game | All players are given a tracking compass, full health, and full hunger |
 | `/stop` | Stop the game | |
 | `/suddendeath` | Begin sudden death immediately | |
 | `/settime <seconds>` | Set the time until sudden death | The default time can be changed in the [config](#config) file, this command is to be used if something goes wrong such as the server crashing unexpectedly |
@@ -73,13 +80,13 @@ To edit the default configuration of the game navigate to the [config.yml](https
 
 | Attribute | Default | Description | Notes |
 | --- | --- | --- | --- |
-| `sudden-death-time` | 3600 *seconds* | The time in seconds until sudden death |  |
-| `warning-times` | [60, 30, 15, 10, 5, 4, 3, 2, 1] *seconds* | The times in seconds at which a warning will be given before sudden death |  |
-| `indestructable-spawners` | true | Make spawners indestructable |  |
-| `prevent-bed-explosions` | true | Prevent players from exploding beds | Beds can still be used in the overworld |
-| `prevent-respawn-anchor-explosions` | true | Prevent players from exploding respawn anchors | Respawn anchors can still be used in the nether |
+| `sudden-death-time` | 3600 *seconds* | The time in seconds until sudden death | |
+| `warning-times` | [60, 30, 15, 10, 5, 4, 3, 2, 1] *seconds* | The times in seconds at which a warning will be given before sudden death | |
+| `indestructable-spawners` | true | Make spawners indestructable | |
+| `prevent-bed-explosions` | true | Prevent players from exploding beds | Beds can still be used in the Overworld |
+| `prevent-respawn-anchor-explosions` | true | Prevent players from exploding respawn anchors | Respawn anchors can still be used in the Nether |
 | `must-kill-dragon-to-win` | true | Players must kill the dragon to win | If set to false, the last remaining team will be declared the winner, otherwise if all teams are dead players will be respawned |
-| `teams` | See [teams](#teams) | The team names and colors | A team requires a name and a color, `name: "COLOR"`, the color must be a [minecraft chat color](https://minecraft.gamepedia.com/Formatting_codes): BLACK, DARK_BLUE, DARK_GREEN, DARK_AQUA, DARK_RED, DARK_PURPLE, GOLD, GRAY, DARK_GRAY, BLUE, GREEN, AQUA, RED, LIGHT_PURPLE, YELLOW, WHITE |
+| `teams` | See [teams](#teams) | The team names and colors | A team requires a name and a color, `name: "COLOR"`, the color must be a [Minecraft color code](https://minecraft.gamepedia.com/Formatting_codes#Color_codes): BLACK, DARK_BLUE, DARK_GREEN, DARK_AQUA, DARK_RED, DARK_PURPLE, GOLD, GRAY, DARK_GRAY, BLUE, GREEN, AQUA, RED, LIGHT_PURPLE, YELLOW, WHITE |
 
 ## Issues
 
