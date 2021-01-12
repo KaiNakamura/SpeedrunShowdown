@@ -135,6 +135,9 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         // Broadcast starting game
         getServer().broadcastMessage(ChatColor.GREEN + "Starting game!");
 
+        // Set time to 0
+        getServer().getWorld("world").setTime(0);
+
         // For every player
         for (Player player : getServer().getOnlinePlayers()) {
             // Give compass
