@@ -23,7 +23,7 @@ This project is a Minecraft speedrunning and PvP plugin. Teams of players race t
 
 In 60 minutes sudden death begins, all players will be teleported to the end and players can no longer respawn. The timer will not count down if a player is in the End.
 
-Bed and respawn anchor explosions are disabled, spawners are unbreakable, and portal trapping is not allowed (see [config](#config) for more details).
+Bed and respawn anchor explosions are disabled, spawners are unbreakable, and portal/spawn trapping is not allowed (see [config](#config) for more details).
 
 The team that deals the final blow to the dragon is the winner, may the best team win!
 
@@ -82,6 +82,8 @@ To edit the default configuration of the game navigate to the [config.yml](https
 | --- | --- | --- | --- |
 | `sudden-death-time` | 3600 *seconds* | The time in seconds until sudden death | |
 | `warning-times` | [60, 30, 15, 10, 5, 4, 3, 2, 1] *seconds* | The times in seconds at which a warning will be given before sudden death | |
+| `grace-period` | 30 *seconds* | The time in seconds until PvP is enabled | |
+| `respawn-invincibility` | 15 *seconds* | The time in seconds until a respawned player can be damaged | |
 | `indestructable-spawners` | true | Make spawners indestructable | |
 | `prevent-bed-explosions` | true | Prevent players from exploding beds | Beds can still be used in the Overworld |
 | `prevent-respawn-anchor-explosions` | true | Prevent players from exploding respawn anchors | Respawn anchors can still be used in the Nether |

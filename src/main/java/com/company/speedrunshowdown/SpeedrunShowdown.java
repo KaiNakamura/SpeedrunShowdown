@@ -41,6 +41,7 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scoreboard.Team;
 
 // TODO: tab decoration
+// TODO: disable guardians
 public class SpeedrunShowdown extends JavaPlugin implements Runnable {
     private boolean running = false;
     private boolean suddenDeath = false;
@@ -151,6 +152,13 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
             // Give players full health and food
             player.setHealth(20);
             player.setFoodLevel(20);
+
+            // Give resistance
+            player.addPotionEffect(new PotionEffect(
+                PotionEffectType.DAMAGE_RESISTANCE,
+                getConfig().getInt("grace-period") * 20,
+                255
+            ));
         }
     }
 
