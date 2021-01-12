@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.Iterator;
 
 import com.company.speedrunshowdown.commands.GiveCompassCommand;
-import com.company.speedrunshowdown.commands.SetTimeCommand;
 import com.company.speedrunshowdown.commands.StartCommand;
 import com.company.speedrunshowdown.commands.StopCommand;
 import com.company.speedrunshowdown.commands.SuddenDeathCommand;
@@ -55,7 +54,6 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         getCommand("start").setExecutor(new StartCommand(this));
         getCommand("stop").setExecutor(new StopCommand(this));
         getCommand("suddendeath").setExecutor(new SuddenDeathCommand(this));
-        getCommand("settime").setExecutor(new SetTimeCommand(this));
         getCommand("givecompass").setExecutor(new GiveCompassCommand(this));
         getCommand("win").setExecutor(new WinCommand(this));
         getServer().getPluginManager().registerEvents(new CompassUseListener(this), this);

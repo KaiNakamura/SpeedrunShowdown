@@ -15,11 +15,7 @@ commands:
   suddendeath:
     description: Begins sudden death
     permission: speedrunshowdown
-    usage: /suddendeath
-  settime:
-    description: Sets the time until sudden death
-    permission: speedrunshowdown
-    usage: /settime <seconds>
+    usage: /suddendeath [seconds]
   givecompass:
     description: Gives a tracking compass
     permission: speedrunshowdown
@@ -27,7 +23,7 @@ commands:
   win:
     description: Makes a team win the game
     permission: speedrunshowdown
-    usage: /win <team | player>
+    usage: /win (team|player)
 permissions:
   speedrunshowdown:
     description: Allows speedrunshowdown commands
