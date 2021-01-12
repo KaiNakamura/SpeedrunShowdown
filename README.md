@@ -71,7 +71,9 @@ The default team names are the following, but can be edited in the [config](#con
 | `/givecompass <player>` | Give tracking compass | All players are given a compass at the start of the game, this command is to be used if a player doesn't receive a compass) |
 | `/win (team\|player)` | Declare the winning team | The winning team automatically declared when dragon is killed, this command is to be used if something goes wrong such as the dragon being killed by an entity other than a player |
 
-*If a command from this plugin conflicts with a command from another plugin use the prefix `/speedrunshowdown:<command>`*
+*If a command from this plugin conflicts with a command from another plugin use the prefix*
+
+`/speedrunshowdown:<command>`
 
 ## Config
 
@@ -79,10 +81,10 @@ To edit the default configuration of the game navigate to the [config.yml](https
 
 | Attribute | Default | Description | Notes |
 | --- | --- | --- | --- |
-| `sudden-death-time` | 3600 *seconds* | The time in seconds until sudden death | |
-| `warning-times` | [60, 30, 15, 10, 5, 4, 3, 2, 1] *seconds* | The times in seconds at which a warning will be given before sudden death | |
-| `grace-period` | 30 *seconds* | The time in seconds until PvP is enabled | |
-| `respawn-invincibility` | 15 *seconds* | The time in seconds until a respawned player can be damaged | |
+| `sudden-death-time` | 3600 seconds | The time in seconds until sudden death | |
+| `warning-times` | [60, 30, 15, 10, 5, 4, 3, 2, 1] seconds | The times in seconds at which a warning will be given before sudden death | |
+| `grace-period` | 30 seconds | The time in seconds until PvP is enabled | |
+| `respawn-invincibility` | 15 seconds | The time in seconds until a respawned player can be damaged | |
 | `indestructable-spawners` | true | Make spawners indestructable | |
 | `prevent-bed-explosions` | true | Prevent players from exploding beds | Beds can still be used in the Overworld |
 | `prevent-respawn-anchor-explosions` | true | Prevent players from exploding respawn anchors | Respawn anchors can still be used in the Nether |
