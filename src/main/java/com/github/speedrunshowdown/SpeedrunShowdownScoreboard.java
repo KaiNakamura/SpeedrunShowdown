@@ -1,4 +1,4 @@
-package com.company.speedrunshowdown;
+package com.github.speedrunshowdown;
 
 import java.util.ArrayList;
 

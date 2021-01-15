@@ -1,4 +1,4 @@
-package com.company;
+package com.github.speedrunshowdown;
 
 import static org.junit.Assert.assertTrue;
 

@@ -1,6 +1,6 @@
-package com.company.speedrunshowdown.listeners;
+package com.github.speedrunshowdown.listeners;
 
-import com.company.speedrunshowdown.SpeedrunShowdown;
+import com.github.speedrunshowdown.SpeedrunShowdown;
 
 import org.bukkit.Location;
 import org.bukkit.World;

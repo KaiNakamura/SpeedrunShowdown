@@ -1,8 +1,8 @@
-package com.company.speedrunshowdown.listeners;
+package com.github.speedrunshowdown.listeners;
 
 import java.util.ArrayList;
 
-import com.company.speedrunshowdown.SpeedrunShowdown;
+import com.github.speedrunshowdown.SpeedrunShowdown;
 
 import org.bukkit.Location;
 import org.bukkit.Material;

@@ -1,20 +1,20 @@
-package com.company.speedrunshowdown;
+package com.github.speedrunshowdown;
 
 import java.util.Arrays;
 import java.util.Iterator;
 
-import com.company.speedrunshowdown.commands.GiveCompassCommand;
-import com.company.speedrunshowdown.commands.StartCommand;
-import com.company.speedrunshowdown.commands.StopCommand;
-import com.company.speedrunshowdown.commands.SuddenDeathCommand;
-import com.company.speedrunshowdown.commands.WinCommand;
-import com.company.speedrunshowdown.listeners.BedUseListener;
-import com.company.speedrunshowdown.listeners.BlockDamageListener;
-import com.company.speedrunshowdown.listeners.CompassUseListener;
-import com.company.speedrunshowdown.listeners.DragonKillListener;
-import com.company.speedrunshowdown.listeners.PlayerDeathListener;
-import com.company.speedrunshowdown.listeners.PlayerRespawnListener;
-import com.company.speedrunshowdown.listeners.RespawnAnchorUseListener;
+import com.github.speedrunshowdown.commands.GiveCompassCommand;
+import com.github.speedrunshowdown.commands.StartCommand;
+import com.github.speedrunshowdown.commands.StopCommand;
+import com.github.speedrunshowdown.commands.SuddenDeathCommand;
+import com.github.speedrunshowdown.commands.WinCommand;
+import com.github.speedrunshowdown.listeners.BedUseListener;
+import com.github.speedrunshowdown.listeners.BlockDamageListener;
+import com.github.speedrunshowdown.listeners.CompassUseListener;
+import com.github.speedrunshowdown.listeners.DragonKillListener;
+import com.github.speedrunshowdown.listeners.PlayerDeathListener;
+import com.github.speedrunshowdown.listeners.PlayerRespawnListener;
+import com.github.speedrunshowdown.listeners.RespawnAnchorUseListener;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
