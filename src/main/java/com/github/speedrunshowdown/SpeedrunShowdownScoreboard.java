@@ -14,7 +14,7 @@ public class SpeedrunShowdownScoreboard {
     private SpeedrunShowdown plugin;
     private Scoreboard scoreboard;
 
-    public SpeedrunShowdownScoreboard (SpeedrunShowdown plugin) {
+    public SpeedrunShowdownScoreboard(SpeedrunShowdown plugin) {
         this.plugin = plugin;
 
         // Get scoreboard
