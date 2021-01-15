@@ -1,7 +1,7 @@
 name: SpeedrunShowdown
 version: 1.0
 author: KaiNakamura
-main: com.company.speedrunshowdown.SpeedrunShowdown
+main: com.github.speedrunshowdown.SpeedrunShowdown
 api-version: 1.16
 commands:
   start:
