@@ -240,7 +240,6 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         player.getInventory().addItem(compass);
     }
 
-
     public void win(Team team, String subtitle) {
         for (Player player : getServer().getOnlinePlayers()) {
             player.playSound(player.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1, 1);
