@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.github.speedrunshowdown.SpeedrunShowdown;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -17,8 +18,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.CompassMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scoreboard.Team;
-
-import net.md_5.bungee.api.ChatColor;
 
 public class CompassUseListener implements Listener {
     private SpeedrunShowdown plugin;
