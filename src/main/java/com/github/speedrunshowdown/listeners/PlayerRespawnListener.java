@@ -46,7 +46,7 @@ public class PlayerRespawnListener implements Listener {
             if (plugin.isSuddenDeath()) {
                 World end = plugin.getServer().getWorld("world_the_end");
                 event.setRespawnLocation(
-                    new Location(end, 0.5, end.getHighestBlockYAt(0, 0) + 1, 0.5)
+                    new Location(end, 0.5, end.getHighestBlockYAt(0, 0) + 1, 0.5, 0, 90)
                 );
             }
         }

@@ -202,7 +202,7 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
 
             // Teleport to the end
             World end = getServer().getWorld("world_the_end");
-            player.teleport(new Location(end, 0.5, end.getHighestBlockYAt(0, 0) + 1, 0.5));
+            player.teleport(new Location(end, 0.5, end.getHighestBlockYAt(0, 0) + 1, 0.5, 0, 90));
 
             // Give resistance
             player.addPotionEffect(new PotionEffect(
