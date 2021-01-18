@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.github.speedrunshowdown.SpeedrunShowdown;
 
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -48,9 +49,10 @@ public class CompassUseListener implements Listener {
                         // Loop over all entries on team
                         for (String entry : team.getEntries()) {
                             Player otherPlayer = plugin.getServer().getPlayer(entry);
-                            // If other player exists and is in the same world, add to list
+                            // If other player exists, is alive, and is in the same world, add to list
                             if (
                                 otherPlayer != null &&
+                                otherPlayer.getGameMode() != GameMode.SPECTATOR && 
                                 otherPlayer.getWorld().getEnvironment() == player.getWorld().getEnvironment()
                             ) {
                                 otherPlayers.add(otherPlayer);
@@ -65,9 +67,10 @@ public class CompassUseListener implements Listener {
                         // Loop over all entries on team
                         for (String entry : team.getEntries()) {
                             Player otherPlayer = plugin.getServer().getPlayer(entry);
-                            // If other player exists and is in the same world, add to list
+                            // If other player exists, is alive, and is in the same world, add to list
                             if (
                                 otherPlayer != null &&
+                                otherPlayer.getGameMode() != GameMode.SPECTATOR && 
                                 otherPlayer.getWorld().getEnvironment() == player.getWorld().getEnvironment() &&
                                 otherPlayer.getUniqueId() != player.getUniqueId()
                             ) {
