@@ -39,8 +39,6 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scoreboard.Team;
 
-// TODO: tab decoration
-// TODO: disable guardians
 public class SpeedrunShowdown extends JavaPlugin implements Runnable {
     private boolean running = false;
     private boolean suddenDeath = false;
