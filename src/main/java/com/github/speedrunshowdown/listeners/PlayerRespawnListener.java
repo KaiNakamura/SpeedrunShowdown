@@ -23,6 +23,11 @@ public class PlayerRespawnListener implements Listener {
         if (plugin.isRunning()) {
             final Player player = event.getPlayer();
 
+            // If sudden death, give sudden death kit
+            if (plugin.isSuddenDeath()) {
+                plugin.giveSuddenDeathKit(player);
+            }
+
             // Give player compass
             plugin.giveCompass(player);
 

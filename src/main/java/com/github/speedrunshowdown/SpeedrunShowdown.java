@@ -238,6 +238,16 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         player.getInventory().addItem(compass);
     }
 
+    public void giveSuddenDeathKit(Player player) {
+        player.getInventory().setHelmet(new ItemStack(Material.LEATHER_HELMET));
+        player.getInventory().setChestplate(new ItemStack(Material.LEATHER_CHESTPLATE));
+        player.getInventory().setLeggings(new ItemStack(Material.LEATHER_LEGGINGS));
+        player.getInventory().setBoots(new ItemStack(Material.LEATHER_BOOTS));
+        player.getInventory().setItemInOffHand(new ItemStack(Material.SHIELD));
+        player.getInventory().addItem(new ItemStack(Material.STONE_AXE));
+        player.getInventory().addItem(new ItemStack(Material.BREAD, 12));
+    }
+
     public void win(Team team, String subtitle) {
         for (Player player : getServer().getOnlinePlayers()) {
             player.playSound(player.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1, 1);
