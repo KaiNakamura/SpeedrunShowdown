@@ -207,7 +207,7 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
             // Give resistance
             player.addPotionEffect(new PotionEffect(
                 PotionEffectType.DAMAGE_RESISTANCE,
-                100, // ticks
+                getConfig().getInt("respawn-invincibility") * 20,
                 255
             ));
 
