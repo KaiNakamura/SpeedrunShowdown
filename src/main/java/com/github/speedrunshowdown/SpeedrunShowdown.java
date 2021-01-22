@@ -245,6 +245,8 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         player.getInventory().setBoots(new ItemStack(Material.LEATHER_BOOTS));
         player.getInventory().setItemInOffHand(new ItemStack(Material.SHIELD));
         player.getInventory().addItem(new ItemStack(Material.STONE_AXE));
+        player.getInventory().addItem(new ItemStack(Material.ARROW, 16));
+        player.getInventory().addItem(new ItemStack(Material.BOW));
         player.getInventory().addItem(new ItemStack(Material.BREAD, 12));
     }
 
