@@ -3,7 +3,7 @@ package com.github.speedrunshowdown;
 import java.util.Arrays;
 import java.util.Iterator;
 
-import com.github.speedrunshowdown.commands.GiveCompassCommand;
+import com.github.speedrunshowdown.commands.KitCommand;
 import com.github.speedrunshowdown.commands.StartCommand;
 import com.github.speedrunshowdown.commands.StopCommand;
 import com.github.speedrunshowdown.commands.SuddenDeathCommand;
@@ -14,6 +14,7 @@ import com.github.speedrunshowdown.listeners.CompassUseListener;
 import com.github.speedrunshowdown.listeners.DragonKillListener;
 import com.github.speedrunshowdown.listeners.PlayerDeathListener;
 import com.github.speedrunshowdown.listeners.PlayerRespawnListener;
+import com.github.speedrunshowdown.listeners.PortalEnterListener;
 import com.github.speedrunshowdown.listeners.RespawnAnchorUseListener;
 
 import org.bukkit.ChatColor;
@@ -34,6 +35,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -52,7 +54,7 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         getCommand("start").setExecutor(new StartCommand(this));
         getCommand("stop").setExecutor(new StopCommand(this));
         getCommand("suddendeath").setExecutor(new SuddenDeathCommand(this));
-        getCommand("givecompass").setExecutor(new GiveCompassCommand(this));
+        getCommand("kit").setExecutor(new KitCommand(this));
         getCommand("win").setExecutor(new WinCommand(this));
         getServer().getPluginManager().registerEvents(new CompassUseListener(this), this);
         getServer().getPluginManager().registerEvents(new PlayerDeathListener(this), this);
@@ -60,6 +62,7 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         getServer().getPluginManager().registerEvents(new BlockDamageListener(this), this);
         getServer().getPluginManager().registerEvents(new BedUseListener(this), this);
         getServer().getPluginManager().registerEvents(new RespawnAnchorUseListener(this), this);
+        getServer().getPluginManager().registerEvents(new PortalEnterListener(this), this);
         getServer().getPluginManager().registerEvents(new DragonKillListener(this), this);
 
         saveDefaultConfig();
@@ -136,8 +139,11 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
 
         // For every player
         for (Player player : getServer().getOnlinePlayers()) {
-            // Give compass
-            giveCompass(player);
+            // Clear inventory
+            player.getInventory().clear();
+
+            // Give kit
+            kit(player);
 
             // Revoke all advancements
             Iterator<Advancement> advancements = getServer().advancementIterator();
@@ -225,24 +231,61 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         }
     }
 
-    public void giveCompass(Player player) {
+    public void kit(Player player) {
+        // Create items
         ItemStack compass = new ItemStack(Material.COMPASS);
-        ItemMeta itemMeta = compass.getItemMeta();
-        itemMeta.addEnchant(Enchantment.VANISHING_CURSE, 1, false);
-        itemMeta.setDisplayName(ChatColor.WHITE + "Tracking Compass");
-        itemMeta.setLore(Arrays.asList(
+        ItemMeta compassMeta = compass.getItemMeta();
+
+        ItemStack helmet = new ItemStack(Material.LEATHER_HELMET);
+        ItemMeta helmetMeta = helmet.getItemMeta();
+
+        ItemStack chestplate = new ItemStack(Material.LEATHER_CHESTPLATE);
+        ItemMeta chestplateMeta = chestplate.getItemMeta();
+
+        ItemStack leggings = new ItemStack(Material.IRON_LEGGINGS);
+        ItemMeta leggingsMeta = leggings.getItemMeta();
+
+        ItemStack boots = new ItemStack(Material.IRON_BOOTS);
+        ItemMeta bootsMeta = boots.getItemMeta();
+
+        // Add compass info
+        compassMeta.setDisplayName(ChatColor.WHITE + "Tracking Compass");
+        compassMeta.setLore(Arrays.asList(
             ChatColor.GRAY + "Right click to point to nearest enemy",
             ChatColor.GRAY + "Left click to point to nearest teammate"
         ));
-        compass.setItemMeta(itemMeta);
+
+        // If player belongs to a team, dye armor
+        Team team = speedrunShowdownScoreboard.getTeam(player);
+        if (team != null) {
+            Color color = chatColorToColor(team.getColor());
+            ((LeatherArmorMeta) helmetMeta).setColor(color);
+            ((LeatherArmorMeta) chestplateMeta).setColor(color);
+        }
+
+        // Add curse of vanishing
+        compassMeta.addEnchant(Enchantment.VANISHING_CURSE, 1, false);
+        helmetMeta.addEnchant(Enchantment.VANISHING_CURSE, 1, false);
+        chestplateMeta.addEnchant(Enchantment.VANISHING_CURSE, 1, false);
+        leggingsMeta.addEnchant(Enchantment.VANISHING_CURSE, 1, false);
+        helmetMeta.addEnchant(Enchantment.VANISHING_CURSE, 1, false);
+
+        // Set item metas
+        compass.setItemMeta(compassMeta);
+        helmet.setItemMeta(helmetMeta);
+        chestplate.setItemMeta(chestplateMeta);
+        leggings.setItemMeta(leggingsMeta);
+        boots.setItemMeta(bootsMeta);
+
+        // Give items
         player.getInventory().addItem(compass);
+        player.getInventory().setHelmet(helmet);
+        player.getInventory().setChestplate(chestplate);
+        player.getInventory().setLeggings(leggings);
+        player.getInventory().setBoots(boots);
     }
 
     public void giveSuddenDeathKit(Player player) {
-        player.getInventory().setHelmet(new ItemStack(Material.LEATHER_HELMET));
-        player.getInventory().setChestplate(new ItemStack(Material.LEATHER_CHESTPLATE));
-        player.getInventory().setLeggings(new ItemStack(Material.LEATHER_LEGGINGS));
-        player.getInventory().setBoots(new ItemStack(Material.LEATHER_BOOTS));
         player.getInventory().setItemInOffHand(new ItemStack(Material.SHIELD));
         player.getInventory().addItem(new ItemStack(Material.STONE_AXE));
         player.getInventory().addItem(new ItemStack(Material.ARROW, 16));

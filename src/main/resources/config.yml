@@ -2,6 +2,7 @@ sudden-death-time: 3600 # seconds
 warning-times: [60, 30, 15, 10, 5, 4, 3, 2, 1] # seconds
 grace-period: 30 # seconds
 respawn-invincibility: 15 # seconds
+portal-invincibility: 15 # seconds
 indestructable-spawners: true
 prevent-bed-explosions: true
 prevent-respawn-anchor-explosions: true

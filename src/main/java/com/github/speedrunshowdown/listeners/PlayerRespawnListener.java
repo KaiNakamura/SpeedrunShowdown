@@ -28,8 +28,8 @@ public class PlayerRespawnListener implements Listener {
                 plugin.giveSuddenDeathKit(player);
             }
 
-            // Give player compass
-            plugin.giveCompass(player);
+            // Give player kit
+            plugin.kit(player);
 
             // Give resistance
             plugin.getServer().getScheduler().scheduleSyncDelayedTask(

@@ -7,33 +7,33 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class GiveCompassCommand implements CommandExecutor {
+public class KitCommand implements CommandExecutor {
     private SpeedrunShowdown plugin;
 
-    public GiveCompassCommand(SpeedrunShowdown plugin) {
+    public KitCommand(SpeedrunShowdown plugin) {
         this.plugin = plugin;
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        // If no arguments given, try to give the sender a compass
+        // If no arguments given, try to give the sender a kit
         if (args.length == 0) {
-            // If sender is a player, give player compass
+            // If sender is a player, give player kit
             if (sender instanceof Player) {
-                plugin.giveCompass((Player) sender);
+                plugin.kit((Player) sender);
             }
             // Else, give warning
             else {
                 sender.sendMessage(plugin.getCommand("givecompass").getUsage());
             }
         }
-        // Else if given @a, give compass to everyone except the runner
+        // Else if given @a, give kit to everyone
         else if (args[0].equalsIgnoreCase("@a")) {
             for (Player player : plugin.getServer().getOnlinePlayers()) {
-                plugin.giveCompass(player);
+                plugin.kit(player);
             }
         }
-        // Else, try to give compass to player name
+        // Else, try to give kit to player name
         else {
             Player player = plugin.getServer().getPlayer(args[0]);
 
@@ -41,7 +41,7 @@ public class GiveCompassCommand implements CommandExecutor {
                 sender.sendMessage("Player not found with name: " + args[0]);
             }
             else {
-                plugin.giveCompass(player);
+                plugin.kit(player);
             }
         }
 
