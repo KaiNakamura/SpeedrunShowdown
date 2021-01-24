@@ -69,6 +69,7 @@ The default team names are the following, but can be edited in the [config](#con
 | `/stop` | Stop the game | |
 | `/suddendeath [seconds]` | Set time until sudden death | If no time given, starts immediately |
 | `/kit [player]` | Give kit | All players are given a kit at the start of the game, this command is to be used if a player doesn't receive a kit |
+| `/givecompass [player]` | Give a tracking compass | All players are given a compass at the start of the game, this command is to be used if a player doesn't receive a compass |
 | `/win (team\|player)` | Declare the winning team | The winning team automatically declared when dragon is killed, this command is to be used if something goes wrong such as the dragon being killed by an entity other than a player |
 
 *If a command from this plugin conflicts with a command from another plugin use the prefix:*

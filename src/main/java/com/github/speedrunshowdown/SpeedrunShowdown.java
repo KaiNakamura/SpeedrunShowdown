@@ -3,6 +3,7 @@ package com.github.speedrunshowdown;
 import java.util.Arrays;
 import java.util.Iterator;
 
+import com.github.speedrunshowdown.commands.GiveCompassCommand;
 import com.github.speedrunshowdown.commands.KitCommand;
 import com.github.speedrunshowdown.commands.StartCommand;
 import com.github.speedrunshowdown.commands.StopCommand;
@@ -55,6 +56,7 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         getCommand("stop").setExecutor(new StopCommand(this));
         getCommand("suddendeath").setExecutor(new SuddenDeathCommand(this));
         getCommand("kit").setExecutor(new KitCommand(this));
+        getCommand("givecompass").setExecutor(new GiveCompassCommand(this));
         getCommand("win").setExecutor(new WinCommand(this));
         getServer().getPluginManager().registerEvents(new CompassUseListener(this), this);
         getServer().getPluginManager().registerEvents(new PlayerDeathListener(this), this);
@@ -231,11 +233,24 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         }
     }
 
-    public void kit(Player player) {
-        // Create items
+    public void giveCompass(Player player) {
         ItemStack compass = new ItemStack(Material.COMPASS);
         ItemMeta compassMeta = compass.getItemMeta();
 
+        // Add compass info
+        compassMeta.setDisplayName(ChatColor.WHITE + "Tracking Compass");
+        compassMeta.setLore(Arrays.asList(
+            ChatColor.GRAY + "Right click to point to nearest enemy",
+            ChatColor.GRAY + "Left click to point to nearest teammate"
+        ));
+
+        compassMeta.addEnchant(Enchantment.VANISHING_CURSE, 1, false);
+        compass.setItemMeta(compassMeta);
+        player.getInventory().addItem(compass);
+    }
+
+    public void kit(Player player) {
+        // Create items
         ItemStack helmet = new ItemStack(Material.LEATHER_HELMET);
         ItemMeta helmetMeta = helmet.getItemMeta();
 
@@ -248,13 +263,6 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         ItemStack boots = new ItemStack(Material.IRON_BOOTS);
         ItemMeta bootsMeta = boots.getItemMeta();
 
-        // Add compass info
-        compassMeta.setDisplayName(ChatColor.WHITE + "Tracking Compass");
-        compassMeta.setLore(Arrays.asList(
-            ChatColor.GRAY + "Right click to point to nearest enemy",
-            ChatColor.GRAY + "Left click to point to nearest teammate"
-        ));
-
         // If player belongs to a team, dye armor
         Team team = speedrunShowdownScoreboard.getTeam(player);
         if (team != null) {
@@ -264,21 +272,19 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         }
 
         // Add curse of vanishing
-        compassMeta.addEnchant(Enchantment.VANISHING_CURSE, 1, false);
         helmetMeta.addEnchant(Enchantment.VANISHING_CURSE, 1, false);
         chestplateMeta.addEnchant(Enchantment.VANISHING_CURSE, 1, false);
         leggingsMeta.addEnchant(Enchantment.VANISHING_CURSE, 1, false);
         helmetMeta.addEnchant(Enchantment.VANISHING_CURSE, 1, false);
 
         // Set item metas
-        compass.setItemMeta(compassMeta);
         helmet.setItemMeta(helmetMeta);
         chestplate.setItemMeta(chestplateMeta);
         leggings.setItemMeta(leggingsMeta);
         boots.setItemMeta(bootsMeta);
 
         // Give items
-        player.getInventory().addItem(compass);
+        giveCompass(player);
         player.getInventory().setHelmet(helmet);
         player.getInventory().setChestplate(chestplate);
         player.getInventory().setLeggings(leggings);

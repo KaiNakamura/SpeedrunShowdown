@@ -20,6 +20,10 @@ commands:
     description: Gives a kit
     permission: speedrunshowdown
     usage: /kit [player]
+  givecompass:
+    description: Gives a tracking compass
+    permission: speedrunshowdown
+    usage: /givecompass [player]
   win:
     description: Makes a team win the game
     permission: speedrunshowdown
