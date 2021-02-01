@@ -69,7 +69,7 @@ The default team names are the following, but can be edited in the [config](#con
 | `/stop` | Stop the game | |
 | `/suddendeath [seconds]` | Set time until sudden death | If no time given, starts immediately |
 | `/givecompass [player]` | Give a tracking compass | All players are given a compass at the start of the game, this command is to be used if a player doesn't receive a compass |
-| `/kit [player]` | Give armor | All players are given armor at the start of the game if `give-armor` is set to true in the [config](#config), this command is to be used if a player doesn't receive armor |
+| `/givearmor [player]` | Give armor | All players are given armor at the start of the game if `give-armor` is set to true in the [config](#config), this command is to be used if a player doesn't receive armor |
 | `/win (team\|player)` | Declare the winning team | The winning team automatically declared when dragon is killed, this command is to be used if something goes wrong such as the dragon being killed by an entity other than a player |
 
 *If a command from this plugin conflicts with a command from another plugin use the prefix:*
