@@ -34,6 +34,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
@@ -291,10 +292,19 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         boots.setItemMeta(bootsMeta);
 
         // Give items
-        player.getInventory().setHelmet(helmet);
-        player.getInventory().setChestplate(chestplate);
-        player.getInventory().setLeggings(leggings);
-        player.getInventory().setBoots(boots);
+        PlayerInventory playerInventory = player.getInventory();
+        if (playerInventory.getHelmet() == null) {
+            player.getInventory().setHelmet(helmet);
+        }
+        if (playerInventory.getChestplate() == null) {
+            player.getInventory().setChestplate(chestplate);
+        }
+        if (playerInventory.getLeggings() == null) {
+            player.getInventory().setLeggings(leggings);
+        }
+        if (playerInventory.getBoots() == null) {
+            player.getInventory().setBoots(boots);
+        }
     }
 
     public void giveSuddenDeathKit(Player player) {
