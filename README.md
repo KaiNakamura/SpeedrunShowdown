@@ -2,7 +2,7 @@
 [![maven](https://github.com/KaiNakamura/SpeedrunShowdown/workflows/maven/badge.svg)](https://github.com/KaiNakamura/SpeedrunShowdown/actions)
 
 <p align="center">
-	<a href="https://github.com/KaiNakamura/SpeedrunShowdown">
+	<a href="https://smash.gg/mcss">
 		<img src="logo.png" alt="logo" width="300" height="300"/>
 	</a>
 </p>
