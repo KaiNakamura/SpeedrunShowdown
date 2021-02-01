@@ -7,6 +7,7 @@ indestructable-spawners: true
 prevent-bed-explosions: true
 prevent-respawn-anchor-explosions: true
 must-kill-dragon-to-win: true
+give-armor: false
 teams:
   redstone: "RED"
   lapis: "BLUE"

@@ -23,13 +23,18 @@ public class PlayerRespawnListener implements Listener {
         if (plugin.isRunning()) {
             final Player player = event.getPlayer();
 
-            // If sudden death, give sudden death kit
+            // If sudden death, give sudden death kit and armor
             if (plugin.isSuddenDeath()) {
                 plugin.giveSuddenDeathKit(player);
+                plugin.giveArmor(player);
+            }
+            // Else if plugin should give armor, give armor
+            else if (plugin.getConfig().getBoolean("give-armor")) {
+                plugin.giveArmor(player);
             }
 
-            // Give player kit
-            plugin.kit(player);
+            // Give compass
+            plugin.giveCompass(player);
 
             // Give resistance
             plugin.getServer().getScheduler().scheduleSyncDelayedTask(

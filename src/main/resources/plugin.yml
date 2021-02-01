@@ -16,14 +16,14 @@ commands:
     description: Begins sudden death
     permission: speedrunshowdown
     usage: /suddendeath [seconds]
-  kit:
-    description: Gives a kit
-    permission: speedrunshowdown
-    usage: /kit [player]
   givecompass:
     description: Gives a tracking compass
     permission: speedrunshowdown
     usage: /givecompass [player]
+  givearmor:
+    description: Gives armor
+    permission: speedrunshowdown
+    usage: /givearmor [player]
   win:
     description: Makes a team win the game
     permission: speedrunshowdown

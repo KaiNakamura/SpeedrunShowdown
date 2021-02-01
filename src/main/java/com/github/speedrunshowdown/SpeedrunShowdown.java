@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 
 import com.github.speedrunshowdown.commands.GiveCompassCommand;
-import com.github.speedrunshowdown.commands.KitCommand;
+import com.github.speedrunshowdown.commands.GiveArmorCommand;
 import com.github.speedrunshowdown.commands.StartCommand;
 import com.github.speedrunshowdown.commands.StopCommand;
 import com.github.speedrunshowdown.commands.SuddenDeathCommand;
@@ -55,8 +55,8 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         getCommand("start").setExecutor(new StartCommand(this));
         getCommand("stop").setExecutor(new StopCommand(this));
         getCommand("suddendeath").setExecutor(new SuddenDeathCommand(this));
-        getCommand("kit").setExecutor(new KitCommand(this));
         getCommand("givecompass").setExecutor(new GiveCompassCommand(this));
+        getCommand("givearmor").setExecutor(new GiveArmorCommand(this));
         getCommand("win").setExecutor(new WinCommand(this));
         getServer().getPluginManager().registerEvents(new CompassUseListener(this), this);
         getServer().getPluginManager().registerEvents(new PlayerDeathListener(this), this);
@@ -144,8 +144,13 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
             // Clear inventory
             player.getInventory().clear();
 
-            // Give kit
-            kit(player);
+            // If plugin should give armor, give armor
+            if (getConfig().getBoolean("give-armor")) {
+                giveArmor(player);
+            }
+
+            // Give compass
+            giveCompass(player);
 
             // Revoke all advancements
             Iterator<Advancement> advancements = getServer().advancementIterator();
@@ -249,7 +254,7 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         player.getInventory().addItem(compass);
     }
 
-    public void kit(Player player) {
+    public void giveArmor(Player player) {
         // Create items
         ItemStack helmet = new ItemStack(Material.LEATHER_HELMET);
         ItemMeta helmetMeta = helmet.getItemMeta();
@@ -257,10 +262,10 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         ItemStack chestplate = new ItemStack(Material.LEATHER_CHESTPLATE);
         ItemMeta chestplateMeta = chestplate.getItemMeta();
 
-        ItemStack leggings = new ItemStack(Material.IRON_LEGGINGS);
+        ItemStack leggings = new ItemStack(Material.LEATHER_LEGGINGS);
         ItemMeta leggingsMeta = leggings.getItemMeta();
 
-        ItemStack boots = new ItemStack(Material.IRON_BOOTS);
+        ItemStack boots = new ItemStack(Material.LEATHER_BOOTS);
         ItemMeta bootsMeta = boots.getItemMeta();
 
         // If player belongs to a team, dye armor
@@ -269,13 +274,15 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
             Color color = chatColorToColor(team.getColor());
             ((LeatherArmorMeta) helmetMeta).setColor(color);
             ((LeatherArmorMeta) chestplateMeta).setColor(color);
+            ((LeatherArmorMeta) leggingsMeta).setColor(color);
+            ((LeatherArmorMeta) bootsMeta).setColor(color);
         }
 
         // Add curse of vanishing
         helmetMeta.addEnchant(Enchantment.VANISHING_CURSE, 1, false);
         chestplateMeta.addEnchant(Enchantment.VANISHING_CURSE, 1, false);
         leggingsMeta.addEnchant(Enchantment.VANISHING_CURSE, 1, false);
-        helmetMeta.addEnchant(Enchantment.VANISHING_CURSE, 1, false);
+        bootsMeta.addEnchant(Enchantment.VANISHING_CURSE, 1, false);
 
         // Set item metas
         helmet.setItemMeta(helmetMeta);
@@ -284,7 +291,6 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         boots.setItemMeta(bootsMeta);
 
         // Give items
-        giveCompass(player);
         player.getInventory().setHelmet(helmet);
         player.getInventory().setChestplate(chestplate);
         player.getInventory().setLeggings(leggings);

@@ -68,8 +68,8 @@ The default team names are the following, but can be edited in the [config](#con
 | `/start` | Start the game | Sets time to 0 and gives all players a tracking compass, full health, and full hunger |
 | `/stop` | Stop the game | |
 | `/suddendeath [seconds]` | Set time until sudden death | If no time given, starts immediately |
-| `/kit [player]` | Give kit | All players are given a kit at the start of the game, this command is to be used if a player doesn't receive a kit |
 | `/givecompass [player]` | Give a tracking compass | All players are given a compass at the start of the game, this command is to be used if a player doesn't receive a compass |
+| `/kit [player]` | Give armor | All players are given armor at the start of the game if `give-armor` is set to true in the [config](#config), this command is to be used if a player doesn't receive armor |
 | `/win (team\|player)` | Declare the winning team | The winning team automatically declared when dragon is killed, this command is to be used if something goes wrong such as the dragon being killed by an entity other than a player |
 
 *If a command from this plugin conflicts with a command from another plugin use the prefix:*
@@ -91,6 +91,7 @@ To edit the default configuration of the game navigate to the [config.yml](https
 | `prevent-bed-explosions` | true | Prevent players from exploding beds | Beds can still be used in the Overworld |
 | `prevent-respawn-anchor-explosions` | true | Prevent players from exploding respawn anchors | Respawn anchors can still be used in the Nether |
 | `must-kill-dragon-to-win` | true | Players must kill the dragon to win | If set to false, the last remaining team will be declared the winner, otherwise if all teams are dead players will be respawned |
+| `give-armor` | false | Give leather armor to players at start and on respawn | Armor is dyed to the team color and has curse of vanishing |
 | `teams` | See [teams](#teams) | The team names and colors | A team requires a name and a color, `name: "COLOR"`, the color must be a [Minecraft color code](https://minecraft.gamepedia.com/Formatting_codes#Color_codes): BLACK, DARK_BLUE, DARK_GREEN, DARK_AQUA, DARK_RED, DARK_PURPLE, GOLD, GRAY, DARK_GRAY, BLUE, GREEN, AQUA, RED, LIGHT_PURPLE, YELLOW, WHITE |
 
 ## Issues
