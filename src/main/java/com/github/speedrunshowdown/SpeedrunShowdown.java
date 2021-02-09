@@ -3,12 +3,7 @@ package com.github.speedrunshowdown;
 import java.util.Arrays;
 import java.util.Iterator;
 
-import com.github.speedrunshowdown.commands.GiveCompassCommand;
-import com.github.speedrunshowdown.commands.GiveArmorCommand;
-import com.github.speedrunshowdown.commands.StartCommand;
-import com.github.speedrunshowdown.commands.StopCommand;
-import com.github.speedrunshowdown.commands.SuddenDeathCommand;
-import com.github.speedrunshowdown.commands.WinCommand;
+import com.github.speedrunshowdown.commands.*;
 import com.github.speedrunshowdown.listeners.*;
 
 import org.bukkit.ChatColor;

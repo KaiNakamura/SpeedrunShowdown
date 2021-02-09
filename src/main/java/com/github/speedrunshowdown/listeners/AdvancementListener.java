@@ -18,7 +18,7 @@ public class AdvancementListener implements Listener {
     @EventHandler
     public void onAdvancementObtained(final PlayerAdvancementDoneEvent event) {
         // Unfortunately Spigot does not provide a method to cancel this event so we have to come up with our own tomfoolery.
-        if (plugin.isRunning() && plugin.getConfig().getBoolean("hide-spectator-advancements-in-chat")) {
+        if (plugin.isRunning() && plugin.getConfig().getBoolean("hide-spectator-advancements")) {
             event.getPlayer().getWorld().setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, true);
             if (event.getPlayer().getGameMode() == GameMode.SPECTATOR) {
                 event.getPlayer().getWorld().setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, false);
