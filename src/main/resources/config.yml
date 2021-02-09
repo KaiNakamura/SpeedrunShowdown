@@ -8,6 +8,7 @@ prevent-bed-explosions: true
 prevent-respawn-anchor-explosions: true
 must-kill-dragon-to-win: true
 give-armor: false
+hide-spectator-advancements-in-chat: true
 teams:
   redstone: "RED"
   lapis: "BLUE"

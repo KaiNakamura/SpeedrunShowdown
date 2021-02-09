@@ -9,14 +9,7 @@ import com.github.speedrunshowdown.commands.StartCommand;
 import com.github.speedrunshowdown.commands.StopCommand;
 import com.github.speedrunshowdown.commands.SuddenDeathCommand;
 import com.github.speedrunshowdown.commands.WinCommand;
-import com.github.speedrunshowdown.listeners.BedUseListener;
-import com.github.speedrunshowdown.listeners.BlockDamageListener;
-import com.github.speedrunshowdown.listeners.CompassUseListener;
-import com.github.speedrunshowdown.listeners.DragonKillListener;
-import com.github.speedrunshowdown.listeners.PlayerDeathListener;
-import com.github.speedrunshowdown.listeners.PlayerRespawnListener;
-import com.github.speedrunshowdown.listeners.PortalEnterListener;
-import com.github.speedrunshowdown.listeners.RespawnAnchorUseListener;
+import com.github.speedrunshowdown.listeners.*;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
@@ -67,6 +60,7 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         getServer().getPluginManager().registerEvents(new RespawnAnchorUseListener(this), this);
         getServer().getPluginManager().registerEvents(new PortalEnterListener(this), this);
         getServer().getPluginManager().registerEvents(new DragonKillListener(this), this);
+        getServer().getPluginManager().registerEvents(new AdvancementListener(this), this);
 
         saveDefaultConfig();
 
@@ -114,7 +108,7 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
 
         speedrunShowdownScoreboard.update();
     }
-    
+
     public void start() {
         // If already running, cancel start
         if (running) {
