@@ -91,7 +91,7 @@ To edit the default configuration of the game navigate to the [config.yml](https
 | `prevent-bed-explosions` | true | Prevent players from exploding beds | Beds can still be used in the Overworld |
 | `prevent-respawn-anchor-explosions` | true | Prevent players from exploding respawn anchors | Respawn anchors can still be used in the Nether |
 | `must-kill-dragon-to-win` | true | Players must kill the dragon to win | If set to false, the last remaining team will be declared the winner, otherwise if all teams are dead players will be respawned |
-| `hide-spectator-advancements` | true | Hide advancements earned by spectators from being announced in chat. | Spectators are defined as anyone in spectator /gamemode |
+| `hide-spectator-advancements` | true | Hide advancements earned by spectators from being announced in chat | Spectators are defined as anyone in spectator /gamemode |
 | `give-armor` | false | Give leather armor to players at start and on respawn | Armor is dyed to the team color and has curse of vanishing |
 | `teams` | See [teams](#teams) | The team names and colors | A team requires a name and a color, `name: "COLOR"`, the color must be a [Minecraft color code](https://minecraft.gamepedia.com/Formatting_codes#Color_codes): BLACK, DARK_BLUE, DARK_GREEN, DARK_AQUA, DARK_RED, DARK_PURPLE, GOLD, GRAY, DARK_GRAY, BLUE, GREEN, AQUA, RED, LIGHT_PURPLE, YELLOW, WHITE |
 
