@@ -1,10 +1,20 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/KaiNakamura/SpeedrunShowdown/blob/master/LICENSE)
 [![maven](https://github.com/KaiNakamura/SpeedrunShowdown/workflows/maven/badge.svg)](https://github.com/KaiNakamura/SpeedrunShowdown/actions)
+[![downloads](https://img.shields.io/github/downloads/KaiNakamura/SpeedrunShowdown/total)](https://github.com/KaiNakamura/SpeedrunShowdown/releases)
 
 <p align="center">
-	<a href="https://smash.gg/mcss">
+	<a href="https://github.com/KaiNakamura/SpeedrunShowdown">
 		<img src="logo.png" alt="logo" width="300" height="300"/>
 	</a>
+	<h2 align="center">
+		Minecraft Speedrunning and PvP Plugin
+		<br />
+		<a href="https://smash.gg/mcss">Tournament</a>
+		·
+		<a href="https://github.com/KaiNakamura/SpeedrunShowdown/issues">Report Bug</a>
+		·
+		<a href="#installation"><b>INSTALLATION INSTRUCTIONS</b></a>
+	</h2>
 </p>
 
 ## Table of Contents
@@ -16,6 +26,7 @@
 	* [Commands](#commands)
 * [Config](#config)
 * [Issues](#issues)
+* [License](#license)
 
 ## About
 
@@ -99,3 +110,7 @@ To edit the default configuration of the game navigate to the [config.yml](https
 ## Issues
 
 To report a bug or to request a feature go [here](https://github.com/KaiNakamura/SpeedrunShowdown/issues)
+
+## License
+
+Distributed under the [MIT License](https://github.com/KaiNakamura/SpeedrunShowdown/blob/master/LICENSE)
