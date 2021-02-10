@@ -83,6 +83,7 @@ To edit the default configuration of the game navigate to the [config.yml](https
 | Attribute | Default | Description | Notes |
 | --- | --- | --- | --- |
 | `sudden-death-time` | 3600 seconds | The time in seconds until sudden death | |
+| `countdown-time` | 3 seconds | The time in seconds to count before the game begins | |
 | `warning-times` | [60, 30, 15, 10, 5, 4, 3, 2, 1] seconds | The times in seconds at which a warning will be given before sudden death | |
 | `grace-period` | 30 seconds | The time in seconds until PvP is enabled | |
 | `respawn-invincibility` | 15 seconds | The time in seconds until a respawned player can be damaged | |

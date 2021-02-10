@@ -19,45 +19,44 @@ public class StartCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (plugin.isRunning()) sender.sendMessage(ChatColor.RED + "Game already started!");
-        sender.sendMessage(ChatColor.GREEN + "Countdown started!");
-        // Schedule tasks to show titles to players in the future.
-        startingTimerTitle(ChatColor.YELLOW + "Game starting soon...", false);
-        Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
-            @Override
-            public void run() {
-                startingTimerTitle(ChatColor.YELLOW + "Starting in 3...", false);
+        // If plugin is running, give warning
+        if (plugin.isRunning()) {
+            sender.sendMessage(ChatColor.RED + "Game already running!");
+        }
+        // Else, schedule tasks to show titles to players
+        else {
+            sender.sendMessage(ChatColor.GREEN + "Countdown started!");
+            sendStartingTimerTile(ChatColor.YELLOW + "Game starting soon...", false);
+
+            int countdownTime = plugin.getConfig().getInt("countdown-time");
+            for (int i = 0; i <= countdownTime; i++) {
+                final int seconds = i;
+                Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
+                    @Override
+                    public void run() {
+                        if (seconds == 0) {
+                            sendStartingTimerTile(ChatColor.GREEN + "Go!", true);
+                            plugin.start();
+                        }
+                        else {
+                            sendStartingTimerTile(ChatColor.YELLOW + "Starting in " + seconds + "...", false);
+                        }
+                    }
+                }, 30L + (countdownTime - i) * 30L);
             }
-        }, 60L);
-        Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
-            @Override
-            public void run() {
-                startingTimerTitle(ChatColor.YELLOW + "Starting in 2...", false);
-            }
-        }, 80L);
-        Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
-            @Override
-            public void run() {
-                startingTimerTitle(ChatColor.YELLOW + "Starting in 1...", false);
-            }
-        }, 100L);
-        Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
-            @Override
-            public void run() {
-                startingTimerTitle(ChatColor.GREEN + "Game started!", true);
-                plugin.start();
-            }
-        }, 120L);
+        }
+
         return true;
     }
 
-    public void startingTimerTitle(String subtitle, boolean louderDing) {
+    public void sendStartingTimerTile(String subtitle, boolean higherDing) {
         float pitch = 1f;
-        if (louderDing) pitch = 2f;
+        if (higherDing) {
+            pitch = 2f;
+        }
         for (Player player : plugin.getServer().getOnlinePlayers()) {
             player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1f, pitch);
             player.sendTitle(ChatColor.YELLOW + ChatColor.BOLD.toString() + "SPEEDRUN SHOWDOWN", subtitle, 0, 60, 10);
         }
     }
-
 }
