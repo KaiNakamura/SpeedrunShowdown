@@ -12,6 +12,10 @@ commands:
     description: Stops the game
     permission: speedrunshowdown
     usage: /stop
+  config:
+    description: Opens config gui
+    permission: speedrunshowdown
+    usage: /config
   suddendeath:
     description: Begins sudden death
     permission: speedrunshowdown

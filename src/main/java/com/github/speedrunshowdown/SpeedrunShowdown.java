@@ -43,10 +43,12 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
     public void onEnable() {
         getCommand("start").setExecutor(new StartCommand(this));
         getCommand("stop").setExecutor(new StopCommand(this));
+        getCommand("config").setExecutor(new ConfigCommand(this));
         getCommand("suddendeath").setExecutor(new SuddenDeathCommand(this));
         getCommand("givecompass").setExecutor(new GiveCompassCommand(this));
         getCommand("givearmor").setExecutor(new GiveArmorCommand(this));
         getCommand("win").setExecutor(new WinCommand(this));
+        getServer().getPluginManager().registerEvents(new ConfigClickListener(this), this);
         getServer().getPluginManager().registerEvents(new CompassUseListener(this), this);
         getServer().getPluginManager().registerEvents(new PlayerDeathListener(this), this);
         getServer().getPluginManager().registerEvents(new PlayerRespawnListener(this), this);

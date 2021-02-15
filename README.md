@@ -88,9 +88,9 @@ To edit the default configuration of the game navigate to the [config.yml](https
 | `grace-period` | 30 seconds | The time in seconds until PvP is enabled | |
 | `respawn-invincibility` | 15 seconds | The time in seconds until a respawned player can be damaged | |
 | `portal-invincibility` | 15 seconds | The time in seconds until a player coming through a portal can be damaged | |
-| `indestructable-spawners` | true | Make spawners indestructable | |
 | `prevent-bed-explosions` | true | Prevent players from exploding beds | Beds can still be used in the Overworld |
 | `prevent-respawn-anchor-explosions` | true | Prevent players from exploding respawn anchors | Respawn anchors can still be used in the Nether |
+| `indestructable-spawners` | true | Make spawners indestructable | |
 | `must-kill-dragon-to-win` | true | Players must kill the dragon to win | If set to false, the last remaining team will be declared the winner, otherwise if all teams are dead players will be respawned |
 | `hide-spectator-advancements` | true | Hide advancements earned by spectators from being announced in chat | Spectators are defined as anyone in spectator /gamemode |
 | `give-armor` | false | Give leather armor to players at start and on respawn | Armor is dyed to the team color and has curse of vanishing |
