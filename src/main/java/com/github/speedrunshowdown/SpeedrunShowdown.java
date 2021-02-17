@@ -66,6 +66,7 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         getServer().getPluginManager().registerEvents(new AdvancementListener(this), this);
         getServer().getPluginManager().registerEvents(new ToolUseListener(this), this);
         getServer().getPluginManager().registerEvents(new BlockDropItemListener(this), this);
+        getServer().getPluginManager().registerEvents(new FoodDropListener(this), this);
 
         saveDefaultConfig();
 

@@ -13,6 +13,7 @@ give-compass: true
 give-armor: false
 efficient-tools: false
 smelt-ores: false
+cook-food: false
 randomize-drops: false
 permanent-potions: false
 teams:

@@ -111,6 +111,7 @@ For more control over the config, navigate to the [config.yml](https://github.co
 | `give-armor` | false | Give leather armor to players at start and on respawn | Armor is dyed to the team color and has curse of vanishing |
 | `efficient-tools` | false | Tools will be enchanted with Efficiency III and Unbreaking I | Tools are enchanted on use |
 | `smelt-ores` | false | Ores will drop as ingots instead of ores |  |
+| `cook-food` | false | Animals will dropped cooked food |  |
 | `randomize-drops` | false | Item drops will be replaced by another random item |  |
 | `permanent-potions` | false | All potion effects will be made permanent | Does not apply to invincibility given by the plugin |
 | `teams` | See [teams](#teams) | The team names and colors | A team requires a name and a color, `name: "COLOR"`, the color must be a [Minecraft color code](https://minecraft.gamepedia.com/Formatting_codes#Color_codes): BLACK, DARK_BLUE, DARK_GREEN, DARK_AQUA, DARK_RED, DARK_PURPLE, GOLD, GRAY, DARK_GRAY, BLUE, GREEN, AQUA, RED, LIGHT_PURPLE, YELLOW, WHITE |

@@ -1,5 +1,7 @@
 package com.github.speedrunshowdown;
 
+import java.util.HashMap;
+
 import org.bukkit.Material;
 
 public class Constants {
@@ -1006,4 +1008,16 @@ public class Constants {
 		Material.NETHERITE_SHOVEL,
 		Material.NETHERITE_HOE,
 	};
+
+	public static final HashMap<Material, Material> FOOD_RECIPES;
+	static {
+		FOOD_RECIPES = new HashMap<>();
+		FOOD_RECIPES.put(Material.BEEF, Material.COOKED_BEEF);
+		FOOD_RECIPES.put(Material.PORKCHOP, Material.COOKED_PORKCHOP);
+		FOOD_RECIPES.put(Material.MUTTON, Material.COOKED_MUTTON);
+		FOOD_RECIPES.put(Material.CHICKEN, Material.COOKED_CHICKEN);
+		FOOD_RECIPES.put(Material.RABBIT, Material.COOKED_RABBIT);
+		FOOD_RECIPES.put(Material.COD, Material.COOKED_COD);
+		FOOD_RECIPES.put(Material.SALMON, Material.COOKED_SALMON);
+	}
 }

@@ -71,6 +71,10 @@ public enum ConfigOption {
 		"smelt-ores",
 		Material.IRON_ORE
 	),
+	COOK_FOOD(
+		"cook-food",
+		Material.COOKED_BEEF
+	),
 	RANDOMIZE_DROPS(
 		"randomize-drops",
 		Material.DISPENSER
