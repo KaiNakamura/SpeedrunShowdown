@@ -379,10 +379,11 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         randomItems = itemList.toArray(randomItems);
     }
 
-    public void getRandomItem(Item item) {
+    public void randomizeItem(Item item) {
         for (int i = 0; i < randomItems.length; i++) {
-            if (item.getItemStack().getType() == randomItems[i]) {
-                item.getWorld().dropItem(item.getLocation(), new ItemStack(Constants.items[i]));
+            ItemStack itemStack = item.getItemStack();
+            if (itemStack.getType() == randomItems[i]) {
+                item.getWorld().dropItem(item.getLocation(), new ItemStack(Constants.items[i], itemStack.getAmount()));
                 item.remove();
             }
         }

@@ -63,6 +63,10 @@ public enum ConfigOption {
 		"give-armor",
 		Material.LEATHER_CHESTPLATE
 	),
+	SMELT_ORES(
+		"smelt-ores",
+		Material.IRON_ORE
+	),
 	RANDOMIZE_DROPS(
 		"randomize-drops",
 		Material.DISPENSER
