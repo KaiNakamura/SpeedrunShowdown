@@ -5,31 +5,31 @@ main: com.github.speedrunshowdown.SpeedrunShowdown
 api-version: 1.16
 commands:
   start:
-    description: Starts the game
+    description: Start the game
     permission: speedrunshowdown
     usage: /start
   stop:
-    description: Stops the game
+    description: Stop the game
     permission: speedrunshowdown
     usage: /stop
   config:
-    description: Opens config gui
+    description: Opensconfig gui
     permission: speedrunshowdown
     usage: /config
   suddendeath:
-    description: Begins sudden death
+    description: Set time until sudden death
     permission: speedrunshowdown
     usage: /suddendeath [seconds]
   givecompass:
-    description: Gives a tracking compass
+    description: Give a tracking compass
     permission: speedrunshowdown
     usage: /givecompass [player]
   givearmor:
-    description: Gives armor
+    description: Give armor
     permission: speedrunshowdown
     usage: /givearmor [player]
   win:
-    description: Makes a team win the game
+    description: Declare the winning team
     permission: speedrunshowdown
     usage: /win (team|player)
 permissions:
