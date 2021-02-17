@@ -106,8 +106,13 @@ For more control over the config, navigate to the [config.yml](https://github.co
 | `prevent-respawn-anchor-explosions` | true | Prevent players from exploding respawn anchors | Respawn anchors can still be used in the Nether |
 | `indestructable-spawners` | true | Make spawners indestructable | |
 | `must-kill-dragon-to-win` | true | Players must kill the dragon to win | If set to false, the last remaining team will be declared the winner, otherwise if all teams are dead players will be respawned |
-| `hide-spectator-advancements` | true | Hide advancements earned by spectators from being announced in chat | Spectators are defined as anyone in spectator /gamemode |
+| `hide-spectator-advancements` | true | Hide advancements earned by spectators from being announced in chat | Spectators include anyone in the spectator gamemode |
+| `give-compass` | true | Give tracking compass to players at start and on respawn |  |
 | `give-armor` | false | Give leather armor to players at start and on respawn | Armor is dyed to the team color and has curse of vanishing |
+| `efficient-tools` | false | Tools will be enchanted with Efficiency III and Unbreaking I | Tools are enchanted on use |
+| `smelt-ores` | false | Ores will drop as ingots instead of ores |  |
+| `randomize-drops` | false | Item drops will be replaced by another random item |  |
+| `permanent-potions` | false | All potion effects will be made permanent | Does not apply to invincibility given by the plugin |
 | `teams` | See [teams](#teams) | The team names and colors | A team requires a name and a color, `name: "COLOR"`, the color must be a [Minecraft color code](https://minecraft.gamepedia.com/Formatting_codes#Color_codes): BLACK, DARK_BLUE, DARK_GREEN, DARK_AQUA, DARK_RED, DARK_PURPLE, GOLD, GRAY, DARK_GRAY, BLUE, GREEN, AQUA, RED, LIGHT_PURPLE, YELLOW, WHITE |
 
 ## Issues
