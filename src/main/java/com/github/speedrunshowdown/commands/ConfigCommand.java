@@ -1,7 +1,7 @@
 package com.github.speedrunshowdown.commands;
 
 import com.github.speedrunshowdown.SpeedrunShowdown;
-import com.github.speedrunshowdown.SpeedrunShowdownConfig;
+import com.github.speedrunshowdown.gui.ConfigOption;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -23,8 +23,8 @@ public class ConfigCommand implements CommandExecutor {
             Player player = (Player) sender;
 
             // Create inventory gui
-            Inventory gui = plugin.getServer().createInventory(player, 9, "Config");
-            gui.setContents(SpeedrunShowdownConfig.getItems(plugin.getConfig()));
+            Inventory gui = plugin.getServer().createInventory(player, 27, "Speedrun Showdown");
+            gui.setContents(ConfigOption.getItems(plugin.getConfig()));
 
             // Open gui
             player.openInventory(gui);

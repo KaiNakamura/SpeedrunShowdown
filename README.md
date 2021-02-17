@@ -95,10 +95,10 @@ To edit the default configuration of the game navigate to the [config.yml](https
 | --- | --- | --- | --- |
 | `sudden-death-time` | 3600 seconds | The time in seconds until sudden death | |
 | `countdown-time` | 3 seconds | The time in seconds to count before the game begins | |
-| `warning-times` | [60, 30, 15, 10, 5, 4, 3, 2, 1] seconds | The times in seconds at which a warning will be given before sudden death | |
 | `grace-period` | 30 seconds | The time in seconds until PvP is enabled | |
 | `respawn-invincibility` | 15 seconds | The time in seconds until a respawned player can be damaged | |
 | `portal-invincibility` | 15 seconds | The time in seconds until a player coming through a portal can be damaged | |
+| `warning-times` | [60, 30, 15, 10, 5, 4, 3, 2, 1] seconds | The times in seconds at which a warning will be given before sudden death | |
 | `prevent-bed-explosions` | true | Prevent players from exploding beds | Beds can still be used in the Overworld |
 | `prevent-respawn-anchor-explosions` | true | Prevent players from exploding respawn anchors | Respawn anchors can still be used in the Nether |
 | `indestructable-spawners` | true | Make spawners indestructable | |

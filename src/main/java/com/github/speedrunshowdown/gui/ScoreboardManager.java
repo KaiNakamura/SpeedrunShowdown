@@ -1,6 +1,8 @@
-package com.github.speedrunshowdown;
+package com.github.speedrunshowdown.gui;
 
 import java.util.ArrayList;
+
+import com.github.speedrunshowdown.SpeedrunShowdown;
 
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -10,11 +12,11 @@ import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
-public class SpeedrunShowdownScoreboard {
+public class ScoreboardManager {
     private SpeedrunShowdown plugin;
     private Scoreboard scoreboard;
 
-    public SpeedrunShowdownScoreboard(SpeedrunShowdown plugin) {
+    public ScoreboardManager(SpeedrunShowdown plugin) {
         this.plugin = plugin;
 
         // Get scoreboard

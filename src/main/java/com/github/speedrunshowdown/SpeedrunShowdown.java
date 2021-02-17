@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 
 import com.github.speedrunshowdown.commands.*;
+import com.github.speedrunshowdown.gui.*;
 import com.github.speedrunshowdown.listeners.*;
 
 import org.bukkit.ChatColor;
@@ -37,7 +38,7 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
     private int taskId;
     private int timer;
 
-    private SpeedrunShowdownScoreboard speedrunShowdownScoreboard;
+    private ScoreboardManager speedrunShowdownScoreboard;
 
     @Override
     public void onEnable() {
@@ -61,7 +62,7 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
 
         saveDefaultConfig();
 
-        speedrunShowdownScoreboard = new SpeedrunShowdownScoreboard(this);
+        speedrunShowdownScoreboard = new ScoreboardManager(this);
     }
 
     @Override
@@ -114,7 +115,7 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         }
 
         // Reset timer
-        timer = getConfig().getInt("sudden-death-time");
+        timer = getConfig().getInt("sudden-death-time") * 60;
 
         // Schedule repeating task
         taskId = getServer().getScheduler().scheduleSyncRepeatingTask(this, this, 20, 20);
@@ -366,7 +367,7 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         return timer;
     }
 
-    public SpeedrunShowdownScoreboard getSpeedrunShowdownScoreboard() {
+    public ScoreboardManager getSpeedrunShowdownScoreboard() {
         return speedrunShowdownScoreboard;
     }
 
