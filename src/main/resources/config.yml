@@ -11,6 +11,7 @@ must-kill-dragon-to-win: true
 hide-spectator-advancements: true
 give-compass: true
 give-armor: false
+efficient-tools: false
 smelt-ores: false
 randomize-drops: false
 permanent-potions: false

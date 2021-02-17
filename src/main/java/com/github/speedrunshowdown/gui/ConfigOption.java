@@ -63,6 +63,10 @@ public enum ConfigOption {
 		"give-armor",
 		Material.LEATHER_CHESTPLATE
 	),
+	EFFICIENT_TOOLS(
+		"efficient-tools",
+		Material.GOLDEN_PICKAXE
+	),
 	SMELT_ORES(
 		"smelt-ores",
 		Material.IRON_ORE

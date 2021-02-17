@@ -3,7 +3,7 @@ package com.github.speedrunshowdown;
 import org.bukkit.Material;
 
 public class Constants {
-    public static final Material[] items = {
+    public static final Material[] ITEMS = {
 		Material.STONE,
 		Material.GRANITE,
 		Material.POLISHED_GRANITE,
@@ -979,4 +979,31 @@ public class Constants {
 		Material.CRACKED_POLISHED_BLACKSTONE_BRICKS,
 		Material.RESPAWN_ANCHOR
     };
+
+    public static final Material[] TOOLS = {
+		Material.WOODEN_PICKAXE,
+		Material.WOODEN_AXE,
+		Material.WOODEN_SHOVEL,
+		Material.WOODEN_HOE,
+		Material.STONE_PICKAXE,
+		Material.STONE_AXE,
+		Material.STONE_SHOVEL,
+		Material.STONE_HOE,
+		Material.IRON_PICKAXE,
+		Material.IRON_AXE,
+		Material.IRON_SHOVEL,
+		Material.IRON_HOE,
+		Material.GOLDEN_PICKAXE,
+		Material.GOLDEN_AXE,
+		Material.GOLDEN_SHOVEL,
+		Material.GOLDEN_HOE,
+		Material.DIAMOND_PICKAXE,
+		Material.DIAMOND_AXE,
+		Material.DIAMOND_SHOVEL,
+		Material.DIAMOND_HOE,
+		Material.NETHERITE_PICKAXE,
+		Material.NETHERITE_AXE,
+		Material.NETHERITE_SHOVEL,
+		Material.NETHERITE_HOE,
+	};
 }

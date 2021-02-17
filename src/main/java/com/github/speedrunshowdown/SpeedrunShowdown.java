@@ -43,7 +43,7 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
 
     private ScoreboardManager speedrunShowdownScoreboard;
 
-    private Material[] randomItems = Constants.items.clone();
+    private Material[] randomItems = Constants.ITEMS.clone();
 
     @Override
     public void onEnable() {
@@ -64,6 +64,7 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         getServer().getPluginManager().registerEvents(new PortalEnterListener(this), this);
         getServer().getPluginManager().registerEvents(new DragonKillListener(this), this);
         getServer().getPluginManager().registerEvents(new AdvancementListener(this), this);
+        getServer().getPluginManager().registerEvents(new ToolUseListener(this), this);
         getServer().getPluginManager().registerEvents(new BlockDropItemListener(this), this);
 
         saveDefaultConfig();
@@ -383,7 +384,7 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         for (int i = 0; i < randomItems.length; i++) {
             ItemStack itemStack = item.getItemStack();
             if (itemStack.getType() == randomItems[i]) {
-                item.getWorld().dropItem(item.getLocation(), new ItemStack(Constants.items[i], itemStack.getAmount()));
+                item.getWorld().dropItem(item.getLocation(), new ItemStack(Constants.ITEMS[i], itemStack.getAmount()));
                 item.remove();
             }
         }

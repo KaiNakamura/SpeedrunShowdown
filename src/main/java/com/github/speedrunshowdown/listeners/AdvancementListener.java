@@ -21,7 +21,6 @@ public class AdvancementListener implements Listener {
         // turn announce advancements gamerule off and schedule it to return to its original value
         if (plugin.isRunning() && plugin.getConfig().getBoolean("hide-spectator-advancements")) {
             final boolean announceAdvancements = event.getPlayer().getWorld().getGameRuleValue(GameRule.ANNOUNCE_ADVANCEMENTS);
-            plugin.getLogger().info("Announce advancements: " + announceAdvancements);
             if (event.getPlayer().getGameMode() == GameMode.SPECTATOR) {
                 event.getPlayer().getWorld().setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, false);
                 Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
