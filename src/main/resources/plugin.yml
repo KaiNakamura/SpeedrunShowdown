@@ -13,7 +13,7 @@ commands:
     permission: speedrunshowdown
     usage: /stop
   config:
-    description: Opensconfig gui
+    description: Open config gui
     permission: speedrunshowdown
     usage: /config
   suddendeath:
