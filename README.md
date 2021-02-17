@@ -40,15 +40,15 @@ The team that deals the final blow to the dragon is the winner, may the best tea
 
 ## Installation
 
-Download the latest version from [releases](https://github.com/KaiNakamura/SpeedrunShowdown/releases) and place the JAR file in the plugins folder of your server
+Download the latest version from [releases](https://github.com/KaiNakamura/SpeedrunShowdown/releases) and place the JAR file in the plugins folder of your server.
 
 ## Setup
 
 ### Teams
 
-Before you begin the game you will want to create teams
+Before you begin the game you will want to create teams.
 
-To add players to a team run
+To add players to a team run:
 ```
 /team join <team> [<members>]
 ```
@@ -78,6 +78,7 @@ The default team names are the following, but can be edited in the [config](#con
 | --- | --- | --- |
 | `/start` | Start the game | Sets time to 0 and gives all players a tracking compass, full health, and full hunger |
 | `/stop` | Stop the game | |
+| `/config` | Open config gui | See [config](#config) |
 | `/suddendeath [seconds]` | Set time until sudden death | If no time given, starts immediately |
 | `/givecompass [player]` | Give a tracking compass | All players are given a compass at the start of the game, this command is to be used if a player doesn't receive a compass |
 | `/givearmor [player]` | Give armor | All players are given armor at the start of the game if `give-armor` is set to true in the [config](#config), this command is to be used if a player doesn't receive armor |
@@ -89,7 +90,9 @@ The default team names are the following, but can be edited in the [config](#con
 
 ## Config
 
-To edit the default configuration of the game navigate to the [config.yml](https://github.com/KaiNakamura/SpeedrunShowdown/blob/master/src/main/resources/config.yml) file in the plugins folder of your server under `SpeedrunShowdown\config.yml`
+The config file is a list of editable settings to change different aspects of gameplay. The easiest way to change the config is with the `/config` command.
+
+For more control over the config, navigate to the [config.yml](https://github.com/KaiNakamura/SpeedrunShowdown/blob/master/src/main/resources/config.yml) file in the plugins folder of your server under `SpeedrunShowdown\config.yml`
 
 | Attribute | Default | Description | Notes |
 | --- | --- | --- | --- |
@@ -109,8 +112,8 @@ To edit the default configuration of the game navigate to the [config.yml](https
 
 ## Issues
 
-To report a bug or to request a feature go [here](https://github.com/KaiNakamura/SpeedrunShowdown/issues)
+To report a bug or to request a feature go [here](https://github.com/KaiNakamura/SpeedrunShowdown/issues).
 
 ## License
 
-Distributed under the [MIT License](https://github.com/KaiNakamura/SpeedrunShowdown/blob/master/LICENSE)
+Distributed under the [MIT License](https://github.com/KaiNakamura/SpeedrunShowdown/blob/master/LICENSE).
