@@ -55,9 +55,21 @@ public enum ConfigOption {
 		"hide-spectator-advancements",
 		Material.ENDER_EYE
 	),
+	GIVE_COMPASS(
+		"give-compass",
+		Material.COMPASS
+	),
 	GIVE_ARMOR(
 		"give-armor",
 		Material.LEATHER_CHESTPLATE
+	),
+	RANDOMIZE_DROPS(
+		"randomize-drops",
+		Material.DISPENSER
+	),
+	PERMANENT_POTIONS(
+		"permanent-potions",
+		Material.POTION
 	),
 	RESET(
 		"RESET",

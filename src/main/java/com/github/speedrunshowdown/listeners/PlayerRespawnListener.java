@@ -33,8 +33,10 @@ public class PlayerRespawnListener implements Listener {
                 plugin.giveArmor(player);
             }
 
-            // Give compass
-            plugin.giveCompass(player);
+            // If plugin should give compass, give compass
+            if (plugin.getConfig().getBoolean("give-compass")) {
+                plugin.giveCompass(player);
+            }
 
             // Give resistance
             plugin.getServer().getScheduler().scheduleSyncDelayedTask(

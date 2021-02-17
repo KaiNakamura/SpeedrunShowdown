@@ -9,7 +9,10 @@ prevent-respawn-anchor-explosions: true
 indestructable-spawners: true
 must-kill-dragon-to-win: true
 hide-spectator-advancements: true
+give-compass: true
 give-armor: false
+randomize-drops: false
+permanent-potions: false
 teams:
   redstone: "RED"
   lapis: "BLUE"

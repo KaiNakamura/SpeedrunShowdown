@@ -1,7 +1,9 @@
 package com.github.speedrunshowdown;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 
 import com.github.speedrunshowdown.commands.*;
 import com.github.speedrunshowdown.gui.*;
@@ -21,6 +23,7 @@ import org.bukkit.advancement.AdvancementProgress;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Firework;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
@@ -39,6 +42,8 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
     private int timer;
 
     private ScoreboardManager speedrunShowdownScoreboard;
+
+    private Material[] randomItems = Constants.items.clone();
 
     @Override
     public void onEnable() {
@@ -59,6 +64,7 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         getServer().getPluginManager().registerEvents(new PortalEnterListener(this), this);
         getServer().getPluginManager().registerEvents(new DragonKillListener(this), this);
         getServer().getPluginManager().registerEvents(new AdvancementListener(this), this);
+        getServer().getPluginManager().registerEvents(new BlockDropItemListener(this), this);
 
         saveDefaultConfig();
 
@@ -104,7 +110,13 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
             }
         }
 
+        // Updtate scoreboard
         speedrunShowdownScoreboard.update();
+
+        // If plugin should give permanent potions, give permanent potions
+        if (getConfig().getBoolean("permanent-potions")) {
+            permanentPotions();
+        }
     }
 
     public void start() {
@@ -132,6 +144,9 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         // Set time to 0
         getServer().getWorld("world").setTime(0);
 
+        // Randomize drops
+        randomize();
+
         // For every player
         for (Player player : getServer().getOnlinePlayers()) {
             // Clear inventory
@@ -142,8 +157,10 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
                 giveArmor(player);
             }
 
-            // Give compass
-            giveCompass(player);
+            // If plugin should give compass, give compass
+            if (getConfig().getBoolean("give-compass")) {
+                giveCompass(player);
+            }
 
             // Revoke all advancements
             Iterator<Advancement> advancements = getServer().advancementIterator();
@@ -157,6 +174,11 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
             // Give players full health and food
             player.setHealth(20);
             player.setFoodLevel(20);
+
+            // Clear all potion effects
+            for (PotionEffect potionEffect : player.getActivePotionEffects()) {
+                player.removePotionEffect(potionEffect.getType());
+            }
 
             // Give resistance
             player.addPotionEffect(new PotionEffect(
@@ -348,6 +370,38 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
                 ).build()
             );
             firework.setFireworkMeta(fireworkMeta);
+        }
+    }
+
+    public void randomize() {
+        List<Material> itemList = Arrays.asList(randomItems);
+        Collections.shuffle(itemList);
+        randomItems = itemList.toArray(randomItems);
+    }
+
+    public void getRandomItem(Item item) {
+        for (int i = 0; i < randomItems.length; i++) {
+            if (item.getItemStack().getType() == randomItems[i]) {
+                item.getWorld().dropItem(item.getLocation(), new ItemStack(Constants.items[i]));
+                item.remove();
+            }
+        }
+    }
+
+    public void permanentPotions() {
+        // For all players
+        for (Player player : getServer().getOnlinePlayers()) {
+            // For all potion effects
+            for (PotionEffect potionEffect : player.getActivePotionEffects()) {
+                // If potion effect is not 255 (given by plugin), make permanent
+                if (potionEffect.getAmplifier() != 255) {
+                    player.addPotionEffect(new PotionEffect(
+                        potionEffect.getType(),
+                        999999,
+                        potionEffect.getAmplifier()
+                    ));
+                }
+            }
         }
     }
 
