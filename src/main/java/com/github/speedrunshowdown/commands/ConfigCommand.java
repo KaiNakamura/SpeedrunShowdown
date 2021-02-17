@@ -24,7 +24,7 @@ public class ConfigCommand implements CommandExecutor {
 
             // Create inventory gui
             Inventory gui = plugin.getServer().createInventory(player, 27, "Speedrun Showdown");
-            gui.setContents(ConfigOption.getItems(plugin.getConfig()));
+            gui.setContents(ConfigOption.getItems(plugin.getConfig(), gui.getSize()));
 
             // Open gui
             player.openInventory(gui);

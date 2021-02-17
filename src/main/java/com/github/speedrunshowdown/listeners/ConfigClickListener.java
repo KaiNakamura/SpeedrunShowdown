@@ -11,6 +11,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.Inventory;
 
 public class ConfigClickListener implements Listener {
     private SpeedrunShowdown plugin;
@@ -35,7 +36,7 @@ public class ConfigClickListener implements Listener {
             );
 
             // If selected reset, reset to defaults
-            if (configOption.getPath() == "RESET") {
+            if (configOption == ConfigOption.RESET) {
                 new File(plugin.getDataFolder(), "config.yml").delete();
                 plugin.saveDefaultConfig();
                 plugin.reloadConfig();
@@ -49,7 +50,7 @@ public class ConfigClickListener implements Listener {
                 if (data instanceof Boolean) {
                     plugin.getConfig().set(path, !((boolean) data));
                 }
-                // Else if data is an integer, open anvil gui
+                // Else if data is an integer, increase or decrease value
                 else if (data instanceof Integer) {
                     ClickType clickType = event.getClick();
                     switch (clickType) {
@@ -70,11 +71,13 @@ public class ConfigClickListener implements Listener {
                     }
                 }
 
+                // Save changes
                 plugin.saveConfig();
             }
 
             // Update gui
-            event.getClickedInventory().setContents(ConfigOption.getItems(plugin.getConfig()));
+            Inventory gui = event.getClickedInventory();
+            gui.setContents(ConfigOption.getItems(plugin.getConfig(), gui.getSize()));
 
             // Cancel event, prevents moving items around
             event.setCancelled(true);

@@ -124,7 +124,9 @@ public enum ConfigOption {
 		ArrayList<String> itemLore = new ArrayList<>();
 
 		Object data = config.get(configOption.getPath(), null);
+		// If data is not null, add item lore
 		if (data != null) {
+			// If data is a boolean, add status and boolean instructions
 			if (data instanceof Boolean) {
 				itemLore.add(
 					ChatColor.RESET + "" + ChatColor.GRAY + "Enabled: " +
@@ -134,6 +136,7 @@ public enum ConfigOption {
 					ChatColor.RESET + "" + ChatColor.DARK_GRAY + "Click to toggle"
 				);
 			}
+			// Else if data is an integer, add status and integer instructions
 			else if (data instanceof Integer) {
 				itemLore.add(
 					ChatColor.RESET + "" + ChatColor.YELLOW + data.toString() + 
@@ -150,14 +153,48 @@ public enum ConfigOption {
 
 		itemMeta.setLore(itemLore);
 		item.setItemMeta(itemMeta);
+
 		return item;
 	}
 
-	public static ItemStack[] getItems(FileConfiguration config) {
-		ItemStack[] items = new ItemStack[ConfigOption.values().length];
-		for (int i = 0; i < items.length; i++) {
-			items[i] = ConfigOption.getItem(ConfigOption.values()[i], config);
+	public static ItemStack[] getItems(FileConfiguration config, int inventorySize) {
+		// Create list to append items
+		ArrayList<ItemStack> itemList = new ArrayList<>();
+
+		// Create space to save the reset item
+		ItemStack reset = null;
+
+		// Sort config options into the list
+		for (ConfigOption configOption : ConfigOption.values()) {
+			ItemStack item = ConfigOption.getItem(configOption, config);
+
+			// If config option is reset, save as the reset item
+			if (configOption == ConfigOption.RESET) {
+				reset = item;
+			}
+			// Else, add to list
+			else {
+				itemList.add(item);
+			}
 		}
+
+		// Combine item list and reset into one item array
+		ItemStack[] items = new ItemStack[inventorySize];
+		for (int i = 0; i < items.length; i++) {
+			// If index is out of bounds, break
+			if (i >= itemList.size()) {
+				break;
+			}
+			// Else, add to array
+			else {
+				items[i] = itemList.get(i);
+			}
+		}
+
+		if (reset != null) {
+			items[items.length - 1] = reset;
+		}
+
 		return items;
 	}
 }
