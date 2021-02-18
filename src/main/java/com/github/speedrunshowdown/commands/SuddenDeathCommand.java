@@ -29,12 +29,12 @@ public class SuddenDeathCommand implements CommandExecutor {
                 // Try to parse int
                 try {
                     // Set timer
-                    int seconds = Integer.parseInt(args[0]);
-                    plugin.setTime(seconds);
+                    int minutes = Integer.parseInt(args[0]);
+                    plugin.setTime(minutes * 60);
                     plugin.getServer().broadcastMessage(
                         ChatColor.YELLOW + "Sudden death in " +
-                        ChatColor.GREEN + seconds +
-                        ChatColor.YELLOW + " seconds"
+                        ChatColor.GREEN + minutes +
+                        ChatColor.YELLOW + " minutes"
                     );
                 }
                 // If invalid, give warning

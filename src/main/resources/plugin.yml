@@ -19,7 +19,7 @@ commands:
   suddendeath:
     description: Set time until sudden death
     permission: speedrunshowdown
-    usage: /suddendeath [seconds]
+    usage: /suddendeath [minutes]
   givecompass:
     description: Give a tracking compass
     permission: speedrunshowdown
