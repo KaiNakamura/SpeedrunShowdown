@@ -19,3 +19,4 @@
 	- [ ] Ender pearl drop rate
 	- [ ] Ender pearl trade rate
 - [ ] Build for other versions
+- [ ] When giving armor, dye existing leather armor
