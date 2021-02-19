@@ -11,14 +11,10 @@ import org.bukkit.event.block.BlockDropItemEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class BlockDropItemListener implements Listener {
-    private SpeedrunShowdown plugin;
-
-    public BlockDropItemListener(SpeedrunShowdown plugin) {
-        this.plugin = plugin;
-    }
-
     @EventHandler
     public void onBlockDropItem(BlockDropItemEvent event) {
+        SpeedrunShowdown plugin = SpeedrunShowdown.getInstance();
+
 		// If plugin is running
         if (plugin.isRunning()) {
             // Get held item

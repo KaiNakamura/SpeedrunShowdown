@@ -10,14 +10,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Team;
 
 public class WinCommand implements CommandExecutor {
-    private SpeedrunShowdown plugin;
-
-    public WinCommand(SpeedrunShowdown plugin) {
-        this.plugin = plugin;
-    }
-
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        SpeedrunShowdown plugin = SpeedrunShowdown.getInstance();
+
         // If no arguments given, give warning
         if (args.length == 0) {
             sender.sendMessage(plugin.getCommand("win").getUsage());

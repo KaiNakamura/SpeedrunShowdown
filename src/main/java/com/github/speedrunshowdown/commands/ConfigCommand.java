@@ -1,6 +1,5 @@
 package com.github.speedrunshowdown.commands;
 
-import com.github.speedrunshowdown.SpeedrunShowdown;
 import com.github.speedrunshowdown.gui.ConfigOption;
 
 import org.bukkit.command.Command;
@@ -9,12 +8,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class ConfigCommand implements CommandExecutor {
-    private SpeedrunShowdown plugin;
-
-    public ConfigCommand(SpeedrunShowdown plugin) {
-        this.plugin = plugin;
-    }
-
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         // If sender is a player, open gui

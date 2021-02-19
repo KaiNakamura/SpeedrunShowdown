@@ -13,11 +13,10 @@ import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
 public class ScoreboardManager {
-    private SpeedrunShowdown plugin;
     private Scoreboard scoreboard;
 
-    public ScoreboardManager(SpeedrunShowdown plugin) {
-        this.plugin = plugin;
+    public ScoreboardManager() {
+        SpeedrunShowdown plugin = SpeedrunShowdown.getInstance();
 
         // Get scoreboard
         scoreboard = plugin.getServer().getScoreboardManager().getMainScoreboard();
@@ -60,6 +59,8 @@ public class ScoreboardManager {
     }
 
     public void update() {
+        SpeedrunShowdown plugin = SpeedrunShowdown.getInstance();
+
         // Update the sidebar
         ArrayList<String> scores = new ArrayList<>();
         String newLine = "";

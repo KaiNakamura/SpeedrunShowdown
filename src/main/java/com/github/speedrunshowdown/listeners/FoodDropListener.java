@@ -10,14 +10,10 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class FoodDropListener implements Listener {
-    private SpeedrunShowdown plugin;
-
-    public FoodDropListener(SpeedrunShowdown plugin) {
-        this.plugin = plugin;
-    }
-
     @EventHandler
     public void onAnimalDeath(EntityDeathEvent event) {
+        SpeedrunShowdown plugin = SpeedrunShowdown.getInstance();
+
 		// If plugin is running and should cook food, cook food
         if (
             plugin.isRunning() &&

@@ -8,14 +8,10 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class GiveCompassCommand implements CommandExecutor {
-    private SpeedrunShowdown plugin;
-
-    public GiveCompassCommand(SpeedrunShowdown plugin) {
-        this.plugin = plugin;
-    }
-
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        SpeedrunShowdown plugin = SpeedrunShowdown.getInstance();
+
         // If no arguments given, try to give the sender a compass
         if (args.length == 0) {
             // If sender is a player, give player compass

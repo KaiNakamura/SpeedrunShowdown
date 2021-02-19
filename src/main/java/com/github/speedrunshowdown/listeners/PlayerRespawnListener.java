@@ -12,14 +12,10 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 public class PlayerRespawnListener implements Listener {
-    private SpeedrunShowdown plugin;
-
-    public PlayerRespawnListener(SpeedrunShowdown plugin) {
-        this.plugin = plugin;
-    }
-
     @EventHandler
     public void onPlayerRespawn(PlayerRespawnEvent event) {
+        SpeedrunShowdown plugin = SpeedrunShowdown.getInstance();
+
         if (plugin.isRunning()) {
             final Player player = event.getPlayer();
 

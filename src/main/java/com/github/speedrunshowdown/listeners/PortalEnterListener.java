@@ -9,14 +9,10 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 public class PortalEnterListener implements Listener {
-    private SpeedrunShowdown plugin;
-
-    public PortalEnterListener(SpeedrunShowdown plugin) {
-        this.plugin = plugin;
-    }
-
     @EventHandler
     public void onPortalEnter(PlayerPortalEvent event) {
+        SpeedrunShowdown plugin = SpeedrunShowdown.getInstance();
+
         // If plugin is running, give player portal invincibility
         if (plugin.isRunning()) {
             plugin.getLogger().info(event.getPlayer().getName());

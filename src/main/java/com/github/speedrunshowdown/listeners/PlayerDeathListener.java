@@ -15,14 +15,10 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.scoreboard.Team;
 
 public class PlayerDeathListener implements Listener {
-    private SpeedrunShowdown plugin;
-
-    public PlayerDeathListener(SpeedrunShowdown plugin) {
-        this.plugin = plugin;
-    }
-
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
+        SpeedrunShowdown plugin = SpeedrunShowdown.getInstance();
+
         // If plugin running and is sudden death
         if (plugin.isRunning() && plugin.isSuddenDeath()) {
             // Make player a spectator

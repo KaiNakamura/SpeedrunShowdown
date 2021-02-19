@@ -21,18 +21,16 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scoreboard.Team;
 
 public class CompassUseListener implements Listener {
-    private SpeedrunShowdown plugin;
-
-    public CompassUseListener(SpeedrunShowdown plugin) {
-        this.plugin = plugin;
-    }
-
     @EventHandler
     public void onPlayerUse(PlayerInteractEvent event) {
+        SpeedrunShowdown plugin = SpeedrunShowdown.getInstance();
+
+        // If plugin is running and interaction is with hand, check item in hand
         if (plugin.isRunning() && event.getHand() == EquipmentSlot.HAND) {
             Player player = event.getPlayer();
             ItemStack item = player.getInventory().getItemInMainHand();
 
+            // If item in hand is compass, track player
             if (item.getType() == Material.COMPASS) {
                 Location location = player.getLocation();
                 Action action = event.getAction();

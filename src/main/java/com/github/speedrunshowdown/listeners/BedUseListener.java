@@ -9,14 +9,10 @@ import org.bukkit.event.player.PlayerBedEnterEvent;
 import org.bukkit.event.player.PlayerBedEnterEvent.BedEnterResult;
 
 public class BedUseListener implements Listener {
-    private SpeedrunShowdown plugin;
-
-    public BedUseListener(SpeedrunShowdown plugin) {
-        this.plugin = plugin;
-    }
-
     @EventHandler
     public void onBedUse(PlayerBedEnterEvent event) {
+        SpeedrunShowdown plugin = SpeedrunShowdown.getInstance();
+
         // If plugin is running and should prevent bed explosions
         // and entering bed not possible in this dimension, cancel event
         if (

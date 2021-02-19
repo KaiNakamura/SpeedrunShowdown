@@ -9,6 +9,7 @@ import com.github.speedrunshowdown.commands.*;
 import com.github.speedrunshowdown.gui.*;
 import com.github.speedrunshowdown.listeners.*;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
@@ -47,30 +48,30 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
 
     @Override
     public void onEnable() {
-        getCommand("start").setExecutor(new StartCommand(this));
-        getCommand("stop").setExecutor(new StopCommand(this));
-        getCommand("config").setExecutor(new ConfigCommand(this));
-        getCommand("suddendeath").setExecutor(new SuddenDeathCommand(this));
-        getCommand("givecompass").setExecutor(new GiveCompassCommand(this));
-        getCommand("givearmor").setExecutor(new GiveArmorCommand(this));
-        getCommand("win").setExecutor(new WinCommand(this));
-        getServer().getPluginManager().registerEvents(new GUIClickListener(this), this);
-        getServer().getPluginManager().registerEvents(new CompassUseListener(this), this);
-        getServer().getPluginManager().registerEvents(new PlayerDeathListener(this), this);
-        getServer().getPluginManager().registerEvents(new PlayerRespawnListener(this), this);
-        getServer().getPluginManager().registerEvents(new BlockDamageListener(this), this);
-        getServer().getPluginManager().registerEvents(new BedUseListener(this), this);
-        getServer().getPluginManager().registerEvents(new RespawnAnchorUseListener(this), this);
-        getServer().getPluginManager().registerEvents(new PortalEnterListener(this), this);
-        getServer().getPluginManager().registerEvents(new DragonKillListener(this), this);
-        getServer().getPluginManager().registerEvents(new AdvancementListener(this), this);
-        getServer().getPluginManager().registerEvents(new ToolUseListener(this), this);
-        getServer().getPluginManager().registerEvents(new BlockDropItemListener(this), this);
-        getServer().getPluginManager().registerEvents(new FoodDropListener(this), this);
+        getCommand("start").setExecutor(new StartCommand());
+        getCommand("stop").setExecutor(new StopCommand());
+        getCommand("config").setExecutor(new ConfigCommand());
+        getCommand("suddendeath").setExecutor(new SuddenDeathCommand());
+        getCommand("givecompass").setExecutor(new GiveCompassCommand());
+        getCommand("givearmor").setExecutor(new GiveArmorCommand());
+        getCommand("win").setExecutor(new WinCommand());
+        getServer().getPluginManager().registerEvents(new GUIClickListener(), this);
+        getServer().getPluginManager().registerEvents(new CompassUseListener(), this);
+        getServer().getPluginManager().registerEvents(new PlayerDeathListener(), this);
+        getServer().getPluginManager().registerEvents(new PlayerRespawnListener(), this);
+        getServer().getPluginManager().registerEvents(new BlockDamageListener(), this);
+        getServer().getPluginManager().registerEvents(new BedUseListener(), this);
+        getServer().getPluginManager().registerEvents(new RespawnAnchorUseListener(), this);
+        getServer().getPluginManager().registerEvents(new PortalEnterListener(), this);
+        getServer().getPluginManager().registerEvents(new DragonKillListener(), this);
+        getServer().getPluginManager().registerEvents(new AdvancementListener(), this);
+        getServer().getPluginManager().registerEvents(new ToolUseListener(), this);
+        getServer().getPluginManager().registerEvents(new BlockDropItemListener(), this);
+        getServer().getPluginManager().registerEvents(new FoodDropListener(), this);
 
         saveDefaultConfig();
 
-        speedrunShowdownScoreboard = new ScoreboardManager(this);
+        speedrunShowdownScoreboard = new ScoreboardManager();
     }
 
     @Override
@@ -465,5 +466,9 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
             default:
                 return null;
         }
+    }
+
+    public static SpeedrunShowdown getInstance() {
+        return (SpeedrunShowdown) Bukkit.getPluginManager().getPlugin("SpeedrunShowdown");
     }
 }

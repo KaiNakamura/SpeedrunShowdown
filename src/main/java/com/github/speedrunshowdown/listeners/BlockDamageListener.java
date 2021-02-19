@@ -9,14 +9,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockDamageEvent;
 
 public class BlockDamageListener implements Listener {
-    private SpeedrunShowdown plugin;
-
-    public BlockDamageListener(SpeedrunShowdown plugin) {
-        this.plugin = plugin;
-    }
-
     @EventHandler
     public void onBlockDamage(BlockDamageEvent event) {
+        SpeedrunShowdown plugin = SpeedrunShowdown.getInstance();
+
         // If plugin is running and spawners are indestructable
         // and player breaking spawner, prevent breaking
         if (

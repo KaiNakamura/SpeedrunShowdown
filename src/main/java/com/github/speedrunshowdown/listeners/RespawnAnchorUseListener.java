@@ -11,14 +11,10 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 public class RespawnAnchorUseListener implements Listener {
-    private SpeedrunShowdown plugin;
-
-    public RespawnAnchorUseListener(SpeedrunShowdown plugin) {
-        this.plugin = plugin;
-    }
-
     @EventHandler
     public void onRespawnAnchorUse(PlayerInteractEvent event) {
+        SpeedrunShowdown plugin = SpeedrunShowdown.getInstance();
+
         // If plugin is running and plugin should prevent respawn anchor explosions
         // and respawn anchor right clicked in the wrong dimension, cancel event
         if (

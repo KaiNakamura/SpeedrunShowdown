@@ -11,14 +11,10 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class StartCommand implements CommandExecutor {
-    private SpeedrunShowdown plugin;
-
-    public StartCommand(SpeedrunShowdown plugin) {
-        this.plugin = plugin;
-    }
-
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        SpeedrunShowdown plugin = SpeedrunShowdown.getInstance();
+
         // If plugin is running, give warning
         if (plugin.isRunning()) {
             sender.sendMessage(ChatColor.RED + "Game already running!");
@@ -54,7 +50,7 @@ public class StartCommand implements CommandExecutor {
         if (higherDing) {
             pitch = 2f;
         }
-        for (Player player : plugin.getServer().getOnlinePlayers()) {
+        for (Player player : Bukkit.getServer().getOnlinePlayers()) {
             player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1f, pitch);
             player.sendTitle(ChatColor.YELLOW + ChatColor.BOLD.toString() + "SPEEDRUN SHOWDOWN", subtitle, 0, 60, 10);
         }

@@ -8,14 +8,10 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 public class SuddenDeathCommand implements CommandExecutor {
-    private SpeedrunShowdown plugin;
-
-    public SuddenDeathCommand(SpeedrunShowdown plugin) {
-        this.plugin = plugin;
-    }
-
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        SpeedrunShowdown plugin = SpeedrunShowdown.getInstance();
+
         // If plugin not running, give warning
         if (!plugin.isRunning()) {
             sender.sendMessage(ChatColor.YELLOW + "Game not running");

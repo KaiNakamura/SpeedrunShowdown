@@ -12,14 +12,10 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class ToolUseListener implements Listener {
-    private SpeedrunShowdown plugin;
-
-    public ToolUseListener(SpeedrunShowdown plugin) {
-        this.plugin = plugin;
-    }
-
     @EventHandler
     public void onToolUse(PlayerInteractEvent event) {
+        SpeedrunShowdown plugin = SpeedrunShowdown.getInstance();
+
         // If plugin is running and should make tools efficient, make tools efficient
         if (
             plugin.isRunning() &&
