@@ -5,8 +5,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.function.Consumer;
 
+import com.github.speedrunshowdown.SpeedrunShowdown;
+
 import org.apache.commons.lang.WordUtils;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -15,7 +16,6 @@ import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.plugin.Plugin;
 
 public enum ConfigOption {
 	SUDDEN_DEATH_TIME(
@@ -120,8 +120,7 @@ public enum ConfigOption {
 	}
 	
 	public GUIItem getItem() {
-		// Get plugin
-		Plugin plugin = Bukkit.getPluginManager().getPlugin("SpeedrunShowdown");
+        SpeedrunShowdown plugin = SpeedrunShowdown.getInstance();
 
 		// Create new item stack with config option material
 		ItemStack itemStack = new ItemStack(material);

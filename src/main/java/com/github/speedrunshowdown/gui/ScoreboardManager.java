@@ -13,10 +13,12 @@ import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
 public class ScoreboardManager {
+    private SpeedrunShowdown plugin;
     private Scoreboard scoreboard;
+    private Objective objective;
 
     public ScoreboardManager() {
-        SpeedrunShowdown plugin = SpeedrunShowdown.getInstance();
+        plugin = SpeedrunShowdown.getInstance();
 
         // Get scoreboard
         scoreboard = plugin.getServer().getScoreboardManager().getMainScoreboard();
@@ -45,12 +47,15 @@ public class ScoreboardManager {
             team.setColor(color);
         }
 
-        // Create sidebar
-        scoreboard.registerNewObjective(
+        // Register new objective
+        objective = scoreboard.registerNewObjective(
             "sidebar",
             "dummy",
             ChatColor.YELLOW.toString() + ChatColor.BOLD + "SPEEDRUN SHOWDOWN"
-        ).setDisplaySlot(DisplaySlot.SIDEBAR);
+        );
+
+        // Score scoreboard
+        show();
 
         // Set scoreboard to all players
         for (Player player : plugin.getServer().getOnlinePlayers()) {
@@ -58,9 +63,15 @@ public class ScoreboardManager {
         }
     }
 
-    public void update() {
-        SpeedrunShowdown plugin = SpeedrunShowdown.getInstance();
+    public void show() {
+        objective.setDisplaySlot(DisplaySlot.SIDEBAR);
+    }
 
+    public void clear() {
+        scoreboard.clearSlot(DisplaySlot.SIDEBAR);
+    }
+
+    public void update() {
         // Update the sidebar
         ArrayList<String> scores = new ArrayList<>();
         String newLine = "";

@@ -42,7 +42,7 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
     private int taskId;
     private int timer;
 
-    private ScoreboardManager speedrunShowdownScoreboard;
+    private ScoreboardManager scoreboardManager;
 
     private Material[] randomItems = Constants.ITEMS.clone();
 
@@ -71,7 +71,7 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
 
         saveDefaultConfig();
 
-        speedrunShowdownScoreboard = new ScoreboardManager();
+        scoreboardManager = new ScoreboardManager();
     }
 
     @Override
@@ -114,7 +114,7 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         }
 
         // Updtate scoreboard
-        speedrunShowdownScoreboard.update();
+        scoreboardManager.update();
 
         // If plugin should give permanent potions, give permanent potions
         if (getConfig().getBoolean("permanent-potions")) {
@@ -143,6 +143,9 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
 
         // Broadcast starting game
         getServer().broadcastMessage(ChatColor.GREEN + "Starting game!");
+
+        // Show scoreboard
+        scoreboardManager.show();
 
         // Set time to 0
         getServer().getWorld("world").setTime(0);
@@ -205,6 +208,9 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         // Broadcast stopping game
         getServer().broadcastMessage(ChatColor.RED + "Stopping game");
 
+        // Clear scoreboard
+        scoreboardManager.clear();
+
         // Cancel repeating task
         getServer().getScheduler().cancelTask(taskId);
     }
@@ -227,7 +233,7 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         // For all players
         for (Player player : getServer().getOnlinePlayers()) {
             // If player has a team, set game mode to survival
-            if (speedrunShowdownScoreboard.getTeam(player) != null) {
+            if (scoreboardManager.getTeam(player) != null) {
                 player.setGameMode(GameMode.SURVIVAL);
             }
 
@@ -287,7 +293,7 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         ItemMeta bootsMeta = boots.getItemMeta();
 
         // If player belongs to a team, dye armor
-        Team team = speedrunShowdownScoreboard.getTeam(player);
+        Team team = scoreboardManager.getTeam(player);
         if (team != null) {
             Color color = chatColorToColor(team.getColor());
             ((LeatherArmorMeta) helmetMeta).setColor(color);
@@ -426,7 +432,7 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
     }
 
     public ScoreboardManager getSpeedrunShowdownScoreboard() {
-        return speedrunShowdownScoreboard;
+        return scoreboardManager;
     }
 
     public static Color chatColorToColor(ChatColor chatColor) {

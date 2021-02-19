@@ -2,7 +2,7 @@
 
 - [x] Make plugin singleton
 - [ ] Better nethers
-- [ ] Remove scoreboard when game stops
+- [x] Hide scoreboard when game stops
 - [x] Gui wrapper
 	- [ ] Multi-page gui
 	- [ ] Team setup gui
