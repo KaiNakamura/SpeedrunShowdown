@@ -7,7 +7,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
 
 public class ConfigCommand implements CommandExecutor {
     private SpeedrunShowdown plugin;
@@ -20,14 +19,7 @@ public class ConfigCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         // If sender is a player, open gui
         if (sender instanceof Player) {
-            Player player = (Player) sender;
-
-            // Create inventory gui
-            Inventory gui = plugin.getServer().createInventory(player, 27, "Speedrun Showdown");
-            gui.setContents(ConfigOption.getItems(plugin.getConfig(), gui.getSize()));
-
-            // Open gui
-            player.openInventory(gui);
+            ConfigOption.getGui().show((Player) sender);
         }
         // Else, give warning
         else {

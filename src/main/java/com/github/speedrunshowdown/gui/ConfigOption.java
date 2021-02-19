@@ -1,13 +1,21 @@
 package com.github.speedrunshowdown.gui;
 
+import java.io.File;
+
 import java.util.ArrayList;
+import java.util.function.Consumer;
 
 import org.apache.commons.lang.WordUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.Sound;
+import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.ClickType;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.plugin.Plugin;
 
 public enum ConfigOption {
 	SUDDEN_DEATH_TIME(
@@ -110,45 +118,24 @@ public enum ConfigOption {
 	ConfigOption(String path, Material material) {
 		this(path, material, "");
 	}
+	
+	public GUIItem getItem() {
+		// Get plugin
+		Plugin plugin = Bukkit.getPluginManager().getPlugin("SpeedrunShowdown");
 
-	public String getPath() {
-		return path;
-	}
+		// Create new item stack with config option material
+		ItemStack itemStack = new ItemStack(material);
 
-	public String getName() {
-		return name;
-	}
-
-	public Material getMaterial() {
-		return material;
-	}
-
-	public static ConfigOption getConfigOptionByPath(String path) {
-		for (ConfigOption value : ConfigOption.values()) {
-			if (value.getPath().equals(path)) {
-				return value;
-			}
-		}
-		return null;
-	}
-
-	public static ConfigOption getConfigOptionByMaterial(Material material) {
-		for (ConfigOption value : ConfigOption.values()) {
-			if (value.getMaterial() == material) {
-				return value;
-			}
-		}
-		return null;
-	}
-
-	public static ItemStack getItem(ConfigOption configOption, FileConfiguration config) {
-		ItemStack item = new ItemStack(configOption.getMaterial());
-		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName(ChatColor.RESET + "" + ChatColor.WHITE + configOption.getName());
+		// Get item meta of the item stack and set display to the name of the config option
+		ItemMeta itemMeta = itemStack.getItemMeta();
+		itemMeta.setDisplayName(ChatColor.RESET + "" + ChatColor.WHITE + name);
+		// Create item lore list
 		ArrayList<String> itemLore = new ArrayList<>();
 
-		Object data = config.get(configOption.getPath(), null);
-		// If data is not null, add item lore
+		// Get path and data at path location
+		Object data = plugin.getConfig().get(path, null);
+
+		// If data is not null, add item lore and on click event
 		if (data != null) {
 			// If data is a boolean, add status and boolean instructions
 			if (data instanceof Boolean) {
@@ -164,7 +151,7 @@ public enum ConfigOption {
 			else if (data instanceof Integer) {
 				itemLore.add(
 					ChatColor.RESET + "" + ChatColor.YELLOW + data.toString() + 
-					ChatColor.RESET + " " + ChatColor.GRAY + configOption.suffix
+					ChatColor.RESET + " " + ChatColor.GRAY + suffix
 				);
 				itemLore.add(
 					ChatColor.RESET + "" + ChatColor.DARK_GRAY + "Left/Right click to +/-"
@@ -173,52 +160,77 @@ public enum ConfigOption {
 					ChatColor.RESET + "" + ChatColor.DARK_GRAY + "Shift click to double/half"
 				);
 			}
+
 		}
 
+		// Add lore to item meta
 		itemMeta.setLore(itemLore);
-		item.setItemMeta(itemMeta);
 
-		return item;
+		// Add item meta to item stack
+		itemStack.setItemMeta(itemMeta);
+
+		// Create on click event
+		Consumer<InventoryClickEvent> onClick = event -> {
+			// If selected reset, reset to defaults
+			if (this == RESET) {
+				new File(plugin.getDataFolder(), "config.yml").delete();
+				plugin.saveDefaultConfig();
+				plugin.reloadConfig();
+			}
+			// Else if data is not null, change data value
+			else if (data != null) {
+				// If data is a boolean, toggle value
+				if (data instanceof Boolean) {
+					plugin.getConfig().set(path, !((boolean) data));
+				}
+				// Else if data is an integer, increase or decrease value
+				else if (data instanceof Integer) {
+					ClickType clickType = event.getClick();
+					switch (clickType) {
+						case LEFT:
+							plugin.getConfig().set(path, (int) data + 1);
+							break;
+						case RIGHT:
+							plugin.getConfig().set(path, (int) data - 1);
+							break;
+						case SHIFT_LEFT:
+							plugin.getConfig().set(path, (int) data * 2);
+							break;
+						case SHIFT_RIGHT:
+							plugin.getConfig().set(path, (int) data / 2);
+							break;
+						default:
+							break;
+					}
+				}
+
+				// Save changes
+				plugin.saveConfig();
+			}
+
+			// Get who clicked
+			Player player = (Player) event.getWhoClicked();
+
+			// Play sound
+			player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1, 1);
+
+			// Update gui
+			getGui().show(player);
+		};
+
+		// Return new gui item with the item stack and event
+		return new GUIItem(itemStack, onClick);
 	}
 
-	public static ItemStack[] getItems(FileConfiguration config, int inventorySize) {
-		// Create list to append items
-		ArrayList<ItemStack> itemList = new ArrayList<>();
-
-		// Create space to save the reset item
-		ItemStack reset = null;
-
-		// Sort config options into the list
-		for (ConfigOption configOption : ConfigOption.values()) {
-			ItemStack item = ConfigOption.getItem(configOption, config);
-
-			// If config option is reset, save as the reset item
-			if (configOption == ConfigOption.RESET) {
-				reset = item;
-			}
-			// Else, add to list
-			else {
-				itemList.add(item);
-			}
-		}
-
-		// Combine item list and reset into one item array
-		ItemStack[] items = new ItemStack[inventorySize];
+	public static GUIItem[] getItems() {
+		GUIItem[] items = new GUIItem[values().length];
 		for (int i = 0; i < items.length; i++) {
-			// If index is out of bounds, break
-			if (i >= itemList.size()) {
-				break;
-			}
-			// Else, add to array
-			else {
-				items[i] = itemList.get(i);
-			}
+			items[i] = values()[i].getItem();
 		}
-
-		if (reset != null) {
-			items[items.length - 1] = reset;
-		}
-
 		return items;
+	}
+
+	public static GUI getGui() {
+		return new GUI("Config", getItems());
 	}
 }
