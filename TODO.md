@@ -7,6 +7,7 @@
 	- [ ] Multi-page gui
 	- [ ] Team setup gui
 	- [x] Config gui
+	- [x] Fix gui click detection
 - [ ] Add more options
 	- [x] Random drops
 	- [x] Efficient tools
@@ -20,3 +21,4 @@
 	- [ ] Ender pearl trade rate
 - [ ] Build for other versions
 - [ ] When giving armor, dye existing leather armor
+- [ ] Destroy crystals on sudden death

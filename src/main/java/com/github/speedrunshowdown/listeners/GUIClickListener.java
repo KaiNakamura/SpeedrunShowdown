@@ -7,6 +7,7 @@ import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryType;
 
 public class GUIClickListener implements Listener {
     @EventHandler
@@ -19,8 +20,11 @@ public class GUIClickListener implements Listener {
             // Search for an item at the clicked slot
             GUIItem item = gui.getItem(event.getSlot());
 
-            // If item found, run on click
-            if (item != null) {
+            // If item found not in player's inventory, run on click
+            if (
+                item != null &&
+                event.getClickedInventory().getType() != InventoryType.PLAYER
+            ) {
                 item.onClick(event);
             }
 
