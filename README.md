@@ -78,7 +78,7 @@ The default team names are the following, but can be edited in the [config](#con
 | --- | --- | --- |
 | `/start` | Start the game | Sets time to 0 and gives all players a tracking compass, full health, and full hunger |
 | `/stop` | Stop the game | |
-| `/config` | Open config gui | See [config](#config) |
+| `/config` | Open config gui | If more than one player is editing the config, the latest changes take priority, see [config](#config) for more details |
 | `/suddendeath [minutes]` | Set time until sudden death | If no time given, starts immediately |
 | `/givecompass [player]` | Give a tracking compass | All players are given a compass at the start of the game, this command is to be used if a player doesn't receive a compass |
 | `/givearmor [player]` | Give armor | All players are given armor at the start of the game if `give-armor` is set to true in the [config](#config), this command is to be used if a player doesn't receive armor |

@@ -19,6 +19,7 @@
 	- [ ] Blaze rod drop rate
 	- [ ] Ender pearl drop rate
 	- [ ] Ender pearl trade rate
+	- [ ] Disable Elder Guardians
 - [ ] Build for other versions
 - [ ] When giving armor, dye existing leather armor
 - [ ] Destroy crystals on sudden death

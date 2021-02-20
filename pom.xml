@@ -4,13 +4,13 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.company.speedrunshowdown</groupId>
+  <groupId>com.github.speedrunshowdown</groupId>
   <artifactId>SpeedrunShowdown</artifactId>
   <version>1.0.3</version>
 
   <name>SpeedrunShowdown</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+  <description>Minecraft Speedrunning and PvP Plugin</description>
+  <url>https://github.com/KaiNakamura/SpeedrunShowdown</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -81,10 +81,7 @@
     <resources>
       <resource>
         <directory>${project.basedir}/src/main/resources</directory>
-        <includes>
-          <include>plugin.yml</include>
-          <include>config.yml</include>
-        </includes>
+        <filtering>true</filtering>
       </resource>
     </resources>
   </build>
