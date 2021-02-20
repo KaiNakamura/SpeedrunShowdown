@@ -33,9 +33,11 @@ public class GiveArmorCommand implements CommandExecutor {
         else {
             Player player = plugin.getServer().getPlayer(args[0]);
 
+            // If player not found, give warning
             if (player == null) {
                 sender.sendMessage("Player not found with name: " + args[0]);
             }
+            // Else, give armor to player
             else {
                 plugin.giveArmor(player);
             }

@@ -38,6 +38,7 @@ public class WinCommand implements CommandExecutor {
                 if (team == null) {
                     sender.sendMessage(ChatColor.YELLOW + "No team found for " + player.getName());
                 }
+                // Else, declare team winner
                 else {
                     plugin.win(team, "");
                 }

@@ -3,6 +3,7 @@ package com.github.speedrunshowdown.gui;
 import java.io.File;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Consumer;
 
 import com.github.speedrunshowdown.SpeedrunShowdown;
@@ -11,6 +12,7 @@ import org.apache.commons.lang.WordUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
+import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -213,8 +215,16 @@ public enum ConfigOption {
 			// Play sound
 			player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1, 1);
 
-			// Update gui
-			getGui().show(player);
+			// Get list of all viewers
+			List<Player> viewers = new ArrayList<>();
+			for (HumanEntity viewer : event.getClickedInventory().getViewers()) {
+				viewers.add((Player) viewer);
+			}
+
+			// Update gui for all viewers
+			for (Player viewer : viewers) {
+				getGui().show(viewer);
+			}
 		};
 
 		// Return new gui item with the item stack and event

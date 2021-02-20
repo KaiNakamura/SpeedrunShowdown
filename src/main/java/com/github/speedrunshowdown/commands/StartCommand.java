@@ -30,10 +30,12 @@ public class StartCommand implements CommandExecutor {
                 Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
                     @Override
                     public void run() {
+                        // If no seconds left, give starting message and start
                         if (seconds == 0) {
                             sendStartingTimerTile(ChatColor.GREEN + "Go!", true);
                             plugin.start();
                         }
+                        // Else, display seconds left
                         else {
                             sendStartingTimerTile(ChatColor.YELLOW + "Starting in " + seconds + "...", false);
                         }
