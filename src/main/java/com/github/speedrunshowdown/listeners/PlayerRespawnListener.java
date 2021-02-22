@@ -35,20 +35,13 @@ public class PlayerRespawnListener implements Listener {
             }
 
             // Give resistance
-            plugin.getServer().getScheduler().scheduleSyncDelayedTask(
-                plugin,
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        player.getPlayer().addPotionEffect(new PotionEffect(
-                            PotionEffectType.DAMAGE_RESISTANCE,
-                            plugin.getConfig().getInt("respawn-invincibility") * 20,
-                            255
-                        ));
-                    }
-                },
-                20
-            );
+            plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () -> {
+                player.getPlayer().addPotionEffect(new PotionEffect(
+                    PotionEffectType.DAMAGE_RESISTANCE,
+                    plugin.getConfig().getInt("respawn-invincibility") * 20,
+                    255
+                ));
+            }, 20);
 
             // If is sudden death, change respawn location to end
             if (plugin.isSuddenDeath()) {

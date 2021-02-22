@@ -3,6 +3,7 @@ version: 1.0
 author: KaiNakamura
 main: com.github.speedrunshowdown.SpeedrunShowdown
 api-version: 1.16
+load: STARTUP
 commands:
   start:
     description: Start the game

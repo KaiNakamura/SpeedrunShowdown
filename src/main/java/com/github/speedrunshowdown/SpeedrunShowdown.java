@@ -48,6 +48,10 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
 
     @Override
     public void onEnable() {
+        // Save default config, fails silently if config already exists
+        saveDefaultConfig();
+
+        // Create commands
         getCommand("start").setExecutor(new StartCommand());
         getCommand("stop").setExecutor(new StopCommand());
         getCommand("config").setExecutor(new ConfigCommand());
@@ -55,6 +59,9 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         getCommand("givecompass").setExecutor(new GiveCompassCommand());
         getCommand("givearmor").setExecutor(new GiveArmorCommand());
         getCommand("win").setExecutor(new WinCommand());
+
+        // Create listeners
+        getServer().getPluginManager().registerEvents(new WorldInitListener(), this);
         getServer().getPluginManager().registerEvents(new GUIClickListener(), this);
         getServer().getPluginManager().registerEvents(new CompassUseListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerDeathListener(), this);
@@ -69,9 +76,10 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         getServer().getPluginManager().registerEvents(new BlockDropItemListener(), this);
         getServer().getPluginManager().registerEvents(new FoodDropListener(), this);
 
-        saveDefaultConfig();
-
-        scoreboardManager = new ScoreboardManager();
+        // Create scoreboard manager
+        getServer().getScheduler().scheduleSyncDelayedTask(this, () -> {
+            scoreboardManager = new ScoreboardManager();
+        });
     }
 
     @Override

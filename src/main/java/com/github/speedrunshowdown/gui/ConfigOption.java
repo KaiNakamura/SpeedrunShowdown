@@ -97,8 +97,8 @@ public enum ConfigOption {
 		Material.BARRIER
 	);
 
-	private String path, name, suffix;
-	private Material material;
+	private final String path, name, suffix;
+	private final Material material;
 
 	ConfigOption(String path, String name, Material material, String suffix) {
 		this.path = path;

@@ -1,7 +1,12 @@
 # TODO
 
 - [x] Make plugin singleton
-- [ ] Better nethers
+- [ ] Custom world generation
+	- [ ] Custom structure generation
+		- [ ] Structure config file
+		- [x] Chunk generator
+	- [ ] Custom biome generation
+- [ ] File config wrapper
 - [x] Hide scoreboard when game stops
 - [x] Gui wrapper
 	- [ ] Multi-page gui
@@ -11,6 +16,7 @@
 - [ ] Add more options
 	- [x] Random drops
 	- [x] Efficient tools
+		- [ ] Don't overwrite better enchantments
 	- [x] Auto smelt ores
 	- [x] Auto cook food
 	- [x] Permanent potion effects

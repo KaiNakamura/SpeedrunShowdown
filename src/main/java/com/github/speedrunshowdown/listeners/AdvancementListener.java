@@ -19,11 +19,8 @@ public class AdvancementListener implements Listener {
             final boolean announceAdvancements = event.getPlayer().getWorld().getGameRuleValue(GameRule.ANNOUNCE_ADVANCEMENTS);
             if (event.getPlayer().getGameMode() == GameMode.SPECTATOR) {
                 event.getPlayer().getWorld().setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, false);
-                Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
-                    @Override
-                    public void run() {
-                        event.getPlayer().getWorld().setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, announceAdvancements);
-                    }
+                Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, () -> {
+                    event.getPlayer().getWorld().setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, announceAdvancements);
                 }, 1L);
             }
         }

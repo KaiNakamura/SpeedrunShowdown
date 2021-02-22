@@ -27,18 +27,15 @@ public class StartCommand implements CommandExecutor {
             int countdownTime = plugin.getConfig().getInt("countdown-time");
             for (int i = 0; i <= countdownTime; i++) {
                 final int seconds = i;
-                Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
-                    @Override
-                    public void run() {
-                        // If no seconds left, give starting message and start
-                        if (seconds == 0) {
-                            sendStartingTimerTile(ChatColor.GREEN + "Go!", true);
-                            plugin.start();
-                        }
-                        // Else, display seconds left
-                        else {
-                            sendStartingTimerTile(ChatColor.YELLOW + "Starting in " + seconds + "...", false);
-                        }
+                Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, () -> {
+                    // If no seconds left, give starting message and start
+                    if (seconds == 0) {
+                        sendStartingTimerTile(ChatColor.GREEN + "Go!", true);
+                        plugin.start();
+                    }
+                    // Else, display seconds left
+                    else {
+                        sendStartingTimerTile(ChatColor.YELLOW + "Starting in " + seconds + "...", false);
                     }
                 }, 30L + (countdownTime - i) * 30L);
             }

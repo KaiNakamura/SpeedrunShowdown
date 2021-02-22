@@ -31,6 +31,12 @@
       <version>1.16.1-R0.1-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
+    <dependency>
+      <groupId>org.spigotmc</groupId>
+      <artifactId>spigot</artifactId>
+      <version>1.16.1-R0.1-SNAPSHOT</version>
+      <scope>provided</scope>
+    </dependency>
   </dependencies>
 
   <build>
@@ -82,6 +88,11 @@
       <resource>
         <directory>${project.basedir}/src/main/resources</directory>
         <filtering>true</filtering>
+        <includes>
+          <include>plugin.yml</include>
+          <include>config.yml</include>
+          <include>structures.yml</include>
+        </includes>
       </resource>
     </resources>
   </build>
