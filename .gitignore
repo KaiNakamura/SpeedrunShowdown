@@ -1,6 +1,2 @@
 target/
 .settings/
-.vscode/
-.idea/
-*.code-workspace
-*.iml
