@@ -13,17 +13,17 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Set up JDK 1.8
+    - name: Set up JDK 17
       uses: actions/setup-java@v1
       with:
-        java-version: 1.8
+        java-version: 17 
     - name: Compile Minecraft Spigot or Paper (BuildTools)
       # You may pin to the exact commit or the version.
       # uses: SpraxDev/Action-SpigotMC@1a29f401c76b9a36671680e789a559368bfda861
       uses: SpraxDev/Action-SpigotMC@v1
       with:
         # Versions to build (sperate multiple with ',')
-        versions: 1.16.1 # optional, default is latest
+        versions: 1.19.2 # optional, default is latest
         # Should sources be generated?
         generateSrc: false # optional, default is false
         # Should the documentation be generated?

@@ -8,7 +8,6 @@ import java.util.List;
 import com.github.speedrunshowdown.commands.*;
 import com.github.speedrunshowdown.gui.*;
 import com.github.speedrunshowdown.listeners.*;
-import com.github.speedrunshowdown.world.StructureConfig;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -52,9 +51,6 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         // Save default config, fails silently if config already exists
         saveDefaultConfig();
 
-        // Save default structure config, fails silently if config already exists
-		StructureConfig.saveDefaultConfig();
-
         // Create commands
         getCommand("start").setExecutor(new StartCommand());
         getCommand("stop").setExecutor(new StopCommand());
@@ -65,7 +61,6 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         getCommand("win").setExecutor(new WinCommand());
 
         // Create listeners
-        getServer().getPluginManager().registerEvents(new WorldInitListener(), this);
         getServer().getPluginManager().registerEvents(new GUIClickListener(), this);
         getServer().getPluginManager().registerEvents(new CompassUseListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerDeathListener(), this);

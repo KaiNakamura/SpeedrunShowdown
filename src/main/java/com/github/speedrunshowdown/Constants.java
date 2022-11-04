@@ -377,7 +377,6 @@ public class Constants {
 		Material.ACACIA_STAIRS,
 		Material.DARK_OAK_STAIRS,
 		Material.SLIME_BLOCK,
-		Material.GRASS_PATH,
 		Material.SUNFLOWER,
 		Material.LILAC,
 		Material.ROSE_BUSH,
