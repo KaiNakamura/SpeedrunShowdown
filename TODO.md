@@ -29,3 +29,4 @@
 - [ ] Build for other versions
 - [ ] When giving armor, dye existing leather armor
 - [ ] Destroy crystals on sudden death
+- [ ] Compass cycles through players

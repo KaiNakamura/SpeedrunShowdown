@@ -35,7 +35,7 @@ public class SuddenDeathCommand implements CommandExecutor {
                 }
                 // If invalid, give warning
                 catch (NumberFormatException e) {
-                    sender.sendMessage(plugin.getCommand("settime").getUsage());
+                    sender.sendMessage(plugin.getCommand("suddendeath").getUsage());
                 }
             }
         }
