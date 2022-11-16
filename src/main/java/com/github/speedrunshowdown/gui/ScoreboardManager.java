@@ -7,6 +7,7 @@ import com.github.speedrunshowdown.SpeedrunShowdown;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
+import org.bukkit.scoreboard.Criteria;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
@@ -50,7 +51,7 @@ public class ScoreboardManager {
         // Register new objective
         objective = scoreboard.registerNewObjective(
             "sidebar",
-            "dummy",
+            Criteria.DUMMY,
             ChatColor.YELLOW.toString() + ChatColor.BOLD + "SPEEDRUN SHOWDOWN"
         );
 
