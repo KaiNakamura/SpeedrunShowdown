@@ -10,6 +10,8 @@ indestructable-spawners: true
 must-kill-dragon-to-win: true
 hide-spectator-advancements: true
 give-compass: true
+keep-armor: true
+keep-tools: true
 give-armor: false
 efficient-tools: false
 smelt-ores: false

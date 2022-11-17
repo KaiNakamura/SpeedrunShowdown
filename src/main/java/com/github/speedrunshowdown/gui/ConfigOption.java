@@ -67,13 +67,21 @@ public enum ConfigOption {
 		"give-compass",
 		Material.COMPASS
 	),
+	KEEP_ARMOR(
+		"keep-armor",
+		Material.DIAMOND_CHESTPLATE
+	),
+	KEEP_TOOLS(
+		"keep-tools",
+		Material.DIAMOND_PICKAXE
+	),
 	GIVE_ARMOR(
 		"give-armor",
 		Material.LEATHER_CHESTPLATE
 	),
 	EFFICIENT_TOOLS(
 		"efficient-tools",
-		Material.GOLDEN_PICKAXE
+		Material.BEACON
 	),
 	SMELT_ORES(
 		"smelt-ores",
