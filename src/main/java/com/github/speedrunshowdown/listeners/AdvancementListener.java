@@ -10,7 +10,7 @@ import org.bukkit.event.player.PlayerAdvancementDoneEvent;
 
 public class AdvancementListener implements Listener {
     @EventHandler
-    public void onAdvancementObtained(final PlayerAdvancementDoneEvent event) {
+    public void onAdvancementObtained(PlayerAdvancementDoneEvent event) {
         SpeedrunShowdown plugin = SpeedrunShowdown.getInstance();
 
         // If plugin is running and should hide spectator advancements,

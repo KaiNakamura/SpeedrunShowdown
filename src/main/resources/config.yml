@@ -4,6 +4,7 @@ grace-period: 30 # seconds
 respawn-invincibility: 15 # seconds
 portal-invincibility: 5 # seconds
 warning-times: [60, 30, 15, 10, 5, 4, 3, 2, 1] # seconds
+portal-alerts: true
 prevent-bed-explosions: true
 prevent-respawn-anchor-explosions: true
 indestructable-spawners: true

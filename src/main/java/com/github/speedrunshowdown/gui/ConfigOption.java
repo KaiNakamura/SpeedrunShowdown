@@ -43,6 +43,10 @@ public enum ConfigOption {
 		Material.END_PORTAL_FRAME,
 		"seconds"
 	),
+	PORTAL_ALERTS(
+		"portal-alerts",
+		Material.ENDER_EYE
+	),
 	PREVENT_BED_EXPLOSTIONS(
 		"prevent-bed-explosions",
 		Material.RED_BED
@@ -61,7 +65,7 @@ public enum ConfigOption {
 	),
 	HIDE_SPECTATOR_ADVANCEMENTS(
 		"hide-spectator-advancements",
-		Material.ENDER_EYE
+		Material.CRAFTING_TABLE
 	),
 	GIVE_COMPASS(
 		"give-compass",

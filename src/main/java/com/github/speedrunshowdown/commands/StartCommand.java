@@ -45,12 +45,12 @@ public class StartCommand implements CommandExecutor {
     }
 
     public void sendStartingTimerTile(String subtitle, boolean higherDing) {
-        float pitch = 1f;
+        float pitch = 1;
         if (higherDing) {
-            pitch = 2f;
+            pitch = 2;
         }
         for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-            player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1f, pitch);
+            player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1, pitch);
             player.sendTitle(ChatColor.YELLOW + ChatColor.BOLD.toString() + "SPEEDRUN SHOWDOWN", subtitle, 0, 60, 10);
         }
     }
