@@ -1,5 +1,6 @@
 # TODO
 
+- [ ] YAML file for list of default teams
 - [x] Make plugin singleton
 - [ ] Custom world generation
 	- [ ] Custom structure generation
