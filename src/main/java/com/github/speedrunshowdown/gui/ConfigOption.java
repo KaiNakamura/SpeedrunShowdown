@@ -43,6 +43,10 @@ public enum ConfigOption {
 		Material.END_PORTAL_FRAME,
 		"seconds"
 	),
+	WORLD_BORDER(
+		"world-border",
+		Material.GRASS_BLOCK
+	),
 	PORTAL_ALERTS(
 		"portal-alerts",
 		Material.ENDER_EYE

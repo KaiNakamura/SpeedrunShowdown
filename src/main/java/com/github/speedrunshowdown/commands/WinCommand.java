@@ -24,7 +24,7 @@ public class WinCommand implements CommandExecutor {
         }
         // Else, check if argument is a team or player
         else {
-            Team team = plugin.getSpeedrunShowdownScoreboard().getScoreboard().getTeam(args[0]);
+            Team team = plugin.getScoreboardManager().getScoreboard().getTeam(args[0]);
             Player player = plugin.getServer().getPlayer(args[0]);
 
             if (team != null) {
@@ -32,7 +32,7 @@ public class WinCommand implements CommandExecutor {
             }
             else if (player != null) {
                 // Look for team
-                team = plugin.getSpeedrunShowdownScoreboard().getTeam(player);
+                team = plugin.getScoreboardManager().getTeam(player);
 
                 // If no team found, give warning
                 if (team == null) {

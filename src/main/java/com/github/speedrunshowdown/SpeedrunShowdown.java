@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import com.github.speedrunshowdown.border.WorldBorderManager;
 import com.github.speedrunshowdown.commands.*;
 import com.github.speedrunshowdown.gui.*;
 import com.github.speedrunshowdown.listeners.*;
@@ -43,6 +44,7 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
     private int timer;
 
     private ScoreboardManager scoreboardManager;
+    private WorldBorderManager worldBorderManager;
 
     private Material[] randomItems = Constants.ITEMS.clone();
 
@@ -61,23 +63,26 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         getCommand("win").setExecutor(new WinCommand());
 
         // Create listeners
-        getServer().getPluginManager().registerEvents(new GUIClickListener(), this);
-        getServer().getPluginManager().registerEvents(new CompassUseListener(), this);
-        getServer().getPluginManager().registerEvents(new PlayerDeathListener(), this);
-        getServer().getPluginManager().registerEvents(new PlayerRespawnListener(), this);
-        getServer().getPluginManager().registerEvents(new BlockDamageListener(), this);
-        getServer().getPluginManager().registerEvents(new BedUseListener(), this);
-        getServer().getPluginManager().registerEvents(new RespawnAnchorUseListener(), this);
-        getServer().getPluginManager().registerEvents(new PortalEnterListener(), this);
-        getServer().getPluginManager().registerEvents(new DragonKillListener(), this);
         getServer().getPluginManager().registerEvents(new AdvancementListener(), this);
-        getServer().getPluginManager().registerEvents(new ToolUseListener(), this);
+        getServer().getPluginManager().registerEvents(new BedUseListener(), this);
+        getServer().getPluginManager().registerEvents(new BlockDamageListener(), this);
         getServer().getPluginManager().registerEvents(new BlockDropItemListener(), this);
+        getServer().getPluginManager().registerEvents(new CompassUseListener(), this);
+        getServer().getPluginManager().registerEvents(new DragonKillListener(), this);
         getServer().getPluginManager().registerEvents(new FoodDropListener(), this);
+        getServer().getPluginManager().registerEvents(new GUIClickListener(), this);
+        getServer().getPluginManager().registerEvents(new PlayerChangedWorldListener(), this);
+        getServer().getPluginManager().registerEvents(new PlayerDeathListener(), this);
+        getServer().getPluginManager().registerEvents(new PlayerLoginListener(), this);
+        getServer().getPluginManager().registerEvents(new PlayerRespawnListener(), this);
+        getServer().getPluginManager().registerEvents(new PortalEnterListener(), this);
+        getServer().getPluginManager().registerEvents(new RespawnAnchorUseListener(), this);
+        getServer().getPluginManager().registerEvents(new ToolUseListener(), this);
 
-        // Create scoreboard manager
+        // Create managers
         getServer().getScheduler().scheduleSyncDelayedTask(this, () -> {
             scoreboardManager = new ScoreboardManager();
+            worldBorderManager = new WorldBorderManager();
         });
     }
 
@@ -120,8 +125,11 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
             }
         }
 
-        // Updtate scoreboard
+        // Update scoreboard
         scoreboardManager.update();
+
+        // Update world border
+        worldBorderManager.update();
 
         // If plugin should give permanent potions, give permanent potions
         if (getConfig().getBoolean("permanent-potions")) {
@@ -153,6 +161,9 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
 
         // Show scoreboard
         scoreboardManager.show();
+
+        // Update world border
+        worldBorderManager.init();
 
         // Set time to 0
         getServer().getWorld("world").setTime(0);
@@ -217,6 +228,9 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
 
         // Clear scoreboard
         scoreboardManager.clear();
+
+        // Reset world border
+        worldBorderManager.reset();
 
         // Cancel repeating task
         getServer().getScheduler().cancelTask(taskId);
@@ -438,8 +452,12 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         return timer;
     }
 
-    public ScoreboardManager getSpeedrunShowdownScoreboard() {
+    public ScoreboardManager getScoreboardManager() {
         return scoreboardManager;
+    }
+
+    public WorldBorderManager getWorldBorderManager() {
+        return worldBorderManager;
     }
 
     public static Color chatColorToColor(ChatColor chatColor) {

@@ -38,7 +38,7 @@ public class PlayerDeathListener implements Listener {
                 for (String word : words) {
                     for (Player player : plugin.getServer().getOnlinePlayers()) {
                         if (word.equals(player.getName())) {
-                            Team team = plugin.getSpeedrunShowdownScoreboard().getTeam(player);
+                            Team team = plugin.getScoreboardManager().getTeam(player);
                             if (team != null) {
                                 word = team.getColor() + word + ChatColor.RESET;
                             }
@@ -60,7 +60,7 @@ public class PlayerDeathListener implements Listener {
 
                 // Check which teams are living
                 ArrayList<Team> livingTeams = new ArrayList<>();
-                for (Team team : plugin.getSpeedrunShowdownScoreboard().getScoreboard().getTeams()) {
+                for (Team team : plugin.getScoreboardManager().getScoreboard().getTeams()) {
                     // If team has no entries, skip
                     if (team.getSize() != 0) {
                         boolean teamAlive = false;
@@ -76,7 +76,7 @@ public class PlayerDeathListener implements Listener {
                         if (
                             !teamAlive &&
                             team.getName().equals(
-                                plugin.getSpeedrunShowdownScoreboard().getTeam(event.getEntity()).getName()
+                                plugin.getScoreboardManager().getTeam(event.getEntity()).getName()
                             )
                         ) {
                             // Broadcast team elimination

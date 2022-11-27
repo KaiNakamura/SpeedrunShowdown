@@ -38,7 +38,7 @@ public class CompassUseListener implements Listener {
                 // Create list of other players to track
                 ArrayList<Player> otherPlayers = new ArrayList<>();
 
-                for (Team team : plugin.getSpeedrunShowdownScoreboard().getScoreboard().getTeams()) {
+                for (Team team : plugin.getScoreboardManager().getScoreboard().getTeams()) {
                     // If compass right clicked and team does not contain the current player
                     if (
                         (action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK) &&
@@ -104,7 +104,7 @@ public class CompassUseListener implements Listener {
                     rename(
                         item,
                         ChatColor.WHITE + "Now pointing to " +
-                        plugin.getSpeedrunShowdownScoreboard().getTeam(closestPlayer).getColor() +
+                        plugin.getScoreboardManager().getTeam(closestPlayer).getColor() +
                         closestPlayer.getName() + ChatColor.WHITE + "'s last location"
                     );
                     player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1, 1);

@@ -50,7 +50,7 @@ public class PortalEnterListener implements Listener {
     }
 
     private static ChatColor getPlayerColor(Player player) {
-        Team team = SpeedrunShowdown.getInstance().getServer().getScoreboardManager().getMainScoreboard().getEntryTeam(player.getName());
+        Team team = SpeedrunShowdown.getInstance().getScoreboardManager().getTeam(player);
         if (team == null) {
             return ChatColor.RESET;
         } else {

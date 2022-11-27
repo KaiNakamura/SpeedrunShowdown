@@ -18,7 +18,7 @@ public class DragonKillListener implements Listener {
                 // If crieria is killed dragon, declare winning team
                 if (criteria.equals("killed_dragon")) {
                     plugin.win(
-                        plugin.getSpeedrunShowdownScoreboard().getTeam(event.getPlayer()),
+                        plugin.getScoreboardManager().getTeam(event.getPlayer()),
                         event.getPlayer().getName() + " killed the dragon!"
                     );
                 }
