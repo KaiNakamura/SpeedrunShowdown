@@ -13,6 +13,10 @@ commands:
     description: Stop the game
     permission: speedrunshowdown
     usage: /stop
+  resume:
+    description: Resume the game (to be used if the server crashes during a game)
+    permission: speedrunshowdown
+    usage: /resume
   config:
     description: Open config gui
     permission: speedrunshowdown

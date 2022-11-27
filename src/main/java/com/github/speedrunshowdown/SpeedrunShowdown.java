@@ -56,6 +56,7 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         // Create commands
         getCommand("start").setExecutor(new StartCommand());
         getCommand("stop").setExecutor(new StopCommand());
+        getCommand("resume").setExecutor(new ResumeCommand());
         getCommand("config").setExecutor(new ConfigCommand());
         getCommand("suddendeath").setExecutor(new SuddenDeathCommand());
         getCommand("givecompass").setExecutor(new GiveCompassCommand());
@@ -211,6 +212,35 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
                 255
             ));
         }
+    }
+
+    public void resume(int minutes, int seconds) {
+        // If already running, cancel resume
+        if (running) {
+            getServer().broadcastMessage(ChatColor.YELLOW + "Game already running");
+            return;
+        }
+
+        // Set timer
+        timer = 60 * minutes + seconds;
+
+        // Schedule repeating task
+        taskId = getServer().getScheduler().scheduleSyncRepeatingTask(this, this, 20, 20);
+
+        // Set running
+        running = true;
+
+        // Set not sudden death
+        suddenDeath = false;
+
+        // Broadcast resuming game
+        getServer().broadcastMessage(ChatColor.GREEN + "Resuming game!");
+
+        // Show scoreboard
+        scoreboardManager.show();
+
+        // Update world border
+        worldBorderManager.init();
     }
 
     public void stop() {
