@@ -1,33 +1,6 @@
 # TODO
 
 - [ ] YAML file for list of default teams
-- [x] Make plugin singleton
-- [ ] Custom world generation
-	- [ ] Custom structure generation
-		- [ ] Structure config file
-		- [x] Chunk generator
-	- [ ] Custom biome generation
-- [ ] File config wrapper
-- [x] Hide scoreboard when game stops
-- [x] Gui wrapper
-	- [ ] Multi-page gui
-	- [ ] Team setup gui
-	- [x] Config gui
-	- [x] Fix gui click detection
-- [ ] Add more options
-	- [x] Random drops
-	- [x] Efficient tools
-		- [ ] Don't overwrite better enchantments
-	- [x] Auto smelt ores
-	- [x] Auto cook food
-	- [x] Permanent potion effects
-	- [ ] Elytra
-	- [ ] Flint drop rate
-	- [ ] Blaze rod drop rate
-	- [ ] Ender pearl drop rate
-	- [ ] Ender pearl trade rate
-	- [ ] Disable Elder Guardians
-- [ ] Build for other versions
-- [ ] When giving armor, dye existing leather armor
-- [ ] Destroy crystals on sudden death
 - [ ] Compass cycles through players
+- [ ] Efficient tools shouldn't override existing enchantments
+- [ ] When giving armor, dye existing leather armor
