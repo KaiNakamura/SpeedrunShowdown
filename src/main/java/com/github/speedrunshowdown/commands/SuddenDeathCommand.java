@@ -22,21 +22,37 @@ public class SuddenDeathCommand implements CommandExecutor {
                 plugin.suddenDeath();
             }
             else {
-                // Try to parse int
-                try {
-                    // Set timer
-                    int minutes = Integer.parseInt(args[0]);
-                    plugin.setTime(minutes * 60);
-                    plugin.getServer().broadcastMessage(
-                        ChatColor.YELLOW + "Sudden death in " +
-                        ChatColor.GREEN + minutes +
-                        ChatColor.YELLOW + " minutes"
-                    );
+                int minutes = 0;
+                int seconds = 0;
+
+                // If there is at least one argument, parse first argument as minutes
+                if (args.length > 0) {
+                    try {
+                        minutes = Integer.parseInt(args[0]);
+                    } catch (NumberFormatException e) {
+                        sender.sendMessage(ChatColor.RED + "Minutes must be formatted as a number");
+                        sender.sendMessage(plugin.getCommand("suddendeath").getUsage());
+                        return true;
+                    }
                 }
-                // If invalid, give warning
-                catch (NumberFormatException e) {
-                    sender.sendMessage(plugin.getCommand("suddendeath").getUsage());
+
+                // If there is at least two arguments, parse second argument as seconds
+                if (args.length > 1) {
+                    try {
+                        seconds = Integer.parseInt(args[1]);
+                    } catch (NumberFormatException e) {
+                        sender.sendMessage(ChatColor.RED + "Seconds must be formatted as a number");
+                        sender.sendMessage(plugin.getCommand("suddendeath").getUsage());
+                        return true;
+                    }
                 }
+
+                plugin.setTime(60 * minutes + seconds);
+                plugin.getServer().broadcastMessage(
+                    ChatColor.YELLOW + "Sudden death in " +
+                    ChatColor.GREEN + minutes +
+                    ChatColor.YELLOW + " minutes"
+                );
             }
         }
 

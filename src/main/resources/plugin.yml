@@ -13,18 +13,18 @@ commands:
     description: Stop the game
     permission: speedrunshowdown
     usage: /stop
-  resume:
-    description: Resume the game (to be used if the server crashes during a game)
-    permission: speedrunshowdown
-    usage: /resume
   config:
     description: Open config gui
     permission: speedrunshowdown
     usage: /config
+  resume:
+    description: Resume the game (to be used if the server crashes during a game)
+    permission: speedrunshowdown
+    usage: /resume [minutes] [seconds]
   suddendeath:
     description: Set time until sudden death
     permission: speedrunshowdown
-    usage: /suddendeath [minutes]
+    usage: /suddendeath [minutes] [seconds]
   givecompass:
     description: Give a tracking compass
     permission: speedrunshowdown

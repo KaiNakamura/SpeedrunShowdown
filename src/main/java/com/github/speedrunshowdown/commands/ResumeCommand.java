@@ -27,6 +27,7 @@ public class ResumeCommand implements CommandExecutor {
                     minutes = Integer.parseInt(args[0]);
                 } catch (NumberFormatException e) {
                     sender.sendMessage(ChatColor.RED + "Minutes must be formatted as a number");
+                    sender.sendMessage(plugin.getCommand("resume").getUsage());
                     return true;
                 }
             }
@@ -37,6 +38,7 @@ public class ResumeCommand implements CommandExecutor {
                     seconds = Integer.parseInt(args[1]);
                 } catch (NumberFormatException e) {
                     sender.sendMessage(ChatColor.RED + "Seconds must be formatted as a number");
+                    sender.sendMessage(plugin.getCommand("resume").getUsage());
                     return true;
                 }
             }
