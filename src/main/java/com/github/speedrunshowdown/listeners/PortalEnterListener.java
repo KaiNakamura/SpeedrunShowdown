@@ -21,8 +21,8 @@ public class PortalEnterListener implements Listener {
         SpeedrunShowdown plugin = SpeedrunShowdown.getInstance();
         Player player = event.getPlayer();
 
-        // If plugin is running and player is in surival mode
-        if (plugin.isRunning() && player.getGameMode() == GameMode.SURVIVAL) {
+        // If plugin is running and player is not a spectator
+        if (plugin.isRunning() && player.getGameMode() != GameMode.SPECTATOR) {
             // Give player portal invincibility
             event.getPlayer().addPotionEffect(new PotionEffect(
                 PotionEffectType.DAMAGE_RESISTANCE,
