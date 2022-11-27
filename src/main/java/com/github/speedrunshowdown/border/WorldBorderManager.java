@@ -6,7 +6,7 @@ import org.bukkit.entity.Player;
 import com.github.speedrunshowdown.SpeedrunShowdown;
 
 public class WorldBorderManager {
-    private static final int OVERWORLD_BORDER_SIZE = 5632; // blocks
+    private static final int OVERWORLD_BORDER_SIZE = 6000; // blocks
     private static final int NETHER_BORDER_SIZE = OVERWORLD_BORDER_SIZE / 8; // blocks
     private static final int END_BORDER_SIZE = 1000;
 
