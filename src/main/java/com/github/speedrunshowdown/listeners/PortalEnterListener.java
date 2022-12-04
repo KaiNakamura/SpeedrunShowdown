@@ -62,7 +62,6 @@ public class PortalEnterListener implements Listener {
         return (
             getWorldColor(location.getWorld()) + "(" +
             (int) location.getX() + ", " +
-            (int) location.getY() + ", " +
             (int) location.getZ() + ") in the " +
             getWorldName(location.getWorld())
         );
