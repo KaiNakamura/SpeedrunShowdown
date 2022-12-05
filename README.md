@@ -96,18 +96,22 @@ For more control over the config, navigate to the [config.yml](https://github.co
 
 | Attribute | Default | Description | Notes |
 | --- | --- | --- | --- |
-| `sudden-death-time` | 3600 seconds | The time in seconds until sudden death | |
+| `sudden-death-time` | 30 minutes | The time in minutes until sudden death | |
 | `countdown-time` | 3 seconds | The time in seconds to count before the game begins | |
 | `grace-period` | 30 seconds | The time in seconds until PvP is enabled | |
 | `respawn-invincibility` | 15 seconds | The time in seconds until a respawned player can be damaged | |
 | `portal-invincibility` | 15 seconds | The time in seconds until a player coming through a portal can be damaged | |
 | `warning-times` | [60, 30, 15, 10, 5, 4, 3, 2, 1] seconds | The times in seconds at which a warning will be given before sudden death | |
+| `portal-alerts` | true | Broadcasts the coordinates of a portal when it is used | |
+| `world-border` | true | Creates a world border that prevents players from going to strongholds beyond the first ring and prevents players from leaving the main island in the End | World border goes from -3000 to 3000 in the Overworld, -375 to 375 in the Nether, and -500 to 500 in the End |
 | `prevent-bed-explosions` | true | Prevent players from exploding beds | Beds can still be used in the Overworld |
 | `prevent-respawn-anchor-explosions` | true | Prevent players from exploding respawn anchors | Respawn anchors can still be used in the Nether |
 | `indestructable-spawners` | true | Make spawners indestructable | |
 | `must-kill-dragon-to-win` | true | Players must kill the dragon to win | If set to false, the last remaining team will be declared the winner, otherwise if all teams are dead players will be respawned |
 | `hide-spectator-advancements` | true | Hide advancements earned by spectators from being announced in chat | Spectators include anyone in the spectator gamemode |
 | `give-compass` | true | Give tracking compass to players at start and on respawn |  |
+| `keep-armor` | true | Keep armor on death | Player will only keep armor that they are wearing on death |
+| `keep-tools` | true | Keep tools on death | Tools include pickaxes, axes, shovels, hoes, swords, shields, bows, and crossbows |
 | `give-armor` | false | Give leather armor to players at start and on respawn | Armor is dyed to the team color and has curse of vanishing |
 | `efficient-tools` | false | Tools will be enchanted with Efficiency III and Unbreaking I | Tools are enchanted on use |
 | `smelt-ores` | false | Ores will drop as ingots instead of ores |  |
