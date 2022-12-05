@@ -102,7 +102,7 @@ For more control over the config, navigate to the [config.yml](https://github.co
 | `respawn-invincibility` | 15 seconds | The time in seconds until a respawned player can be damaged | |
 | `portal-invincibility` | 15 seconds | The time in seconds until a player coming through a portal can be damaged | |
 | `warning-times` | [60, 30, 15, 10, 5, 4, 3, 2, 1] seconds | The times in seconds at which a warning will be given before sudden death | |
-| `portal-alerts` | true | Broadcasts the coordinates of a portal when it is used | |
+| `portal-alerts` | true | When a player enters a portal, broadcast the coordinates of the portal | |
 | `world-border` | true | Creates a world border that prevents players from going to strongholds beyond the first ring and prevents players from leaving the main island in the End | World border goes from -3000 to 3000 in the Overworld, -375 to 375 in the Nether, and -500 to 500 in the End |
 | `prevent-bed-explosions` | true | Prevent players from exploding beds | Beds can still be used in the Overworld |
 | `prevent-respawn-anchor-explosions` | true | Prevent players from exploding respawn anchors | Respawn anchors can still be used in the Nether |
