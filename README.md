@@ -32,7 +32,7 @@
 
 This project is a Minecraft speedrunning and PvP plugin. Teams of players race to be the first to kill the Ender dragon. All players are equipped with a tracking compass that can point to the nearest enemy or teammate.
 
-In 60 minutes sudden death begins, all players will be teleported to the end and players can no longer respawn. The timer will not count down if a player is in the End.
+In 30 minutes sudden death begins, all players will be teleported to the end and players can no longer respawn. The timer will not count down if a player is in the End.
 
 Bed and respawn anchor explosions are disabled, spawners are unbreakable, and portal/spawn trapping is not allowed (see [config](#config) for more details).
 
