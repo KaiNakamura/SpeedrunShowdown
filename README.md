@@ -113,7 +113,7 @@ For more control over the config, navigate to the [config.yml](https://github.co
 | `hide-spectator-advancements` | true | Hide advancements earned by spectators from being announced in chat | Spectators include anyone in the spectator gamemode |
 | `give-compass` | true | Give tracking compass to players at start and on respawn |  |
 | `keep-armor` | true | Keep armor on death | Player will only keep armor that they are wearing on death |
-| `keep-tools` | true | Keep tools on death | Tools include pickaxes, axes, shovels, hoes, swords, shields, bows, and crossbows |
+| `keep-tools` | true | Keep tools on death | Tools include pickaxes, axes, shovels, hoes, swords, shields, bows, crossbows, flint and steel, tridents, shears, and fishing rods |
 | `give-armor` | false | Give leather armor to players at start and on respawn | Armor is dyed to the team color and has curse of vanishing |
 | `efficient-tools` | false | Tools will be enchanted with Efficiency III and Unbreaking I | Tools are enchanted on use |
 | `smelt-ores` | false | Ores will drop as ingots instead of ores |  |

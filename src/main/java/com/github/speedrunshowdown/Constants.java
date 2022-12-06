@@ -1017,6 +1017,10 @@ public class Constants {
 		Material.SHIELD,
 		Material.BOW,
 		Material.CROSSBOW,
+		Material.FLINT_AND_STEEL,
+		Material.TRIDENT,
+		Material.SHEARS,
+		Material.FISHING_ROD,
 	};
 
     public static final Material[] EFFICIENT_TOOLS = {
