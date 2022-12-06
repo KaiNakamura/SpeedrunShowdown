@@ -71,6 +71,10 @@ public enum ConfigOption {
 		"lower-dragon-health-in-sudden-death",
 		Material.DRAGON_HEAD
 	),
+	DESTROY_END_CRYSTALS_IN_SUDDEN_DEATH(
+		"destroy-end-crystals-in-sudden-death",
+		Material.END_CRYSTAL
+	),
 	HIDE_SPECTATOR_ADVANCEMENTS(
 		"hide-spectator-advancements",
 		Material.CRAFTING_TABLE
