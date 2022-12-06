@@ -24,6 +24,7 @@ import org.bukkit.advancement.Advancement;
 import org.bukkit.advancement.AdvancementProgress;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.EnderCrystal;
+import org.bukkit.entity.EnderDragon;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Firework;
 import org.bukkit.entity.Item;
@@ -317,7 +318,15 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
 
         // If plugin should lower dragon health, lower dragon health
         if (getConfig().getBoolean("lower-dragon-health-in-sudden-death")) {
-            end.getEnderDragonBattle().getEnderDragon().setHealth(Constants.ENDER_DRAGON_SUDDEN_DEATH_HEALTH);
+            EnderDragon dragon = end.getEnderDragonBattle().getEnderDragon();
+
+            // Set dragon health to the lowered value or current health, whichever is lower
+            dragon.setHealth(
+                Math.min(
+                    Constants.ENDER_DRAGON_SUDDEN_DEATH_HEALTH,
+                    dragon.getHealth()
+                )
+            );
         }
 
         // If plugin should destroy end crystals, destroy end crystals
