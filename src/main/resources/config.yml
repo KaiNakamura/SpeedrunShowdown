@@ -10,6 +10,7 @@ prevent-bed-explosions: true
 prevent-respawn-anchor-explosions: true
 indestructable-spawners: true
 must-kill-dragon-to-win: true
+lower-dragon-health-in-sudden-death: true
 hide-spectator-advancements: true
 give-compass: true
 keep-armor: true

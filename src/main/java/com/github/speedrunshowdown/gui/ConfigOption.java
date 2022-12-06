@@ -65,6 +65,10 @@ public enum ConfigOption {
 	),
 	MUST_KILL_DRAGON_TO_WIN(
 		"must-kill-dragon-to-win",
+		Material.DRAGON_EGG
+	),
+	LOWER_DRAGON_HEALTH_IN_SUDDEN_DEATH(
+		"lower-dragon-health-in-sudden-death",
 		Material.DRAGON_HEAD
 	),
 	HIDE_SPECTATOR_ADVANCEMENTS(

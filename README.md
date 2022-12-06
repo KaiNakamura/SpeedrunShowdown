@@ -79,7 +79,8 @@ The default team names are the following, but can be edited in the [config](#con
 | `/start` | Start the game | Sets time to 0 and gives all players a tracking compass, full health, and full hunger |
 | `/stop` | Stop the game | |
 | `/config` | Open config gui | If more than one player is editing the config, the latest changes take priority, see [config](#config) for more details |
-| `/suddendeath [minutes]` | Set time until sudden death | If no time given, starts immediately |
+| `/resume [minutes] [seconds]` | Resume the game (to be used if the server crashes during a game) | |
+| `/suddendeath [minutes] [seconds]` | Set time until sudden death | If no time given, starts immediately |
 | `/givecompass [player]` | Give a tracking compass | All players are given a compass at the start of the game, this command is to be used if a player doesn't receive a compass |
 | `/givearmor [player]` | Give armor | All players are given armor at the start of the game if `give-armor` is set to true in the [config](#config), this command is to be used if a player doesn't receive armor |
 | `/win (team\|player)` | Declare the winning team | The winning team automatically declared when dragon is killed, this command is to be used if something goes wrong such as the dragon being killed by an entity other than a player |
@@ -108,6 +109,7 @@ For more control over the config, navigate to the [config.yml](https://github.co
 | `prevent-respawn-anchor-explosions` | true | Prevent players from exploding respawn anchors | Respawn anchors can still be used in the Nether |
 | `indestructable-spawners` | true | Make spawners indestructable | |
 | `must-kill-dragon-to-win` | true | Players must kill the dragon to win | If set to false, the last remaining team will be declared the winner, otherwise if all teams are dead players will be respawned |
+| `lower-dragon-health-in-sudden-death` | true | Dragon health is lowered during sudden death | Dragon health is lowered to 50 health points from its original 200 health points |
 | `hide-spectator-advancements` | true | Hide advancements earned by spectators from being announced in chat | Spectators include anyone in the spectator gamemode |
 | `give-compass` | true | Give tracking compass to players at start and on respawn |  |
 | `keep-armor` | true | Keep armor on death | Player will only keep armor that they are wearing on death |

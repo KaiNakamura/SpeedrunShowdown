@@ -5,6 +5,8 @@ import java.util.HashMap;
 import org.bukkit.Material;
 
 public class Constants {
+	public static final int ENDER_DRAGON_SUDDEN_DEATH_HEALTH = 50;
+
     public static final Material[] ITEMS = {
 		Material.STONE,
 		Material.GRANITE,
