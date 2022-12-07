@@ -42,6 +42,8 @@ import org.bukkit.scoreboard.Team;
 public class SpeedrunShowdown extends JavaPlugin implements Runnable {
     private boolean running = false;
     private boolean suddenDeath = false;
+    private boolean loweredDragonHealthInSuddenDeath = false;
+    private boolean destroyedEndCrystalsInSuddenDeath = false;
     private int taskId;
     private int timer;
 
@@ -138,8 +140,8 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         if (suddenDeath) {
             World end = getServer().getWorld("world_the_end");
 
-            // If plugin should lower dragon health, lower dragon health
-            if (getConfig().getBoolean("lower-dragon-health-in-sudden-death")) {
+            // If plugin should lower dragon health and has not already lowered dragon health, lower dragon health
+            if (getConfig().getBoolean("lower-dragon-health-in-sudden-death") && !loweredDragonHealthInSuddenDeath) {
                 EnderDragon dragon = end.getEnderDragonBattle().getEnderDragon();
 
                 // If there is a dragon, set dragon health to the lowered value
@@ -154,8 +156,8 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
                 }
             }
 
-            // If plugin should destroy end crystals, destroy end crystals
-            if (getConfig().getBoolean("destroy-end-crystals-in-sudden-death")) {
+            // If plugin should destroy end crystals and has not already destroyed end crystals , destroy end crystals
+            if (getConfig().getBoolean("destroy-end-crystals-in-sudden-death") && !destroyedEndCrystalsInSuddenDeath) {
                 for (EnderCrystal crystal : end.getEntitiesByClass(EnderCrystal.class)) {
                     crystal.remove();
                 }
