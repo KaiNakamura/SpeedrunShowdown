@@ -36,8 +36,8 @@ public class PortalEnterListener implements Listener {
                 Location to = event.getTo();
                 plugin.getServer().broadcastMessage(
                     "" + getPlayerColor(player) + ChatColor.BOLD + player.getName() +
-                    ChatColor.YELLOW + " portaled from " +
-                    getLocationString(from) + ChatColor.YELLOW + " to " +
+                    ChatColor.WHITE + ChatColor.BOLD + " portaled " +
+                    getLocationString(from) + ChatColor.WHITE + ChatColor.BOLD + " > " +
                     getLocationString(to)
                 );
 
@@ -62,7 +62,7 @@ public class PortalEnterListener implements Listener {
         return (
             getWorldColor(location.getWorld()) + "(" +
             (int) location.getX() + ", " +
-            (int) location.getZ() + ") in the " +
+            (int) location.getZ() + ") " +
             getWorldName(location.getWorld())
         );
     }
