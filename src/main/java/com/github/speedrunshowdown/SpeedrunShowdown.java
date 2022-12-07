@@ -134,6 +134,34 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         // Update world border
         worldBorderManager.update();
 
+        // Do sudden death things
+        if (suddenDeath) {
+            World end = getServer().getWorld("world_the_end");
+
+            // If plugin should lower dragon health, lower dragon health
+            if (getConfig().getBoolean("lower-dragon-health-in-sudden-death")) {
+                EnderDragon dragon = end.getEnderDragonBattle().getEnderDragon();
+
+                // If there is a dragon, set dragon health to the lowered value
+                // or current health, whichever is lower
+                if (dragon != null) {
+                    dragon.setHealth(
+                        Math.min(
+                            Constants.ENDER_DRAGON_SUDDEN_DEATH_HEALTH,
+                            dragon.getHealth()
+                        )
+                    );
+                }
+            }
+
+            // If plugin should destroy end crystals, destroy end crystals
+            if (getConfig().getBoolean("destroy-end-crystals-in-sudden-death")) {
+                for (EnderCrystal crystal : end.getEntitiesByClass(EnderCrystal.class)) {
+                    crystal.remove();
+                }
+            }
+        }
+
         // If plugin should give permanent potions, give permanent potions
         if (getConfig().getBoolean("permanent-potions")) {
             permanentPotions();
@@ -283,9 +311,6 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         );
         getServer().broadcastMessage("");
 
-        // Get end world
-        World end = getServer().getWorld("world_the_end");
-
         // For all players
         for (Player player : getServer().getOnlinePlayers()) {
             // If player has a team, set game mode to survival
@@ -294,6 +319,7 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
             }
 
             // Teleport to the end
+            World end = getServer().getWorld("world_the_end");
             player.teleport(new Location(end, 0.5, end.getHighestBlockYAt(0, 0) + 1, 0.5, 0, 90));
 
             // Give resistance
@@ -314,26 +340,6 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
                 70,
                 20
             );
-        }
-
-        // If plugin should lower dragon health, lower dragon health
-        if (getConfig().getBoolean("lower-dragon-health-in-sudden-death")) {
-            EnderDragon dragon = end.getEnderDragonBattle().getEnderDragon();
-
-            // Set dragon health to the lowered value or current health, whichever is lower
-            dragon.setHealth(
-                Math.min(
-                    Constants.ENDER_DRAGON_SUDDEN_DEATH_HEALTH,
-                    dragon.getHealth()
-                )
-            );
-        }
-
-        // If plugin should destroy end crystals, destroy end crystals
-        if (getConfig().getBoolean("destroy-end-crystals-in-sudden-death")) {
-            for (EnderCrystal crystal : end.getEntitiesByClass(EnderCrystal.class)) {
-                crystal.remove();
-            }
         }
     }
 
