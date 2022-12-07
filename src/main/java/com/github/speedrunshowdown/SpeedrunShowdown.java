@@ -156,7 +156,7 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
                 }
             }
 
-            // If plugin should destroy end crystals and has not already destroyed end crystals , destroy end crystals
+            // If plugin should destroy end crystals and has not already destroyed end crystals, destroy end crystals
             if (getConfig().getBoolean("destroy-end-crystals-in-sudden-death") && !destroyedEndCrystalsInSuddenDeath) {
                 for (EnderCrystal crystal : end.getEntitiesByClass(EnderCrystal.class)) {
                     crystal.remove();
