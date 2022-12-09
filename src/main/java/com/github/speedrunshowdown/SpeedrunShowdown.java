@@ -48,6 +48,7 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
     private int timer;
 
     private ScoreboardManager scoreboardManager;
+    private BossBarManager bossBarManager;
     private WorldBorderManager worldBorderManager;
 
     private Material[] randomItems = Constants.ITEMS.clone();
@@ -87,6 +88,7 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         // Create managers
         getServer().getScheduler().scheduleSyncDelayedTask(this, () -> {
             scoreboardManager = new ScoreboardManager();
+            bossBarManager = new BossBarManager();
             worldBorderManager = new WorldBorderManager();
         });
     }
@@ -132,6 +134,9 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
 
         // Update scoreboard
         scoreboardManager.update();
+
+        // Update boss bar
+        bossBarManager.update();
 
         // Update world border
         worldBorderManager.update();
@@ -195,7 +200,10 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         // Show scoreboard
         scoreboardManager.show();
 
-        // Update world border
+        // Remove all boss bars
+        bossBarManager.removeAll();
+
+        // Init world border
         worldBorderManager.init();
 
         // Set time to 0
@@ -290,6 +298,9 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
 
         // Clear scoreboard
         scoreboardManager.clear();
+
+        // Remove all boss bars
+        bossBarManager.removeAll();
 
         // Reset world border
         worldBorderManager.reset();
