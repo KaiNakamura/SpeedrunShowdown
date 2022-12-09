@@ -45,7 +45,7 @@ public enum ConfigOption {
 	),
 	PORTAL_ALERTS(
 		"portal-alerts",
-		Material.ENDER_EYE
+		Material.OBSIDIAN
 	),
 	WORLD_BORDER(
 		"world-border",
@@ -77,6 +77,10 @@ public enum ConfigOption {
 	),
 	HIDE_SPECTATOR_ADVANCEMENTS(
 		"hide-spectator-advancements",
+		Material.ENDER_EYE
+	),
+	HIDE_PLAYER_ADVANCEMENTS(
+		"hide-player-advancements",
 		Material.CRAFTING_TABLE
 	),
 	GIVE_COMPASS(
