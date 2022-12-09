@@ -5,7 +5,8 @@ import java.util.HashMap;
 import org.bukkit.Material;
 
 public class Constants {
-	public static final int ENDER_DRAGON_SUDDEN_DEATH_HEALTH = 50;
+	public static final int ENDER_DRAGON_SUDDEN_DEATH_HEALTH = 50; // default is 20
+	public static final double SUDDEN_DEATH_SPAWN_RADIUS = 21.5; // blocks
 
     public static final Material[] ITEMS = {
 		Material.STONE,

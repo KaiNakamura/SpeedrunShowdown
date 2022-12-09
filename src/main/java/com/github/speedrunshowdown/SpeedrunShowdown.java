@@ -1,14 +1,10 @@
 package com.github.speedrunshowdown;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-
-import com.github.speedrunshowdown.border.WorldBorderManager;
-import com.github.speedrunshowdown.commands.*;
-import com.github.speedrunshowdown.gui.*;
-import com.github.speedrunshowdown.listeners.*;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -38,6 +34,33 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scoreboard.Team;
+
+import com.github.speedrunshowdown.border.WorldBorderManager;
+import com.github.speedrunshowdown.commands.ConfigCommand;
+import com.github.speedrunshowdown.commands.GiveArmorCommand;
+import com.github.speedrunshowdown.commands.GiveCompassCommand;
+import com.github.speedrunshowdown.commands.ResumeCommand;
+import com.github.speedrunshowdown.commands.StartCommand;
+import com.github.speedrunshowdown.commands.StopCommand;
+import com.github.speedrunshowdown.commands.SuddenDeathCommand;
+import com.github.speedrunshowdown.commands.WinCommand;
+import com.github.speedrunshowdown.gui.BossBarManager;
+import com.github.speedrunshowdown.gui.ScoreboardManager;
+import com.github.speedrunshowdown.listeners.AdvancementListener;
+import com.github.speedrunshowdown.listeners.BedUseListener;
+import com.github.speedrunshowdown.listeners.BlockDamageListener;
+import com.github.speedrunshowdown.listeners.BlockDropItemListener;
+import com.github.speedrunshowdown.listeners.CompassUseListener;
+import com.github.speedrunshowdown.listeners.DragonKillListener;
+import com.github.speedrunshowdown.listeners.FoodDropListener;
+import com.github.speedrunshowdown.listeners.GUIClickListener;
+import com.github.speedrunshowdown.listeners.PlayerChangedWorldListener;
+import com.github.speedrunshowdown.listeners.PlayerDeathListener;
+import com.github.speedrunshowdown.listeners.PlayerLoginListener;
+import com.github.speedrunshowdown.listeners.PlayerRespawnListener;
+import com.github.speedrunshowdown.listeners.PortalEnterListener;
+import com.github.speedrunshowdown.listeners.RespawnAnchorUseListener;
+import com.github.speedrunshowdown.listeners.ToolUseListener;
 
 public class SpeedrunShowdown extends JavaPlugin implements Runnable {
     private boolean running = false;
@@ -324,16 +347,14 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         );
         getServer().broadcastMessage("");
 
+        teleportPlayersToTheEnd();
+
         // For all players
         for (Player player : getServer().getOnlinePlayers()) {
             // If player has a team, set game mode to survival
             if (scoreboardManager.getTeam(player) != null) {
                 player.setGameMode(GameMode.SURVIVAL);
             }
-
-            // Teleport to the end
-            World end = getServer().getWorld("world_the_end");
-            player.teleport(new Location(end, 0.5, end.getHighestBlockYAt(0, 0) + 1, 0.5, 0, 90));
 
             // Give resistance
             player.addPotionEffect(new PotionEffect(
@@ -353,6 +374,40 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
                 70,
                 20
             );
+        }
+    }
+
+    private void teleportPlayersToTheEnd() {
+        // Get players and spectators
+        ArrayList<Player> players = new ArrayList<>();
+        ArrayList<Player> spectators = new ArrayList<>();
+
+        for (Player player : getServer().getOnlinePlayers()) {
+            if (player.getGameMode() == GameMode.SPECTATOR) {
+                spectators.add(player);
+            } else {
+                players.add(player);
+            }
+        }
+
+        // Get the end
+        World end = getServer().getWorld("world_the_end");
+
+        // Teleport spectators to the middle
+        for (Player spectator : spectators) {
+            spectator.teleport(new Location(end, 0.5, end.getHighestBlockYAt(0, 0) + 11, 0.5, 0, 90));
+        }
+
+        // Teleport players in a circle around the middle
+        int numPlayers = players.size();
+        double spacing = (2 * Math.PI) / numPlayers;
+        for (int i = 0; i < numPlayers; i++) {
+            double angle = spacing * i;
+            double x = Constants.SUDDEN_DEATH_SPAWN_RADIUS * Math.cos(angle) + 0.5;
+            double z = Constants.SUDDEN_DEATH_SPAWN_RADIUS * Math.sin(angle) + 0.5;
+            double y = end.getHighestBlockYAt((int) x, (int) z) + 1;
+            float yaw = (float) (angle * (180 / Math.PI) + 90);
+            players.get(i).teleport(new Location(end, x, y, z, yaw, 0));
         }
     }
 
