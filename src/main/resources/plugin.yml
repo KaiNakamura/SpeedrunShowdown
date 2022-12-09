@@ -37,6 +37,10 @@ commands:
     description: Declare the winning team
     permission: speedrunshowdown
     usage: /win (team|player)
+  removebossbars:
+    description: Removes all boss bars (to be used if something glitches out)
+    permission: speedrunshowdown
+    usage: /removebossbars
 permissions:
   speedrunshowdown:
     description: Allows speedrunshowdown commands

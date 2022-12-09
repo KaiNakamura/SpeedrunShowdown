@@ -39,6 +39,7 @@ import com.github.speedrunshowdown.border.WorldBorderManager;
 import com.github.speedrunshowdown.commands.ConfigCommand;
 import com.github.speedrunshowdown.commands.GiveArmorCommand;
 import com.github.speedrunshowdown.commands.GiveCompassCommand;
+import com.github.speedrunshowdown.commands.RemoveAllBossBarsCommand;
 import com.github.speedrunshowdown.commands.ResumeCommand;
 import com.github.speedrunshowdown.commands.StartCommand;
 import com.github.speedrunshowdown.commands.StopCommand;
@@ -90,6 +91,7 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         getCommand("givecompass").setExecutor(new GiveCompassCommand());
         getCommand("givearmor").setExecutor(new GiveArmorCommand());
         getCommand("win").setExecutor(new WinCommand());
+        getCommand("removebossbars").setExecutor(new RemoveAllBossBarsCommand());
 
         // Create listeners
         getServer().getPluginManager().registerEvents(new AdvancementListener(), this);
@@ -582,6 +584,10 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
 
     public ScoreboardManager getScoreboardManager() {
         return scoreboardManager;
+    }
+
+    public BossBarManager getBossBarManager() {
+        return bossBarManager;
     }
 
     public WorldBorderManager getWorldBorderManager() {
