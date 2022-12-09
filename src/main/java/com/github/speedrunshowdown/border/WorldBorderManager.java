@@ -6,9 +6,10 @@ import org.bukkit.entity.Player;
 import com.github.speedrunshowdown.SpeedrunShowdown;
 
 public class WorldBorderManager {
+    private static final int PREGAME_BORDER_SIZE = 32; // blocks
     private static final int OVERWORLD_BORDER_SIZE = 6000; // blocks
     private static final int NETHER_BORDER_SIZE = OVERWORLD_BORDER_SIZE / 8; // blocks
-    private static final int END_BORDER_SIZE = 1000;
+    private static final int END_BORDER_SIZE = 1000; // blocks
 
     private boolean enabled = false;
     private SpeedrunShowdown plugin;
@@ -22,19 +23,24 @@ public class WorldBorderManager {
         netherBorder = plugin.getServer().createWorldBorder();
         endBorder = plugin.getServer().createWorldBorder();
 
-        // Set sizes
-        overworldBorder.setSize(OVERWORLD_BORDER_SIZE);
+        // Set border sizes (overworld is small before game starts)
+        overworldBorder.setSize(PREGAME_BORDER_SIZE);
         netherBorder.setSize(NETHER_BORDER_SIZE);
         endBorder.setSize(END_BORDER_SIZE);
+
+        update();
+        updateWorldBorderForAllPlayers();
     }
 
     public void init() {
+        // Change overworld border to default size
+        overworldBorder.setSize(OVERWORLD_BORDER_SIZE);
         update();
         updateWorldBorderForAllPlayers();
     }
 
     public void update() {
-        // Update world border for all players if config file changes
+        // If config file changes, update world border for all players
         boolean newEnabled = plugin.getConfig().getBoolean("world-border");
         if (enabled != newEnabled) {
             enabled = newEnabled;
@@ -50,21 +56,19 @@ public class WorldBorderManager {
 
     public void updatePlayerWorldBorder(Player player) {
         if (enabled) {
-            if (plugin.getConfig().getBoolean("world-border")) {
-                // Switch the player's world border depending on the world they are in
-                switch (player.getWorld().getEnvironment()) {
-                    case NORMAL:
-                        player.setWorldBorder(overworldBorder);
-                        break;
-                    case NETHER:
-                        player.setWorldBorder(netherBorder);
-                        break;
-                    case THE_END:
-                        player.setWorldBorder(endBorder);
-                        break;
-                    default:
-                        player.setWorldBorder(null);
-                }
+            // Switch the player's world border depending on the world they are in
+            switch (player.getWorld().getEnvironment()) {
+                case NORMAL:
+                    player.setWorldBorder(overworldBorder);
+                    break;
+                case NETHER:
+                    player.setWorldBorder(netherBorder);
+                    break;
+                case THE_END:
+                    player.setWorldBorder(endBorder);
+                    break;
+                default:
+                    player.setWorldBorder(null);
             }
         } else {
             player.setWorldBorder(null);
