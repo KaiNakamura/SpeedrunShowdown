@@ -28,6 +28,9 @@ public class WorldBorderManager {
         netherBorder.setSize(NETHER_BORDER_SIZE);
         endBorder.setSize(END_BORDER_SIZE);
 
+        // Move border to spawn location
+        overworldBorder.setCenter(plugin.getServer().getWorld("world").getSpawnLocation());
+
         update();
         updateWorldBorderForAllPlayers();
     }
@@ -35,6 +38,8 @@ public class WorldBorderManager {
     public void init() {
         // Change overworld border to default size
         overworldBorder.setSize(OVERWORLD_BORDER_SIZE);
+        overworldBorder.setCenter(0, 0);
+
         update();
         updateWorldBorderForAllPlayers();
     }
