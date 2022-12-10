@@ -9,14 +9,14 @@ world-border: true
 prevent-bed-explosions: true
 prevent-respawn-anchor-explosions: true
 indestructable-spawners: true
-must-kill-dragon-to-win: true
-lower-dragon-health-in-sudden-death: true
-destroy-end-crystals-in-sudden-death: true
 hide-spectator-advancements: true
 hide-player-advancements: true
 give-compass: true
 keep-armor: true
 keep-tools: true
+lower-dragon-health-in-sudden-death: true
+destroy-end-crystals-in-sudden-death: true
+must-kill-dragon-to-win: false
 give-armor: false
 efficient-tools: false
 smelt-ores: false

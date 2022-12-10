@@ -63,18 +63,6 @@ public enum ConfigOption {
 		"indestructable-spawners",
 		Material.SPAWNER
 	),
-	MUST_KILL_DRAGON_TO_WIN(
-		"must-kill-dragon-to-win",
-		Material.DRAGON_EGG
-	),
-	LOWER_DRAGON_HEALTH_IN_SUDDEN_DEATH(
-		"lower-dragon-health-in-sudden-death",
-		Material.DRAGON_HEAD
-	),
-	DESTROY_END_CRYSTALS_IN_SUDDEN_DEATH(
-		"destroy-end-crystals-in-sudden-death",
-		Material.END_CRYSTAL
-	),
 	HIDE_SPECTATOR_ADVANCEMENTS(
 		"hide-spectator-advancements",
 		Material.ENDER_EYE
@@ -94,6 +82,18 @@ public enum ConfigOption {
 	KEEP_TOOLS(
 		"keep-tools",
 		Material.DIAMOND_PICKAXE
+	),
+	LOWER_DRAGON_HEALTH_IN_SUDDEN_DEATH(
+		"lower-dragon-health-in-sudden-death",
+		Material.DRAGON_HEAD
+	),
+	DESTROY_END_CRYSTALS_IN_SUDDEN_DEATH(
+		"destroy-end-crystals-in-sudden-death",
+		Material.END_CRYSTAL
+	),
+	MUST_KILL_DRAGON_TO_WIN(
+		"must-kill-dragon-to-win",
+		Material.DRAGON_EGG
 	),
 	GIVE_ARMOR(
 		"give-armor",
