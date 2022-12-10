@@ -55,7 +55,6 @@ import com.github.speedrunshowdown.listeners.FoodDropListener;
 import com.github.speedrunshowdown.listeners.GUIClickListener;
 import com.github.speedrunshowdown.listeners.PlayerChangedWorldListener;
 import com.github.speedrunshowdown.listeners.PlayerDeathListener;
-import com.github.speedrunshowdown.listeners.PlayerLoginListener;
 import com.github.speedrunshowdown.listeners.PlayerRespawnListener;
 import com.github.speedrunshowdown.listeners.PortalEnterListener;
 import com.github.speedrunshowdown.listeners.RespawnAnchorUseListener;
@@ -100,7 +99,6 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         getServer().getPluginManager().registerEvents(new GUIClickListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerChangedWorldListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerDeathListener(), this);
-        getServer().getPluginManager().registerEvents(new PlayerLoginListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerRespawnListener(), this);
         getServer().getPluginManager().registerEvents(new PortalEnterListener(), this);
         getServer().getPluginManager().registerEvents(new RespawnAnchorUseListener(), this);
@@ -154,9 +152,6 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
 
         // Update scoreboard
         scoreboardManager.update();
-
-        // Update world border
-        worldBorderManager.update();
 
         // Do sudden death things
         if (suddenDeath) {

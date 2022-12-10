@@ -5,13 +5,12 @@ import org.bukkit.entity.Player;
 
 import com.github.speedrunshowdown.SpeedrunShowdown;
 
-public class WorldBorderManager {
+public class WorldBorderManager implements Runnable {
     private static final int PREGAME_BORDER_SIZE = 32; // blocks
     private static final int OVERWORLD_BORDER_SIZE = 6000; // blocks
     private static final int NETHER_BORDER_SIZE = OVERWORLD_BORDER_SIZE / 8; // blocks
     private static final int END_BORDER_SIZE = 1000; // blocks
 
-    private boolean enabled = false;
     private SpeedrunShowdown plugin;
     private WorldBorder overworldBorder, netherBorder, endBorder;
 
@@ -31,8 +30,8 @@ public class WorldBorderManager {
         // Move border to spawn location
         overworldBorder.setCenter(plugin.getServer().getWorld("world").getSpawnLocation());
 
-        update();
-        updateWorldBorderForAllPlayers();
+        // Schedule repeating task
+        plugin.getServer().getScheduler().scheduleSyncRepeatingTask(plugin, this, 20, 20);
     }
 
     public void init() {
@@ -40,27 +39,19 @@ public class WorldBorderManager {
         overworldBorder.setSize(OVERWORLD_BORDER_SIZE);
         overworldBorder.setCenter(0, 0);
 
-        update();
-        updateWorldBorderForAllPlayers();
+        // Run once to update immediately
+        run();
     }
 
-    public void update() {
-        // If config file changes, update world border for all players
-        boolean newEnabled = plugin.getConfig().getBoolean("world-border");
-        if (enabled != newEnabled) {
-            enabled = newEnabled;
-            updateWorldBorderForAllPlayers();
-        }
-    }
-
-    public void updateWorldBorderForAllPlayers() {
+    @Override
+    public void run() {
         for (Player player : plugin.getServer().getOnlinePlayers()) {
             updatePlayerWorldBorder(player);
         }
     }
 
     public void updatePlayerWorldBorder(Player player) {
-        if (enabled) {
+        if (plugin.getConfig().getBoolean("world-border")) {
             // Switch the player's world border depending on the world they are in
             switch (player.getWorld().getEnvironment()) {
                 case NORMAL:
