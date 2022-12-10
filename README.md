@@ -108,12 +108,14 @@ For more control over the config, navigate to the [config.yml](https://github.co
 | `prevent-bed-explosions` | true | Prevent players from exploding beds | Beds can still be used in the Overworld |
 | `prevent-respawn-anchor-explosions` | true | Prevent players from exploding respawn anchors | Respawn anchors can still be used in the Nether |
 | `indestructable-spawners` | true | Make spawners indestructable | |
-| `must-kill-dragon-to-win` | true | Players must kill the dragon to win | If set to false, the last remaining team will be declared the winner, otherwise if all teams are dead players will be respawned |
-| `lower-dragon-health-in-sudden-death` | true | Dragon health is lowered during sudden death | Dragon health is lowered to 50 health points from its original 200 health points |
 | `hide-spectator-advancements` | true | Hide advancements earned by spectators from being announced in chat | Spectators include anyone in the spectator gamemode |
+| `hide-player-advancements` | true | Hide advancements earned by anyone from being announced in chat | |
 | `give-compass` | true | Give tracking compass to players at start and on respawn |  |
 | `keep-armor` | true | Keep armor on death | Player will only keep armor that they are wearing on death |
 | `keep-tools` | true | Keep tools on death | Tools include pickaxes, axes, shovels, hoes, swords, shields, bows, crossbows, flint and steel, tridents, shears, and fishing rods |
+| `lower-dragon-health-in-sudden-death` | true | Dragon health is lowered during sudden death | Dragon health is lowered to 50 health points from its original 200 health points |
+| `destroy-end-crystals-in-sudden-death` | true | End crystals are destroyed during sudden death | |
+| `must-kill-dragon-to-win` | false | Players must kill the dragon to win | If set to false, the last remaining team will be declared the winner, otherwise if all teams are dead players will be respawned |
 | `give-armor` | false | Give leather armor to players at start and on respawn | Armor is dyed to the team color and has curse of vanishing |
 | `efficient-tools` | false | Tools will be enchanted with Efficiency III and Unbreaking I | Tools are enchanted on use |
 | `smelt-ores` | false | Ores will drop as ingots instead of ores |  |
