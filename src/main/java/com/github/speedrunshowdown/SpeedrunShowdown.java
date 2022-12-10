@@ -39,13 +39,11 @@ import com.github.speedrunshowdown.border.WorldBorderManager;
 import com.github.speedrunshowdown.commands.ConfigCommand;
 import com.github.speedrunshowdown.commands.GiveArmorCommand;
 import com.github.speedrunshowdown.commands.GiveCompassCommand;
-import com.github.speedrunshowdown.commands.RemoveAllBossBarsCommand;
 import com.github.speedrunshowdown.commands.ResumeCommand;
 import com.github.speedrunshowdown.commands.StartCommand;
 import com.github.speedrunshowdown.commands.StopCommand;
 import com.github.speedrunshowdown.commands.SuddenDeathCommand;
 import com.github.speedrunshowdown.commands.WinCommand;
-import com.github.speedrunshowdown.gui.BossBarManager;
 import com.github.speedrunshowdown.gui.ScoreboardManager;
 import com.github.speedrunshowdown.listeners.AdvancementListener;
 import com.github.speedrunshowdown.listeners.BedUseListener;
@@ -72,7 +70,6 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
     private int timer;
 
     private ScoreboardManager scoreboardManager;
-    private BossBarManager bossBarManager;
     private WorldBorderManager worldBorderManager;
 
     private Material[] randomItems = Constants.ITEMS.clone();
@@ -91,7 +88,6 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         getCommand("givecompass").setExecutor(new GiveCompassCommand());
         getCommand("givearmor").setExecutor(new GiveArmorCommand());
         getCommand("win").setExecutor(new WinCommand());
-        getCommand("removebossbars").setExecutor(new RemoveAllBossBarsCommand());
 
         // Create listeners
         getServer().getPluginManager().registerEvents(new AdvancementListener(), this);
@@ -113,7 +109,6 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         // Create managers
         getServer().getScheduler().scheduleSyncDelayedTask(this, () -> {
             scoreboardManager = new ScoreboardManager();
-            bossBarManager = new BossBarManager();
             worldBorderManager = new WorldBorderManager();
         });
     }
@@ -159,9 +154,6 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
 
         // Update scoreboard
         scoreboardManager.update();
-
-        // Update boss bar
-        bossBarManager.update();
 
         // Update world border
         worldBorderManager.update();
@@ -224,9 +216,6 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
 
         // Show scoreboard
         scoreboardManager.show();
-
-        // Remove all boss bars
-        bossBarManager.removeAll();
 
         // Init world border
         worldBorderManager.init();
@@ -323,9 +312,6 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
 
         // Clear scoreboard
         scoreboardManager.clear();
-
-        // Remove all boss bars
-        bossBarManager.removeAll();
 
         // Reset world border
         worldBorderManager.reset();
@@ -584,10 +570,6 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
 
     public ScoreboardManager getScoreboardManager() {
         return scoreboardManager;
-    }
-
-    public BossBarManager getBossBarManager() {
-        return bossBarManager;
     }
 
     public WorldBorderManager getWorldBorderManager() {
